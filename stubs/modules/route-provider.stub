@@ -7,7 +7,17 @@ use Illuminate\Support\Facades\Route;
 
 class $CLASS$ extends ServiceProvider
 {
-    protected $name = '$MODULE$';
+    protected string $name = '$MODULE$';
+
+    /**
+     * Called before routes are registered.
+     *
+     * Register any model bindings or pattern based filters.
+     */
+    public function boot(): void
+    {
+        parent::boot();
+    }
 
     /**
      * Define the routes for the application.
