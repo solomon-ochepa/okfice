@@ -1,0 +1,11 @@
+<?php
+
+namespace App\Features;
+
+class {{ class }} extends Feature
+{
+    /**
+     * The feature's slug.
+     */
+    public string $name = '{{ class }}';
+}
