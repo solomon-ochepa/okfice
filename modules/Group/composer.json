@@ -1,0 +1,29 @@
+{
+    "name": "nwidart/group",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Group\\App\\": "app/",
+            "Modules\\Group\\app\\Livewire\\": "app/Livewire/",
+            "Modules\\Group\\Database\\Factories\\": "database/factories/",
+            "Modules\\Group\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Group\\Tests\\": "tests/"
+        }
+    }
+}
