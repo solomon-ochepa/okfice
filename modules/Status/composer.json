@@ -1,0 +1,29 @@
+{
+    "name": "nwidart/status",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Status\\App\\": "app/",
+            "Modules\\Status\\app\\Livewire\\": "app/Livewire/",
+            "Modules\\Status\\Database\\Factories\\": "database/factories/",
+            "Modules\\Status\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Status\\Tests\\": "tests/"
+        }
+    }
+}
