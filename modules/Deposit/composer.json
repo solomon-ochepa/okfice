@@ -1,0 +1,29 @@
+{
+    "name": "nwidart/deposit",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Deposit\\App\\": "app/",
+            "Modules\\Deposit\\app\\Livewire\\": "app/Livewire/",
+            "Modules\\Deposit\\Database\\Factories\\": "database/factories/",
+            "Modules\\Deposit\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Deposit\\Tests\\": "tests/"
+        }
+    }
+}

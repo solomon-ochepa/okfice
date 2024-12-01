@@ -1,0 +1,11 @@
+{
+    "name": "Deposit",
+    "alias": "deposit",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Deposit\\App\\Providers\\DepositServiceProvider"
+    ],
+    "files": []
+}
