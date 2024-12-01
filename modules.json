@@ -1,1 +1,11 @@
-{}
+{
+    "User": true,
+    "Member": true,
+    "Deposit": true,
+    "Withdraw": true,
+    "Transaction": true,
+    "Auth": true,
+    "Loan": true,
+    "Status": true,
+    "Group": true
+}
