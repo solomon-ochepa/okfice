@@ -19,4 +19,3 @@ class TransactionFactory extends Factory
         return [];
     }
 }
-

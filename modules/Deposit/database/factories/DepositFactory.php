@@ -19,4 +19,3 @@ class DepositFactory extends Factory
         return [];
     }
 }
-

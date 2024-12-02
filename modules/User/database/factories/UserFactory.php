@@ -9,7 +9,7 @@ class UserFactory extends Factory
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\User\app\Models\User::class;
+    protected $model = \Modules\User\App\Models\User::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +19,3 @@ class UserFactory extends Factory
         return [];
     }
 }
-
