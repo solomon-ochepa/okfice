@@ -22,12 +22,12 @@ class LoginRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'username' => ['required', 'string'],
             'password' => ['required', 'string'],
         ];
     }
@@ -41,15 +41,44 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        $credentials = $this->credentials();
+
+        if (! Auth::attempt($credentials, $this->boolean('remember', true))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'username' => trans('auth.failed'),
             ]);
         }
 
         RateLimiter::clear($this->throttleKey());
+    }
+
+    private function credentials()
+    {
+        $phonePattern = '/^\+?[1-9]\d{1,14}$/';
+        switch ($this->username) {
+            case filter_var($this->username, FILTER_VALIDATE_EMAIL):
+                return [
+                    'email' => $this->username,
+                    'password' => $this->password,
+                ];
+                break;
+
+            case preg_match($phonePattern, $this->username):
+                return [
+                    'phone' => $this->username,
+                    'password' => $this->password,
+                ];
+                break;
+
+            default:
+                return [
+                    'username' => $this->username,
+                    'password' => $this->password,
+                ];
+                break;
+        }
     }
 
     /**
@@ -68,7 +97,7 @@ class LoginRequest extends FormRequest
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
         throw ValidationException::withMessages([
-            'email' => trans('auth.throttle', [
+            'username' => trans('auth.throttle', [
                 'seconds' => $seconds,
                 'minutes' => ceil($seconds / 60),
             ]),
@@ -80,6 +109,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->string('username')) . '|' . $this->ip());
     }
 }

@@ -1,7 +1,4 @@
 <x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status :status="session('status')" class="mb-4" />
-
     <div id="appCapsule">
         <div class="section mt-2 text-center">
             <h1>Log in</h1>
