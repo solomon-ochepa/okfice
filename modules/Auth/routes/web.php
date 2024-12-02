@@ -6,3 +6,5 @@ use Modules\Auth\App\Http\Controllers\AuthController;
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('auth', AuthController::class)->names('auth');
 });
+
+require __DIR__.'/auth.php';
