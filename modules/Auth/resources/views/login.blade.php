@@ -6,6 +6,8 @@
         <div class="section mt-2 text-center">
             <h1>Log in</h1>
             {{-- <h4>Access the full app as a user</h4> --}}
+
+            <x-alert />
         </div>
 
         <div class="section mb-5 p-2">

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id');
             $table->string('name');
-            $table->string('tag')->nullable();
             $table->json('value');
+            $table->string('tag')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
