@@ -4,7 +4,7 @@ namespace Modules\User\App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class ProfileRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -22,5 +22,6 @@ class UserRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+        // return auth()->user()->can('example.create');
     }
 }
