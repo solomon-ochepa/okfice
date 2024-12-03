@@ -5,9 +5,12 @@ use Modules\User\App\Http\Controllers\ProfileController;
 use Modules\User\App\Http\Controllers\UserController;
 use Modules\User\app\Livewire\Index;
 
-Route::resource('users', UserController::class)->except(['index'])->names('user');
-Route::get('users', Index::class)->name('user.index');
-Route::put('/users', [UserController::class, 'update'])->name('users.update');
+// Admin
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('users', UserController::class)->except(['index'])->names('user');
+    Route::get('users', Index::class)->name('user.index');
+    Route::put('/users', [UserController::class, 'update'])->name('users.update');
+});
 
 // User profile
 Route::middleware('auth')->group(function () {

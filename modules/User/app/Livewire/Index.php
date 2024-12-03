@@ -2,24 +2,25 @@
 
 namespace Modules\User\app\Livewire;
 
-use Modules\User\App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
+use Modules\User\App\Models\User;
 
 class Index extends Component
 {
-    public $users;
+    use WithPagination;
+
+    public $limit;
 
     public $listeners = [
         'refresh' => '$refresh',
     ];
 
-    public function mount()
-    {
-        $this->users = User::all();
-    }
-
     public function render()
     {
-        return view('user::livewire.index');
+        $data = [];
+        $data['users'] = User::paginate($this->limit);
+
+        return view('user::livewire.index', $data);
     }
 }

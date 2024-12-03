@@ -1,5 +1,104 @@
 <div id="appCapsule">
-    <div class="section full mb-2 mt-1">
+    <div class="section -full mt-4">
+        <div class="section-heading -padding">
+            <h2 class="title">Users Management</h2>
+            <a class="link" href="#">Add New</a>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-sm-2">
+                <a href="#">
+                    <div class="user-card">
+                        <img alt="img" class="imaged w-100"
+                            src="{{ asset('assets/guest') }}/img/sample/avatar/avatar2.jpg">
+                        <strong>Jurrien</strong>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-2">
+                <a href="#">
+                    <div class="user-card">
+                        <img alt="img" class="imaged w-100"
+                            src="{{ asset('assets/guest') }}/img/sample/avatar/avatar3.jpg">
+                        <strong>Elwin</strong>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-2">
+                <a href="#">
+                    <div class="user-card">
+                        <img alt="img" class="imaged w-100"
+                            src="{{ asset('assets/guest') }}/img/sample/avatar/avatar4.jpg">
+                        <strong>Alma</strong>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-2">
+                <a href="#">
+                    <div class="user-card">
+                        <img alt="img" class="imaged w-100"
+                            src="{{ asset('assets/guest') }}/img/sample/avatar/avatar5.jpg">
+                        <strong>Justine</strong>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-2">
+                <a href="#">
+                    <div class="user-card">
+                        <img alt="img" class="imaged w-100"
+                            src="{{ asset('assets/guest') }}/img/sample/avatar/avatar6.jpg">
+                        <strong>Maria</strong>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-2">
+                <a href="#">
+                    <div class="user-card">
+                        <img alt="img" class="imaged w-100"
+                            src="{{ asset('assets/guest') }}/img/sample/avatar/avatar7.jpg">
+                        <strong>Pamela</strong>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-2">
+                <a href="#">
+                    <div class="user-card">
+                        <img alt="img" class="imaged w-100"
+                            src="{{ asset('assets/guest') }}/img/sample/avatar/avatar8.jpg">
+                        <strong>Neville</strong>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-2">
+                <a href="#">
+                    <div class="user-card">
+                        <img alt="img" class="imaged w-100"
+                            src="{{ asset('assets/guest') }}/img/sample/avatar/avatar9.jpg">
+                        <strong>Alex</strong>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-2">
+                <a href="#">
+                    <div class="user-card">
+                        <img alt="img" class="imaged w-100"
+                            src="{{ asset('assets/guest') }}/img/sample/avatar/avatar10.jpg">
+                        <strong>Stina</strong>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {{-- <div class="section full mb-2 mt-1">
         <div class="section-title">
             <h1>Users</h1>
         </div>
@@ -80,5 +179,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
