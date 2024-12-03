@@ -13,5 +13,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- Transactions -->
+        <livewire:transaction::recent />
     </div>
 </x-app-layout>
