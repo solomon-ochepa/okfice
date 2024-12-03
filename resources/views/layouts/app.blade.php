@@ -34,7 +34,8 @@
 
         <x-themes.guest.header class="bg-primary text-light">
             @slot('page_title')
-                <img alt="logo" class="logo" src="{{ asset('assets/guest') }}/img/logo.png">
+                {{-- <img alt="logo" class="logo" src="{{ asset('assets/guest') }}/img/logo.png"> --}}
+                {{ config('app.name') }}
             @endslot
 
             @slot('right')
@@ -52,24 +53,9 @@
         {{ $slot }}
 
         <x-themes.app.bottom-menu />
-
-        {{-- <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow dark:bg-gray-800">
-                    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div> --}}
+        <x-themes.app.sidebar />
+        <x-themes.app.add-to-home-screen />
+        <x-themes.app.cookies />
 
         <!-- ========= JS Files =========  -->
         <!-- Bootstrap -->
@@ -81,7 +67,7 @@
         <!-- Splide -->
         <script src="{{ asset('assets/guest') }}/js/plugins/splide/splide.min.js"></script>
         <!-- Base Js File -->
-        {{-- <script src="{{ asset('assets/guest') }}/js/base.js"></script> --}}
+        <script src="{{ asset('assets/guest') }}/js/base.js"></script>
 
         <script>
             // Add to Home with 2 seconds delay.
