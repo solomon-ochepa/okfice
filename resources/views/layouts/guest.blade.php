@@ -21,7 +21,7 @@
         <link href="{{ asset('assets/guest') }}/img/favicon.png" rel="icon" sizes="32x32" type="image/png">
         <link href="{{ asset('assets/guest') }}/img/icon/192x192.png" rel="apple-touch-icon" sizes="180x180">
         <link href="{{ asset('assets/guest') }}/css/style.css" rel="stylesheet">
-        <link href="{{ asset('') }}manifest.json" rel="manifest">
+        <link href="{{ asset('manifest.json') }}" rel="manifest">
 
         <!-- Scripts -->
         @vite('resources/js/app.js')
