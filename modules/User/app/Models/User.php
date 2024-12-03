@@ -15,6 +15,7 @@ use Laravel\Pennant\Concerns\HasFeatures;
 use Modules\Address\App\Models\Address;
 use Modules\Submission\App\Models\Submission;
 use Modules\Transaction\App\Models\Transaction;
+use Modules\User\Database\Factories\UserFactory;
 use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -58,10 +59,10 @@ class User extends Authenticatable
         ];
     }
 
-    // protected static function newFactory(): UserFactory
-    // {
-    //     // return UserFactory::new();
-    // }
+    protected static function newFactory(): UserFactory
+    {
+        return UserFactory::new();
+    }
 
     public function name(): Attribute
     {
@@ -79,5 +80,10 @@ class User extends Authenticatable
     public function transactions()
     {
         return $this->hasMany(Transaction::class)->latest();
+    }
+
+    public function profiles()
+    {
+        return $this->hasMany(Profile::class);
     }
 }
