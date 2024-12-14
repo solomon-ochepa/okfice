@@ -37,9 +37,6 @@ jobs:
     - name: Storage link
       run: php artisan storage:link --force
 
-    - name: Clear Caches
-      run: php artisan optimize:clear
-
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
