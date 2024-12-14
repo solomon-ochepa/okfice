@@ -4,8 +4,8 @@ namespace Modules\Transaction\App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 // use Modules\Transaction\Database\Factories\TransactionTypeFactory;
@@ -18,7 +18,7 @@ class TransactionType extends Model
      * The attributes that are mass assignable.
      */
     protected $fillable = [
-        ''
+        '',
     ];
 
     /**
@@ -29,7 +29,7 @@ class TransactionType extends Model
         return [
             'slug' => [
                 'source' => 'name',
-            ]
+            ],
         ];
     }
 

@@ -19,4 +19,3 @@ class GroupFactory extends Factory
         return [];
     }
 }
-

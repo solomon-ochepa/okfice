@@ -4,15 +4,15 @@ namespace Modules\Group\App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 // use Modules\Group\Database\Factories\GroupFactory;
 
 class Group extends Model
 {
-    use HasFactory, HasUuids, SoftDeletes, Sluggable;
+    use HasFactory, HasUuids, Sluggable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -32,7 +32,7 @@ class Group extends Model
         return [
             'slug' => [
                 'source' => 'name',
-            ]
+            ],
         ];
     }
 

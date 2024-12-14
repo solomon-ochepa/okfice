@@ -1,8 +1,13 @@
 {
     "name": "User",
     "alias": "user",
-    "description": "",
-    "keywords": [],
+    "description": "Laravel Users module.",
+    "keywords": [
+        "user-module",
+        "laravel-module",
+        "solomon-ochepa",
+        "oki technologies ltd"
+    ],
     "priority": 0,
     "providers": [
         "Modules\\User\\App\\Providers\\UserServiceProvider"

@@ -1,12 +1,24 @@
 {
-    "name": "nwidart/user",
-    "description": "",
+    "name": "solomon-ochepa/user-module",
+    "type": "laravel-module",
+    "description": "Laravel Users module.",
+    "keywords": [
+        "user-module",
+        "laravel-module",
+        "solomon-ochepa",
+        "oki technologies ltd"
+    ],
     "authors": [
         {
-            "name": "Nicolas Widart",
-            "email": "n.widart@gmail.com"
+            "name": "Solomon Ochepa",
+            "email": "solomonochepa@gmail.com"
         }
     ],
+    "license": "MIT",
+    "require": {
+        "nwidart/laravel-modules": "*",
+        "joshbrw/laravel-module-installer": "*"
+    },
     "extra": {
         "laravel": {
             "providers": [],

@@ -25,3 +25,4 @@ yarn-error.log
 public/vendor/telescope/
 tmp/
 *copy
+* copy.js

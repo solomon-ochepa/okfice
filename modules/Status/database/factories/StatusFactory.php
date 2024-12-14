@@ -19,4 +19,3 @@ class StatusFactory extends Factory
         return [];
     }
 }
-

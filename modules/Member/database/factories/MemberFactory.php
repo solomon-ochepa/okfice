@@ -19,4 +19,3 @@ class MemberFactory extends Factory
         return [];
     }
 }
-
