@@ -14,7 +14,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "web-deploy"
+  # Build job
   build:
     name: 🔨 Build
 
@@ -37,8 +37,12 @@ jobs:
     - name: Storage link
       run: php artisan storage:link --force
 
+  # Deploy job
   deploye:
     name: 🚀 Deploye
+
+    # Define dependency on the build job
+    needs: build
 
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
