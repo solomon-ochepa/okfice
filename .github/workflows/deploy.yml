@@ -16,7 +16,7 @@ on:
 jobs:
   # This workflow contains a single job called "web-deploy"
   build:
-    name: 🎉 Deploying
+    name: 🎉 Building
 
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
