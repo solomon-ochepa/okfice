@@ -1,59 +1,77 @@
 {
     "name": "Cooperative",
     "short_name": "Cooperative",
-    "start_url": "http://127.0.0.1:86",
+    "start_url": "/",
     "display": "standalone",
-    "scope": "http://127.0.0.1:86/",
+    "scope": "/",
     "background_color": "#000000",
     "theme_color": "#000000",
     "orientation": "portrait",
     "icons": [
         {
-            "src": "assets/img/icon/72x72.png",
-            "type": "image/png",
+            "src": "/icons/android-icon-72x72.png",
             "sizes": "72x72",
-            "purpose": "any maskable"
-        },
-        {
-            "src": "assets/img/icon/96x96.png",
             "type": "image/png",
-            "sizes": "96x96",
+            "density": "1.5",
             "purpose": "any maskable"
         },
         {
-            "src": "assets/img/icon/128x128.png",
+            "src": "/icons/android-icon-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "density": "2.0",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/icons/128x128.png",
             "type": "image/png",
             "sizes": "128x128",
             "purpose": "any maskable"
         },
         {
-            "src": "assets/img/icon/144x144.png",
-            "type": "image/png",
+            "src": "/icons/android-icon-144x144.png",
             "sizes": "144x144",
+            "type": "image/png",
+            "density": "3.0",
             "purpose": "any maskable"
         },
         {
-            "src": "assets/img/icon/152x152.png",
+            "src": "/icons/152x152.png",
             "type": "image/png",
             "sizes": "152x152",
             "purpose": "any maskable"
         },
         {
-            "src": "assets/img/icon/192x192.png",
-            "type": "image/png",
+            "src": "/icons/android-icon-192x192.png",
             "sizes": "192x192",
+            "type": "image/png",
+            "density": "4.0",
             "purpose": "any maskable"
         },
         {
-            "src": "assets/img/icon/384x384.png",
+            "src": "/icons/384x384.png",
             "type": "image/png",
             "sizes": "384x384",
             "purpose": "any maskable"
         },
         {
-            "src": "assets/img/icon/512x512.png",
+            "src": "/icons/512x512.png",
             "type": "image/png",
             "sizes": "512x512",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/icons/android-icon-36x36.png",
+            "sizes": "36x36",
+            "type": "image/png",
+            "density": "0.75",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/icons/android-icon-48x48.png",
+            "sizes": "48x48",
+            "type": "image/png",
+            "density": "1.0",
             "purpose": "any maskable"
         }
     ]
