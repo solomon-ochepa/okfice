@@ -85,7 +85,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: "ftps"
+          protocol: "ftp"
           local-dir: "./"
           server-dir: 'cooperative.okitechnologies.com.ng/'
           log-level: minimal
@@ -93,3 +93,7 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
+            **/vendor/**
+            **/public/**
+            **/modules/**
+            **/storage/**
