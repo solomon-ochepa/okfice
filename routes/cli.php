@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Console\Output\BufferedOutput;
 
-Route::middleware(['auth', 'verified'])->prefix('cli')->name('cli.')->group(function () {
+Route::/*middleware(['auth', 'verified'])->*/prefix('cli')->name('cli.')->group(function () {
     Route::get('/', function (Request $request) {
         Config::set('app.env', 'local');
         Config::set('app.debug', true);
