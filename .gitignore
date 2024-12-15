@@ -24,5 +24,6 @@ yarn-error.log
 .DS_Store
 public/vendor/telescope/
 tmp/
-*copy
-* copy.js
+*copy*
+* copy*
+*.bkp
