@@ -1,32 +1,22 @@
 name: 🚀 Deploy
 
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [main]
   pull_request:
     branches: [main]
     types: [closed]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # Build job
   build:
     name: 🔨 Build
-
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: 🚚 Get latest code
+      - name: 🚚 Checkout Code
         uses: actions/checkout@v4
 
-      # Runs a command using the runners shell
       - name: Install PHP Dependencies
         run: composer install --ignore-platform-reqs --no-dev --optimize-autoloader
 
@@ -36,32 +26,36 @@ jobs:
       - name: Create Storage Link
         run: php artisan storage:link --force
 
-      - name: 📂 Deploy Vendor Files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Upload Vendor Folder
+        uses: actions/upload-artifact@v3
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: "ftp"
-          local-dir: "vendor/"
-          server-dir: 'cooperative.okitechnologies.com.ng/vendor/'
-          log-level: standard
+          name: vendor
+          path: vendor/
 
-  # Deploy job
+      - name: Upload Public Folder
+        uses: actions/upload-artifact@v3
+        with:
+          name: public
+          path: public/
+
   deploy:
     name: 🚀 Deploy
-
-    # Define dependency on the build job
     needs: build
-
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: 🚚 Get latest code
+      - name: 🚚 Checkout Code
         uses: actions/checkout@v4
+
+      - name: Download Vendor Folder
+        uses: actions/download-artifact@v3
+        with:
+          name: vendor
+
+      - name: Download Public Folder
+        uses: actions/download-artifact@v3
+        with:
+          name: public
 
       - name: 📂 Deploy Files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -78,8 +72,18 @@ jobs:
             **/.git*/**
             **/node_modules/**
             **/storage/**
-            **/public/**
             **/modules/**
+
+      - name: 📂 Deploy Vendor Files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: "ftp"
+          local-dir: "vendor/"
+          server-dir: 'cooperative.okitechnologies.com.ng/vendor/'
+          log-level: standard
 
       - name: 📂 Deploy Storage Files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
