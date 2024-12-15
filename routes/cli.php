@@ -57,6 +57,72 @@ Route::/*middleware(['auth', 'verified'])->*/prefix('cli')->name('cli.')->group(
         return nl2br(e($output->fetch()));
     })->name('migrate');
 
+    Route::get('/migrate:fresh', function (Request $request) {
+        Config::set('app.env', 'local');
+        Config::set('app.debug', true);
+
+        $output = new BufferedOutput;
+        $queries = $request->query();
+
+        Artisan::call('migrate:fresh --force', $queries, $output);
+
+        // Display the output
+        return nl2br(e($output->fetch()));
+    })->name('migrate.fresh');
+
+    Route::get('/migrate:refresh', function (Request $request) {
+        Config::set('app.env', 'local');
+        Config::set('app.debug', true);
+
+        $output = new BufferedOutput;
+        $queries = $request->query();
+
+        Artisan::call('migrate:refresh --force', $queries, $output);
+
+        // Display the output
+        return nl2br(e($output->fetch()));
+    })->name('migrate.refresh');
+
+    Route::get('/migrate:reset', function (Request $request) {
+        Config::set('app.env', 'local');
+        Config::set('app.debug', true);
+
+        $output = new BufferedOutput;
+        $queries = $request->query();
+
+        Artisan::call('migrate:reset --force', $queries, $output);
+
+        // Display the output
+        return nl2br(e($output->fetch()));
+    })->name('migrate.reset');
+
+    Route::get('/migrate:rollback', function (Request $request) {
+        Config::set('app.env', 'local');
+        Config::set('app.debug', true);
+
+        $output = new BufferedOutput;
+        $queries = $request->query();
+
+        Artisan::call('migrate:rollback --force', $queries, $output);
+
+        // Display the output
+        return nl2br(e($output->fetch()));
+    })->name('migrate.rollback');
+
+    Route::get('/seed', function (Request $request) {
+        Config::set('app.env', 'local');
+        Config::set('app.debug', true);
+
+        $output = new BufferedOutput;
+        $queries = $request->query();
+
+        Artisan::call('db:seed --force', $queries, $output);
+        Artisan::call('module:seed --all --force', $queries, $output);
+
+        // Display the output
+        return nl2br(e($output->fetch()));
+    })->name('seed');
+
     // Migrate a specific module
     Route::get('/module:migrate/{module?}', function (Request $request, ?string $module = null) {
         Config::set('app.env', 'local');
