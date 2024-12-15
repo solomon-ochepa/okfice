@@ -50,7 +50,7 @@ jobs:
           **/.git*
           **/.git*/**
           **/node_modules/**
-          modules/
-          vendor/
-          storage/
-          public/
+          /vendor/**
+          /storage/**
+          /modules/**
+          /public/**
