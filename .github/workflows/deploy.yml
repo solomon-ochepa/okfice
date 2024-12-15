@@ -36,6 +36,17 @@ jobs:
       - name: Create Storage Link
         run: php artisan storage:link --force
 
+      - name: 📂 Deploy Vendor Files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: "ftp"
+          local-dir: "vendor/"
+          server-dir: 'cooperative.okitechnologies.com.ng/vendor/'
+          log-level: standard
+
   # Deploy job
   deploy:
     name: 🚀 Deploy

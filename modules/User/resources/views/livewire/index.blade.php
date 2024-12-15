@@ -5,18 +5,32 @@
             <a class="link" href="#">Add New</a>
         </div>
 
+        <div class="mb-3">
+            <input class="form-control" name="search" placeholder="Search user ..." type="search" />
+        </div>
+
         <div class="row g-3 mb-4">
-            <div class="col-sm-2">
-                <a href="#">
+            @forelse ($users ?? [] as $user)
+                <div class="col-sm-2">
+                    <a href="{{ route('admin.user.show', ['user' => $user->id]) }}">
+                        <div class="user-card">
+                            <img alt="img" class="imaged w-100"
+                                src="{{ asset('assets/guest') }}/img/sample/avatar/avatar2.jpg">
+                            <strong>{{ $user->name }}</strong>
+                        </div>
+                    </a>
+                </div>
+            @empty
+                <div class="col-sm-2">
                     <div class="user-card">
                         <img alt="img" class="imaged w-100"
                             src="{{ asset('assets/guest') }}/img/sample/avatar/avatar2.jpg">
                         <strong>Jurrien</strong>
                     </div>
-                </a>
-            </div>
+                </div>
+            @endforelse
 
-            <div class="col-sm-2">
+            {{-- <div class="col-sm-2">
                 <a href="#">
                     <div class="user-card">
                         <img alt="img" class="imaged w-100"
@@ -24,9 +38,9 @@
                         <strong>Elwin</strong>
                     </div>
                 </a>
-            </div>
+            </div> --}}
 
-            <div class="col-sm-2">
+            {{-- <div class="col-sm-2">
                 <a href="#">
                     <div class="user-card">
                         <img alt="img" class="imaged w-100"
@@ -34,9 +48,9 @@
                         <strong>Alma</strong>
                     </div>
                 </a>
-            </div>
+            </div> --}}
 
-            <div class="col-sm-2">
+            {{-- <div class="col-sm-2">
                 <a href="#">
                     <div class="user-card">
                         <img alt="img" class="imaged w-100"
@@ -44,9 +58,9 @@
                         <strong>Justine</strong>
                     </div>
                 </a>
-            </div>
+            </div> --}}
 
-            <div class="col-sm-2">
+            {{-- <div class="col-sm-2">
                 <a href="#">
                     <div class="user-card">
                         <img alt="img" class="imaged w-100"
@@ -54,9 +68,9 @@
                         <strong>Maria</strong>
                     </div>
                 </a>
-            </div>
+            </div> --}}
 
-            <div class="col-sm-2">
+            {{-- <div class="col-sm-2">
                 <a href="#">
                     <div class="user-card">
                         <img alt="img" class="imaged w-100"
@@ -64,9 +78,9 @@
                         <strong>Pamela</strong>
                     </div>
                 </a>
-            </div>
+            </div> --}}
 
-            <div class="col-sm-2">
+            {{-- <div class="col-sm-2">
                 <a href="#">
                     <div class="user-card">
                         <img alt="img" class="imaged w-100"
@@ -74,9 +88,9 @@
                         <strong>Neville</strong>
                     </div>
                 </a>
-            </div>
+            </div> --}}
 
-            <div class="col-sm-2">
+            {{-- <div class="col-sm-2">
                 <a href="#">
                     <div class="user-card">
                         <img alt="img" class="imaged w-100"
@@ -84,9 +98,9 @@
                         <strong>Alex</strong>
                     </div>
                 </a>
-            </div>
+            </div> --}}
 
-            <div class="col-sm-2">
+            {{-- <div class="col-sm-2">
                 <a href="#">
                     <div class="user-card">
                         <img alt="img" class="imaged w-100"
@@ -94,7 +108,7 @@
                         <strong>Stina</strong>
                     </div>
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
 
