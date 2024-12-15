@@ -46,3 +46,11 @@ jobs:
         protocol: "ftps"
         server-dir: 'cooperative.okitechnologies.com.ng/'
         log-level: minimal
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          modules/
+          vendor/
+          storage/
+          public/
