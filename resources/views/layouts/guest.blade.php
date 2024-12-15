@@ -12,6 +12,7 @@
         <meta content="{{ $keywords ?? config('app.name') }}" name="keywords" />
 
         <!-- Favicons -->
+        <link href="{{ asset('favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
         <link href="{{ asset('icons') }}/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
         <link href="{{ asset('icons') }}/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
         <link href="{{ asset('icons') }}/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
@@ -25,7 +26,7 @@
         <link href="{{ asset('icons') }}/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
         <link href="{{ asset('icons') }}/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
         <link href="{{ asset('icons') }}/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
-        <link href="{{ asset('icons') }}/manifest.json" rel="manifest">
+        <link href="{{ asset('manifest.json') }}" rel="manifest">
         <meta content="#000000" name="msapplication-TileColor">
         <meta content="{{ asset('icons') }}/ms-icon-144x144.png" name="msapplication-TileImage">
 
@@ -37,7 +38,6 @@
         {{-- @vite('resources/css/app.css') --}}
 
         <link href="{{ asset('assets/guest') }}/css/style.css" rel="stylesheet">
-        <link href="{{ asset('manifest.json') }}" rel="manifest">
 
         <!-- Scripts -->
         @vite('resources/js/app.js')
