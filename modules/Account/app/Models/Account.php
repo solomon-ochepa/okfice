@@ -2,6 +2,7 @@
 
 namespace Modules\Account\App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
@@ -30,6 +31,11 @@ class Account extends Model
     protected static function newFactory(): Factory
     {
         return AccountFactory::new();
+    }
+
+    public function number(): Attribute
+    {
+        return Attribute::get(fn($key, $account) => str_pad($account['number'], max(3, strlen($account['number'])), '0', STR_PAD_LEFT));
     }
 
     public function user()
