@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="right">
-                <div class="price text-danger"> - $ 150</div>
+                <div class="price text-danger"> - N 150</div>
             </div>
         </a>
 
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="right">
-                <div class="price text-danger">- $ 29</div>
+                <div class="price text-danger">- N 29</div>
             </div>
         </a>
 
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="right">
-                <div class="price">+ $ 1,000</div>
+                <div class="price">+ N 1,000</div>
             </div>
         </a>
 
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div class="right">
-                <div class="price text-danger">- $ 186</div>
+                <div class="price text-danger">- N 186</div>
             </div>
         </a>
     </div>

@@ -4,7 +4,7 @@
         <div class="balance">
             <div class="left">
                 <span class="title">Total Balance</span>
-                <h1 class="total">$ 2,562.50</h1>
+                <h1 class="total">N 2,562.50</h1>
             </div>
             <div class="right">
                 <a class="button" data-bs-target="#depositActionSheet" data-bs-toggle="modal" href="#">
@@ -70,7 +70,7 @@
                             <div class="form-group basic">
                                 <label class="label">Enter Amount</label>
                                 <div class="input-group mb-2">
-                                    <span class="input-group-text" id="basic-addona1">$</span>
+                                    <span class="input-group-text" id="basic-addona1">N</span>
                                     <input class="form-control" placeholder="Enter an amount" type="text" value="100">
                                 </div>
                             </div>
@@ -120,7 +120,7 @@
                             <div class="form-group basic">
                                 <label class="label">Enter Amount</label>
                                 <div class="input-group mb-2">
-                                    <span class="input-group-text" id="basic-addonb1">$</span>
+                                    <span class="input-group-text" id="basic-addonb1">N</span>
                                     <input class="form-control" placeholder="Enter an amount" type="text"
                                         value="100">
                                 </div>

@@ -21,7 +21,7 @@
                 <div class="sidebar-balance">
                     <div class="listview-title">Balance</div>
                     <div class="in">
-                        <h1 class="amount">$ 2,562.50</h1>
+                        <h1 class="amount">N 2,562.50</h1>
                     </div>
                 </div>
 
