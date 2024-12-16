@@ -4,7 +4,7 @@
         <div class="balance">
             <div class="left">
                 <span class="title">Total Balance</span>
-                <h1 class="total">N 2,562.50</h1>
+                <h1 class="total">N {{ number_format(auth()->user()->balance, 2) }}</h1>
             </div>
             <div class="right">
                 <a class="button" data-bs-target="#depositActionSheet" data-bs-toggle="modal" href="#">

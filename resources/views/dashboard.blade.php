@@ -1,7 +1,7 @@
 <x-app-layout>
     <div id="appCapsule">
         <!-- Wallet Card -->
-        <livewire:wallet-card />
+        <livewire:account::widgets.wallet-card />
 
         <!-- Transactions -->
         <livewire:transaction::recent />

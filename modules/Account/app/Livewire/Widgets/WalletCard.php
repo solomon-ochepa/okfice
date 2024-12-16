@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace Modules\Account\App\Livewire\Widgets;
 
 use Livewire\Component;
 
@@ -8,6 +8,6 @@ class WalletCard extends Component
 {
     public function render()
     {
-        return view('livewire.wallet-card');
+        return view('account::livewire.widgets.wallet-card');
     }
 }
