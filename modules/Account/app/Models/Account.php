@@ -20,8 +20,10 @@ class Account extends Model
      */
     protected $fillable = [
         'user_id',
+        'name',
         'balance',
         'currency',
+        'primary',
     ];
 
     protected static function newFactory(): Factory
