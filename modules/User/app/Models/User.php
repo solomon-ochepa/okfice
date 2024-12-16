@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Laravel\Pennant\Concerns\HasFeatures;
+use Modules\Account\App\Models\Account;
 use Modules\Address\App\Models\Address;
 use Modules\Submission\App\Models\Submission;
 use Modules\Transaction\App\Models\Transaction;
@@ -74,12 +75,27 @@ class User extends Authenticatable
     //     return $this->morphToMany(Address::class, 'addressable');
     // }
 
+    public function accounts()
+    {
+        return $this->hasMany(Account::class);
+    }
+
+    public function account()
+    {
+        return $this->hasOne(Account::class)->wherePrimary(1);
+    }
+
+    public function balance(): Attribute
+    {
+        return Attribute::get(fn() => $this->accounts()->sum('balance'));
+    }
+
     /**
      * Get User's recent transactions
      */
     public function transactions()
     {
-        return $this->hasMany(Transaction::class)->latest();
+        return $this->hasManyThrough(Transaction::class, Account::class)->latest();
     }
 
     public function profiles()
