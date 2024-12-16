@@ -3,6 +3,7 @@
 namespace Modules\Account\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\User\App\Models\User;
 
 class AccountSeeder extends Seeder
 {
@@ -11,6 +12,11 @@ class AccountSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call([]);
+        $users = User::doesntHave('accounts')->get();
+        foreach ($users as $user) {
+            $user->accounts()->create([
+                'primary' => true
+            ]);
+        }
     }
 }
