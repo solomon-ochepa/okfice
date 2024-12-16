@@ -1,12 +1,12 @@
 <div class="section my-4">
     <div class="section-heading">
         <h2 class="title">Transactions</h2>
-        <a class="link" href="app-transactions.html">View All</a>
+        <a class="link" href="#">View All</a>
     </div>
 
     <div class="transactions">
         <!-- item -->
-        <a class="item" href="app-transaction-detail.html">
+        <a class="item" href="#">
             <div class="detail">
                 <img alt="img" class="image-block imaged w48"
                     src="{{ asset('assets/guest') }}/img/sample/brand/1.jpg">
@@ -20,7 +20,7 @@
             </div>
         </a>
 
-        <a class="item" href="app-transaction-detail.html">
+        <a class="item" href="#">
             <div class="detail">
                 <img alt="img" class="image-block imaged w48"
                     src="{{ asset('assets/guest') }}/img/sample/brand/2.jpg">
@@ -34,7 +34,7 @@
             </div>
         </a>
 
-        <a class="item" href="app-transaction-detail.html">
+        <a class="item" href="#">
             <div class="detail">
                 <img alt="img" class="image-block imaged w48"
                     src="{{ asset('assets/guest') }}/img/sample/avatar/avatar3.jpg">
@@ -48,7 +48,7 @@
             </div>
         </a>
 
-        <a class="item" href="app-transaction-detail.html">
+        <a class="item" href="#">
             <div class="detail">
                 <img alt="img" class="image-block imaged w48"
                     src="{{ asset('assets/guest') }}/img/sample/avatar/avatar4.jpg">
