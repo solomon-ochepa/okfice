@@ -92,14 +92,20 @@
                     </li>
 
                     <li>
-                        <a class="item" href="#">
-                            <div class="icon-box bg-primary">
-                                <ion-icon name="log-out-outline"></ion-icon>
-                            </div>
-                            <div class="in">
-                                Log out
-                            </div>
-                        </a>
+                        <form action="{{ route('logout') }}" class="" method="POST">
+                            @csrf
+
+                            <a class="item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="log-out-outline"></ion-icon>
+                                </div>
+                                <div class="in">
+                                    {{ __('Log Out') }}
+                                </div>
+                            </a>
+                        </form>
                     </li>
                 </ul>
             </div>
