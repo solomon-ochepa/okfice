@@ -7,6 +7,6 @@
         <livewire:transaction::recent />
 
         <!-- Stats -->
-        <livewire:stats />
+        <livewire:account::widgets.stats />
     </div>
 </x-app-layout>

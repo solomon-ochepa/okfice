@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace Modules\Account\App\Livewire\Widgets;
 
 use Livewire\Component;
 
@@ -8,6 +8,6 @@ class Stats extends Component
 {
     public function render()
     {
-        return view('livewire.stats');
+        return view('account::livewire.widgets.stats');
     }
 }
