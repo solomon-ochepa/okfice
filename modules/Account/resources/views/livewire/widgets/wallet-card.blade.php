@@ -51,18 +51,19 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add Balance</h5>
+                    <h5 class="modal-title">{{ __('Deposit') }}</h5>
                 </div>
                 <div class="modal-body">
                     <div class="action-sheet-content">
-                        <form>
+                        <form wire:submit="store">
                             <div class="form-group basic">
                                 <div class="input-wrapper">
-                                    <label class="label" for="account1">From</label>
-                                    <select class="form-control custom-select" id="account1">
-                                        <option value="0">Savings (*** 5019)</option>
-                                        <option value="1">Investment (*** 6212)</option>
-                                        <option value="2">Mortgage (*** 5021)</option>
+                                    <label class="label" for="account">To</label>
+                                    <select class="form-control custom-select" id="account"
+                                        wire:model.change="form.account">
+                                        @foreach (auth()->user()->accounts as $account)
+                                            <option value="{{ $account->number }}">{{ $account->name }} ({{ $account->number }})</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
