@@ -48,9 +48,9 @@
     </head>
 
     <body>
-        {{-- <x-themes.guest.loader /> --}}
+        {{-- <x-themes.app.loader /> --}}
 
-        <x-themes.guest.header class="bg-primary text-light">
+        <x-themes.app.header class="bg-primary text-light">
             @slot('page_title')
                 {{-- <img alt="logo" class="logo" src="{{ asset('assets/guest') }}/img/logo.png"> --}}
                 {{ config('app.name') }}
@@ -66,7 +66,7 @@
                     <span class="badge badge-danger">6</span>
                 </a>
             @endslot
-        </x-themes.guest.header>
+        </x-themes.app.header>
 
         {{ $slot }}
 
