@@ -59,11 +59,11 @@
             @slot('right')
                 <a class="headerButton" href="#">
                     <ion-icon class="icon" name="notifications-outline"></ion-icon>
-                    <span class="badge badge-danger">4</span>
+                    {{-- <span class="badge badge-danger">0</span> --}}
                 </a>
                 <a class="headerButton" href="#">
                     <img alt="image" class="imaged w32" src="{{ asset('assets/guest') }}/img/sample/avatar/avatar1.jpg">
-                    <span class="badge badge-danger">6</span>
+                    {{-- <span class="badge badge-danger">0</span> --}}
                 </a>
             @endslot
         </x-themes.app.header>
