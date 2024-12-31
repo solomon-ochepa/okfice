@@ -2,7 +2,7 @@
     @slot('page_title', 'Settings')
     <x-themes.app.header class="bg-primary text-light">
         @slot('page_title', 'Settings')
-        @slot('back')
+        @slot('back', '')
         @slot('right')
             <a class="headerButton" href="#">
                 <ion-icon class="icon" name="notifications-outline"></ion-icon>

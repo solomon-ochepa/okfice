@@ -1,7 +1,7 @@
 <div {{ $attributes->merge(['class' => 'appHeader']) }}>
     <div class="left">
         @if (isset($back))
-            <a class="headerButton goBack" href="{{ empty($back) ? route('dashboard') : $back }}">
+            <a class="headerButton goBack" href="{{ empty($back) ? route('dashboard') : route($back) }}">
                 <ion-icon name="chevron-back-outline"></ion-icon>
             </a>
         @else
