@@ -67,20 +67,6 @@
                 </div>
                 <ul class="listview flush transparent no-line image-listview">
                     <li>
-                        <div class="item">
-                            <div class="in">
-                                <div>
-                                    Dark Mode
-                                </div>
-                                <div class="form-check form-switch ms-2">
-                                    <input class="form-check-input dark-mode-switch" id="darkmodeSwitch"
-                                        type="checkbox">
-                                    <label class="form-check-label" for="darkmodeSwitch"></label>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
                         <a class="item" href="#">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="settings-outline"></ion-icon>
