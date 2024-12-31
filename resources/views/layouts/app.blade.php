@@ -6,7 +6,7 @@
         <meta content="width=device-width, initial-scale=1" name="viewport">
         <meta content="{{ csrf_token() }}" name="csrf-token">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ (isset($page_title) ? $page_title . ' - ' : null) . config('app.name', 'Laravel') }}</title>
 
         <meta content="{{ $description ?? config('app.name') }}" name="description">
         <meta content="{{ $keywords ?? config('app.name') }}" name="keywords" />
@@ -49,24 +49,6 @@
 
     <body>
         {{-- <x-themes.app.loader /> --}}
-
-        <x-themes.app.header class="bg-primary text-light">
-            @slot('page_title')
-                {{-- <img alt="logo" class="logo" src="{{ asset('assets/guest') }}/img/logo.png"> --}}
-                {{ config('app.name') }}
-            @endslot
-
-            @slot('right')
-                <a class="headerButton" href="#">
-                    <ion-icon class="icon" name="notifications-outline"></ion-icon>
-                    {{-- <span class="badge badge-danger">0</span> --}}
-                </a>
-                <a class="headerButton" href="#">
-                    <img alt="image" class="imaged w32" src="{{ asset('assets/guest') }}/img/sample/avatar/avatar1.jpg">
-                    {{-- <span class="badge badge-danger">0</span> --}}
-                </a>
-            @endslot
-        </x-themes.app.header>
 
         {{ $slot }}
 
