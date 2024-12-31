@@ -13,24 +13,30 @@ return new class extends Migration
     {
         Schema::create('transaction_types', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name')->unique();
-            $table->string('slug')->index();
-            $table->string('description')->nullable();
+            $table->string('name')->unique(); // e.g., "Savings", "Contribution", "Loan", "Repayment", "Withdrawal"
+            $table->string('slug')->unique(); // e.g., "savings", "contribution", etc.
             $table->timestamps();
             $table->softDeletes();
         });
 
         Schema::create('transactions', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('type');
-            $table->decimal('amount', 16, 2)->index();
-            $table->uuidMorphs('entity'); // (e.g., users, members, etc.)
-            $table->nullableUuidMorphs('transactable'); // (e.g., loans, savings, etc.)
-            $table->foreignUuid('status')->default('pending');
-            $table->foreignUuid('processed_by')->nullable();
+            $table->foreignUuid('type_id')->constrained('transaction_types')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->text('description')->nullable();
+            $table->string('status')->default('pending'); // 'pending', 'completed', 'failed'
+            $table->foreignUuid('created_by')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete(); // User initiating the transaction
             $table->timestamp('date')->useCurrent();
             $table->timestamps();
             $table->softDeletes();
+        });
+
+        Schema::create('transaction_entries', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->foreignUuid('transaction_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('account_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->enum('type', ['dr', 'cr']);
+            $table->decimal('amount', 16, 2);
+            $table->timestamps();
         });
     }
 
@@ -39,6 +45,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('transaction_entries');
         Schema::dropIfExists('transactions');
         Schema::dropIfExists('transaction_types');
     }
