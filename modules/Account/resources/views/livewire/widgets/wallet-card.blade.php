@@ -33,14 +33,14 @@
                 </a>
             </div>
 
-            <div class="item">
+            {{-- <div class="item">
                 <a href="#">
                     <div class="icon-wrapper bg-success">
                         <ion-icon name="card-outline"></ion-icon>
                     </div>
                     <strong>Cards</strong>
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

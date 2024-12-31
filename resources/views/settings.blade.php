@@ -1,7 +1,7 @@
 <x-app-layout>
-    @slot('page_title', 'Dashboard')
+    @slot('page_title', 'Settings')
     <x-themes.app.header class="bg-primary text-light">
-        @slot('page_title', config('app.name'))
+        @slot('page_title', 'Settings')
         @slot('right')
             <a class="headerButton" href="#">
                 <ion-icon class="icon" name="notifications-outline"></ion-icon>
@@ -15,13 +15,6 @@
     </x-themes.app.header>
 
     <div id="appCapsule">
-        <!-- Wallet Card -->
-        <livewire:account::widgets.wallet-card />
-
-        <!-- Transactions -->
-        <livewire:transaction::recent />
-
-        <!-- Stats -->
-        <livewire:account::widgets.stats />
+        ...
     </div>
 </x-app-layout>
