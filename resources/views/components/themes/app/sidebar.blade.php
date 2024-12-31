@@ -54,7 +54,7 @@
                                 <ion-icon name="home"></ion-icon>
                             </div>
                             <div class="in">
-                                Home
+                                Dashboard
                                 <span class="badge badge-primary"></span>
                             </div>
                         </a>
