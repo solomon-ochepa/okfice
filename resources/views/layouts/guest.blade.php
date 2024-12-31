@@ -48,9 +48,7 @@
     </head>
 
     <body>
-        {{-- <x-themes.app.loader /> --}}
-
-        <x-themes.app.header class="no-border transparent position-absolute" />
+        <x-themes.app.loader />
 
         {{ $slot }}
 
