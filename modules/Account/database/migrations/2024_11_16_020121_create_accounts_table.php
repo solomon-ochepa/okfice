@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->integer('number')->unique('unique_account_number');
+            $table->integer('number')->unique();
             $table->string('name')->default('Savings');
-            $table->decimal('balance')->default(0);
+            $table->string('type')->nullable(); // e.g., "asset", "liability", "equity", "revenue", "expense"
+            $table->decimal('balance', 16)->default(0);
             $table->string('currency')->nullable();
             $table->boolean('primary')->nullable();
             $table->timestamps();
