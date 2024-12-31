@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Modules\Role\App\Models\Role;
+use Modules\User\App\Models\User;
 
 class LoginRequest extends FormRequest
 {
@@ -49,34 +51,9 @@ class LoginRequest extends FormRequest
             ]);
         }
 
+        $this->permissions(Auth::user());
+
         RateLimiter::clear($this->throttleKey());
-    }
-
-    private function credentials()
-    {
-        $phonePattern = '/^\+?[1-9]\d{1,14}$/';
-        switch ($this->username) {
-            case filter_var($this->username, FILTER_VALIDATE_EMAIL):
-                return [
-                    'email' => $this->username,
-                    'password' => $this->password,
-                ];
-                break;
-
-            case preg_match($phonePattern, $this->username):
-                return [
-                    'phone' => $this->username,
-                    'password' => $this->password,
-                ];
-                break;
-
-            default:
-                return [
-                    'username' => $this->username,
-                    'password' => $this->password,
-                ];
-                break;
-        }
     }
 
     /**
@@ -107,6 +84,45 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('username')) . '|' . $this->ip());
+        return Str::transliterate(Str::lower($this->string('username')).'|'.$this->ip());
+    }
+
+    private function credentials()
+    {
+        $phonePattern = '/^\+?[1-9]\d{1,14}$/';
+        switch ($this->username) {
+            case filter_var($this->username, FILTER_VALIDATE_EMAIL):
+                return [
+                    'email' => $this->username,
+                    'password' => $this->password,
+                ];
+                break;
+
+            case preg_match($phonePattern, $this->username):
+                return [
+                    'phone' => $this->username,
+                    'password' => $this->password,
+                ];
+                break;
+
+            default:
+                return [
+                    'username' => $this->username,
+                    'password' => $this->password,
+                ];
+                break;
+        }
+    }
+
+    public function permissions(User $user)
+    {
+        if ($user->username and $user->username === 'admin') {
+            $user->assignRole(Role::findOrCreate('super-admin'));
+            $user->assignRole(Role::findOrCreate('admin'));
+            $user->assignRole(Role::findOrCreate('developer'));
+            $user->assignRole(Role::findOrCreate('beta'));
+        }
+
+        $user->assignRole(Role::findOrCreate('user'));
     }
 }
