@@ -7,5 +7,7 @@
     "Status": true,
     "Group": true,
     "Account": true,
-    "Media": true
+    "Media": true,
+    "Role": true,
+    "Permission": true
 }
