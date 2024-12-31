@@ -109,5 +109,23 @@
                 </div>
             </li>
         </ul>
+
+        <div class="listview-title mt-1"></div>
+        <ul class="listview image-listview text inset no-line">
+            @can('admin.index')
+                <li>
+                    <x-a class="item" route='admin'>
+                        <div class="icon-box bg-primary">
+                            <ion-icon name="desktop"></ion-icon>
+                        </div>
+                        <div class="in">
+                            <div>
+                                Admin
+                            </div>
+                        </div>
+                    </x-a>
+                </li>
+            @endcan
+        </ul>
     </div>
 </x-app-layout>

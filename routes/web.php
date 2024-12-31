@@ -13,6 +13,8 @@ Route::middleware(['auth'])->group(function () {
             return view('settings');
         })->name('settings');
 
+        Route::get('admin', fn() => view('admin'))->middleware(['permission:admin.index'])->name('admin');
+
         Route::get('dashboard', function () {
             return view('dashboard');
         })->name('dashboard');

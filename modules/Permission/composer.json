@@ -1,0 +1,29 @@
+{
+    "name": "solomon-ochepa/permission",
+    "description": "",
+    "authors": [
+        {
+            "name": "Solomon Ochepa",
+            "email": "solomonochepa@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Permission\\App\\": "app/",
+            "Modules\\Permission\\app\\Livewire\\": "app/Livewire/",
+            "Modules\\Permission\\Database\\Factories\\": "database/factories/",
+            "Modules\\Permission\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Permission\\Tests\\": "tests/"
+        }
+    }
+}
