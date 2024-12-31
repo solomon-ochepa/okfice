@@ -37,7 +37,7 @@
         <!-- Styles -->
         {{-- @vite('resources/css/app.css') --}}
 
-        <link href="{{ asset('assets/guest') }}/css/style.css" rel="stylesheet">
+        <link href="{{ asset('assets/app') }}/css/style.css" rel="stylesheet">
 
         @stack('css')
 
@@ -48,7 +48,7 @@
     </head>
 
     <body>
-        {{-- <x-themes.app.loader /> --}}
+        <x-themes.app.loader />
 
         {{ $slot }}
 
@@ -63,12 +63,12 @@
         <!-- Scripts  -->
         @stack('js')
 
-        <script src="{{ asset('assets/guest') }}/js/lib/bootstrap.bundle.min.js"></script>
+        <script src="{{ asset('assets/app') }}/js/lib/bootstrap.bundle.min.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-        <script src="{{ asset('assets/guest') }}/js/plugins/splide/splide.min.js"></script>
+        <script src="{{ asset('assets/app') }}/js/plugins/splide/splide.min.js"></script>
 
-        <script src="{{ asset('assets/guest') }}/js/base.js"></script>
+        <script src="{{ asset('assets/app') }}/js/base.js"></script>
 
         <script>
             // Add to Home with 2 seconds delay.
