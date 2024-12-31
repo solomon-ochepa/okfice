@@ -6,5 +6,6 @@
     "Loan": true,
     "Status": true,
     "Group": true,
-    "Account": true
+    "Account": true,
+    "Media": true
 }
