@@ -1,15 +1,15 @@
 <div class="appBottomMenu">
-    <a class="item active" href="{{ route('dashboard') }}">
+    <x-a route="dashboard">
         <div class="col">
             <ion-icon name="home"></ion-icon>
             <strong>Dashboard</strong>
         </div>
-    </a>
+    </x-a>
 
-    <a class="item" href="#">
+    <x-a route="settings">
         <div class="col">
             <ion-icon name="settings-outline"></ion-icon>
             <strong>Settings</strong>
         </div>
-    </a>
+    </x-a>
 </div>
