@@ -16,12 +16,12 @@
 
     <div id="appCapsule">
         <!-- Wallet Card -->
-        <livewire:account::widgets.wallet-card />
+        <livewire:account::wallet />
 
         <!-- Transactions -->
         <livewire:transaction::recent />
 
         <!-- Stats -->
-        <livewire:account::widgets.stats />
+        <livewire:account::stats />
     </div>
 </x-app-layout>
