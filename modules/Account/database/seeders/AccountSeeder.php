@@ -17,7 +17,6 @@ class AccountSeeder extends Seeder
         $last_account_number = (int) Account::max('number');
         foreach ($users as $user) {
             $user->accounts()->create([
-                'primary' => true,
                 'number' => ++$last_account_number,
             ]);
         }

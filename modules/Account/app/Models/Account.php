@@ -23,7 +23,7 @@ class Account extends Model
         'user_id',
         'number',
         'name',
-        'balance',
+        'amount',
         'currency',
         'primary',
     ];
