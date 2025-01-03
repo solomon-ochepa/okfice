@@ -9,5 +9,6 @@
     "Account": true,
     "Media": true,
     "Role": true,
-    "Permission": true
+    "Permission": true,
+    "Payment": true
 }
