@@ -22,6 +22,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('type_id')->constrained('transaction_types')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->uuid('session_id'); // Links related transactions together
             $table->text('description')->nullable();
             $table->string('status')->default('pending'); // 'pending', 'completed', 'failed'
             $table->foreignUuid('created_by')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete(); // User initiating the transaction
@@ -35,8 +36,9 @@ return new class extends Migration
             $table->foreignUuid('transaction_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignUuid('account_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->enum('type', ['dr', 'cr']);
-            $table->decimal('amount', 16, 2);
+            $table->decimal('amount', 18);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

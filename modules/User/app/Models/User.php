@@ -87,7 +87,7 @@ class User extends Authenticatable
 
     public function balance(): Attribute
     {
-        return Attribute::get(fn() => $this->accounts()->sum('balance'));
+        return Attribute::get(fn() => $this->accounts()->sum('amount'));
     }
 
     /**

@@ -27,7 +27,7 @@
 
                 <!-- action group -->
                 <div class="action-group">
-                    <a class="action-button" href="#">
+                    <a data-bs-target="#deposit" data-bs-toggle="modal" class="action-button" href="#">
                         <div class="in">
                             <div class="iconbox">
                                 <ion-icon name="add-outline"></ion-icon>
@@ -35,7 +35,8 @@
                             Deposit
                         </div>
                     </a>
-                    <a class="action-button" href="#">
+
+                    <a data-bs-target="#withdraw" data-bs-toggle="modal" class="action-button" href="#">
                         <div class="in">
                             <div class="iconbox">
                                 <ion-icon name="arrow-down-outline"></ion-icon>

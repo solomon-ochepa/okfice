@@ -30,7 +30,7 @@
         <meta content="#000000" name="msapplication-TileColor">
         <meta content="{{ asset('icons') }}/ms-icon-144x144.png" name="msapplication-TileImage">
 
-        <meta content="yes" name="apple-mobile-web-app-capable" />
+        <meta name="mobile-web-app-capable" content="yes">
         <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
         <meta content="#000000" name="theme-color">
 
@@ -57,6 +57,15 @@
         <x-themes.app.add-to-home-screen />
         <x-themes.app.cookies />
 
+        {{-- Global modals --}}
+        @pushonce('modals')
+            <!-- Deposit Action -->
+            <livewire:account::deposit />
+
+            <!-- Withdraw Action -->
+            <livewire:account::withdraw />
+        @endpushonce
+
         <!-- Modals -->
         @stack('modals')
 
@@ -70,10 +79,10 @@
 
         <script src="{{ asset('assets/app') }}/js/base.js"></script>
 
-        <script>
+        {{-- <script>
             // Add to Home with 2 seconds delay.
             AddtoHome("2000", "once");
-        </script>
+        </script> --}}
     </body>
 
 </html>

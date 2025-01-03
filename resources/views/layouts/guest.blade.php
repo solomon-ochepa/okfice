@@ -30,7 +30,7 @@
         <meta content="#000000" name="msapplication-TileColor">
         <meta content="{{ asset('icons') }}/ms-icon-144x144.png" name="msapplication-TileImage">
 
-        <meta content="yes" name="apple-mobile-web-app-capable" />
+        <meta name="mobile-web-app-capable" content="yes">
         <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
         <meta content="#000000" name="theme-color">
 
@@ -58,17 +58,22 @@
         <!-- Scripts -->
         @stack('js')
 
+        <!-- bootstrap -->
         <script src="{{ asset('assets/app') }}/js/lib/bootstrap.bundle.min.js"></script>
+
+        <!-- ionicons -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+        <!-- splide -->
         <script src="{{ asset('assets/app') }}/js/plugins/splide/splide.min.js"></script>
 
         <script src="{{ asset('assets/app') }}/js/base.js"></script>
 
-        <script>
+        {{-- <script>
             // Add to Home with 2 seconds delay.
             AddtoHome("2000", "once");
-        </script>
+        </script> --}}
     </body>
 
 </html>

@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('user_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('number')->unique();
             $table->string('name')->default('Savings');
-            $table->string('type')->nullable(); // e.g., "asset", "liability", "equity", "revenue", "expense"
-            $table->decimal('balance', 16)->default(0);
+            $table->enum('type', ['asset', 'liability', 'equity', 'revenue', 'expense'])->nullable()->default('liability');
+            $table->decimal('amount', 18)->index()->default(0);
             $table->string('currency')->nullable();
-            $table->boolean('primary')->nullable();
+            $table->boolean('primary')->nullable()->default(true);
             $table->timestamps();
             $table->softDeletes();
 
