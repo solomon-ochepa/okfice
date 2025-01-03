@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-// use Modules\Transaction\Database\Factories\TransactionTypeFactory;
+use Modules\Transaction\Database\Factories\TransactionTypeFactory;
 
 class TransactionType extends Model
 {
@@ -18,7 +17,7 @@ class TransactionType extends Model
      * The attributes that are mass assignable.
      */
     protected $fillable = [
-        '',
+        'name',
     ];
 
     /**
@@ -33,8 +32,13 @@ class TransactionType extends Model
         ];
     }
 
-    // protected static function newFactory(): TransactionTypeFactory
-    // {
-    //     // return TransactionTypeFactory::new();
-    // }
+    protected static function newFactory(): TransactionTypeFactory
+    {
+        return TransactionTypeFactory::new();
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }
