@@ -2,6 +2,7 @@
 
 namespace Modules\Payment\App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,7 +10,7 @@ use Modules\Payment\Database\Factories\PaymentMethodFactory;
 
 class PaymentMethod extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory, HasUuids, Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +23,15 @@ class PaymentMethod extends Model
     protected static function newFactory(): PaymentMethodFactory
     {
         return PaymentMethodFactory::new();
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name',
+            ]
+        ];
     }
 
     public function payments()
