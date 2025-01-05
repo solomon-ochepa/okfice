@@ -22,6 +22,13 @@ class Payment extends Model
         'default',
     ];
 
+    protected function casts()
+    {
+        return [
+            'details' => 'json',
+        ];
+    }
+
     protected static function newFactory(): PaymentFactory
     {
         return PaymentFactory::new();
