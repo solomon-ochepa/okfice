@@ -79,6 +79,12 @@
 
         <script src="{{ asset('assets/app') }}/js/base.js"></script>
 
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+                FontAwesome.dom.i2svg();
+            });
+        </script>
+
         {{-- <script>
             // Add to Home with 2 seconds delay.
             AddtoHome("2000", "once");
