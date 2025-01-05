@@ -3,8 +3,8 @@
 namespace Modules\Payment\App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Payment\Database\Factories\PaymentFactory;
 use Modules\User\App\Models\User;
 
@@ -34,6 +34,6 @@ class Payment extends Model
 
     public function method()
     {
-        return $this->belongsTo(PaymentMethod::class);
+        return $this->belongsTo(PaymentMethod::class, 'method_id', 'slug');
     }
 }
