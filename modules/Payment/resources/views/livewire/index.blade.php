@@ -35,8 +35,10 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link button" data-bs-target="#payment" data-bs-toggle="modal" href="#">
-                                <ion-icon name="add-outline"></ion-icon>
-                                Add
+                                <span data-bs-toggle="tooltip" title="Create">
+                                    <ion-icon name="add-outline"></ion-icon>
+                                    Add
+                                </span>
                             </a>
                         </li>
                     </ul>
@@ -59,6 +61,11 @@
                                     <span data-bs-toggle="tooltip" title="Last name">
                                         {{ $payment->details['account']['last_name'] ?? '' }}
                                     </span>
+                                    @if ($payment->default)
+                                        <span data-bs-toggle="tooltip" title="Default">
+                                            <i aria-hidden="true" class="fa fa-check-circle"></i>
+                                        </span>
+                                    @endif
                                 </strong>
                                 <p>
                                     <span data-bs-toggle="tooltip" title="Bank name">
