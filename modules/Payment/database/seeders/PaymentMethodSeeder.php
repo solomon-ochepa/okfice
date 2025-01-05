@@ -13,7 +13,7 @@ class PaymentMethodSeeder extends Seeder
     public function run(): void
     {
         $methods = [
-            'Bank Transfer'
+            'Bank Transfer',
         ];
 
         foreach ($methods as $method) {

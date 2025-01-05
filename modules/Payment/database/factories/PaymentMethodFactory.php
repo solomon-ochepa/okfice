@@ -19,4 +19,3 @@ class PaymentMethodFactory extends Factory
         return [];
     }
 }
-

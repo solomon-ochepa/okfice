@@ -4,8 +4,8 @@ namespace Modules\Payment\App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Payment\Database\Factories\PaymentMethodFactory;
 
 class PaymentMethod extends Model
@@ -30,7 +30,7 @@ class PaymentMethod extends Model
         return [
             'slug' => [
                 'source' => 'name',
-            ]
+            ],
         ];
     }
 
