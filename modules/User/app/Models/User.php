@@ -13,8 +13,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Laravel\Pennant\Concerns\HasFeatures;
 use Modules\Account\App\Models\Account;
-use Modules\Address\App\Models\Address;
-use Modules\Submission\App\Models\Submission;
+use Modules\Payment\App\Models\Payment;
+use Modules\Payment\App\Models\PaymentMethod;
 use Modules\Transaction\App\Models\Transaction;
 use Modules\User\Database\Factories\UserFactory;
 use Spatie\Permission\Traits\HasPermissions;
@@ -22,7 +22,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use /*HasApiTokens,*/ HasFactory, HasFeatures, HasPermissions, HasRoles, HasUuids, Notifiable, SoftDeletes;
+    use /* HasApiTokens, */ HasFactory, HasFeatures, HasPermissions, HasRoles, HasUuids, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -67,7 +67,7 @@ class User extends Authenticatable
 
     public function name(): Attribute
     {
-        return Attribute::get(fn() => $this->first_name . ' ' . $this->last_name);
+        return Attribute::get(fn () => $this->first_name.' '.$this->last_name);
     }
 
     // public function addresses()
@@ -87,7 +87,7 @@ class User extends Authenticatable
 
     public function balance(): Attribute
     {
-        return Attribute::get(fn() => $this->accounts()->sum('amount'));
+        return Attribute::get(fn () => $this->accounts()->sum('amount'));
     }
 
     /**
@@ -101,5 +101,15 @@ class User extends Authenticatable
     public function profiles()
     {
         return $this->hasMany(Profile::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function payment_methods()
+    {
+        return $this->hasManyThrough(PaymentMethod::class, Payment::class, 'method_id', 'slug');
     }
 }
