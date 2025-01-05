@@ -30,12 +30,12 @@
         <meta content="#000000" name="msapplication-TileColor">
         <meta content="{{ asset('icons') }}/ms-icon-144x144.png" name="msapplication-TileImage">
 
-        <meta name="mobile-web-app-capable" content="yes">
+        <meta content="yes" name="mobile-web-app-capable">
         <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
         <meta content="#000000" name="theme-color">
 
         <!-- Styles -->
-        {{-- @vite('resources/css/app.css') --}}
+        @vite('resources/css/app.css')
 
         <link href="{{ asset('assets/app') }}/css/style.css" rel="stylesheet">
 
