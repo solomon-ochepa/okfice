@@ -26,8 +26,10 @@
                                 <!-- Bank -->
                                 <div class="form-group basic">
                                     <label class="label" for="bank_code">Bank</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text" id="basic-addona1"></span>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addona1">
+                                            <i class="fa fa-bank" aria-hidden="true"></i>
+                                        </span>
                                         <select class="form-control custom-select" id="bank_code" required
                                             wire:model.change="form.bank.code">
                                             <option value="">Bank</option>
@@ -35,10 +37,10 @@
                                                 <option value="{{ $code }}">{{ $name }}</option>
                                             @endforeach
                                         </select>
-                                        @error('form.bank.code')
-                                            <div class="form-text text-danger">{{ $message }}</div>
-                                        @enderror
                                     </div>
+                                    @error('form.bank.code')
+                                        <div class="form-text text-danger mt-0">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
