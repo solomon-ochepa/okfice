@@ -5,12 +5,13 @@ namespace Modules\Payment\App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Payment\Database\Factories\PaymentFactory;
 use Modules\User\App\Models\User;
 
 class Payment extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory, HasUuids, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
