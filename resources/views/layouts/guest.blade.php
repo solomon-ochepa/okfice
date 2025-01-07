@@ -74,6 +74,44 @@
             // Add to Home with 2 seconds delay.
             AddtoHome("2000", "once");
         </script> --}}
+
+        <!-- Global Livewire -->
+        <script>
+            // Runs after Livewire is loaded but before it's initialized on the page...
+            document.addEventListener('livewire:init', () => {
+                // Open modals
+                Livewire.on('modal.open', (data) => {
+                    const modal = new bootstrap.Modal(document.getElementById(data.toString()));
+                    if (modal) {
+                        modal.show();
+                    }
+                });
+
+                // Close modals
+                Livewire.on('modal.close', (data) => {
+                    const modal = bootstrap.Modal.getInstance(document.getElementById(data.toString()));
+                    if (modal) {
+                        modal.hide();
+                    }
+                });
+
+                // Open Offcanvas
+                Livewire.on('offcanvas.open', (data) => {
+                    const offcanvas = new bootstrap.Offcanvas(document.getElementById(data.toString()));
+                    if (offcanvas) {
+                        offcanvas.show();
+                    }
+                });
+
+                // Close Offcanvas
+                Livewire.on('offcanvas.close', (data) => {
+                    const offcanvas = bootstrap.Offcanvas.getInstance(document.getElementById(data.toString()));
+                    if (offcanvas) {
+                        offcanvas.hide();
+                    }
+                });
+            })
+        </script>
     </body>
 
 </html>
