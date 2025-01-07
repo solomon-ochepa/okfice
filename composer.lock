@@ -4753,12 +4753,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/solomon-ochepa/nuban.git",
-                "reference": "66e152d96c27fd8708993f9d41b6d7c174cf99f2"
+                "reference": "8717b29293bdbba76f557f31c6b7389a3e629833"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/solomon-ochepa/nuban/zipball/66e152d96c27fd8708993f9d41b6d7c174cf99f2",
-                "reference": "66e152d96c27fd8708993f9d41b6d7c174cf99f2",
+                "url": "https://api.github.com/repos/solomon-ochepa/nuban/zipball/8717b29293bdbba76f557f31c6b7389a3e629833",
+                "reference": "8717b29293bdbba76f557f31c6b7389a3e629833",
                 "shasum": ""
             },
             "require": {
@@ -4788,7 +4788,7 @@
             "support": {
                 "source": "https://github.com/solomon-ochepa/nuban/tree/main"
             },
-            "time": "2025-01-03T17:08:13+00:00"
+            "time": "2025-01-05T05:53:22+00:00"
         },
         {
             "name": "spatie/image-optimizer",
