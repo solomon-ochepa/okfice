@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect()->route('dashboard');  //view('welcome');
+    return redirect()->route('dashboard');  // view('welcome');
 })->name('home');
 
 Route::middleware(['auth'])->group(function () {
@@ -13,7 +13,7 @@ Route::middleware(['auth'])->group(function () {
             return view('settings');
         })->name('settings');
 
-        Route::get('admin', fn() => view('admin'))->middleware(['permission:admin.index'])->name('admin');
+        Route::get('admin', fn () => view('admin'))->middleware(['permission:admin.index'])->name('admin');
 
         Route::get('dashboard', function () {
             return view('dashboard');
@@ -24,4 +24,4 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-require_once "cli.php";
+require_once 'cli.php';

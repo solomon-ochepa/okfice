@@ -13,8 +13,8 @@ return [
         // Validate number on your server without making an APi request.
         'validate_number_locally' => true,
 
-        //This timeout applies to client connections and determine when
-        //The whole response must be read before it exceeded
+        // This timeout applies to client connections and determine when
+        // The whole response must be read before it exceeded
         'request_timeout' => 5,
-    ]
+    ],
 ];

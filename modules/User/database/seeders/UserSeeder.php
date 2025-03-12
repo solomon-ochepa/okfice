@@ -2,9 +2,9 @@
 
 namespace Modules\User\Database\Seeders;
 
-use Modules\User\App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
+use Modules\User\App\Models\User;
 
 class UserSeeder extends Seeder
 {

@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Permission\app\Livewire\Index;
 use Modules\Permission\App\Http\Controllers\PermissionController;
+use Modules\Permission\app\Livewire\Index;
 
 /*
 |--------------------------------------------------------------------------

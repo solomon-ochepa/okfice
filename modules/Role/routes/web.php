@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Role\app\Livewire\Index;
 use Modules\Role\App\Http\Controllers\RoleController;
+use Modules\Role\app\Livewire\Index;
 
 /*
  *--------------------------------------------------------------------------

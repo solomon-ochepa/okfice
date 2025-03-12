@@ -30,9 +30,9 @@ class Index extends Component
     public function render()
     {
         $query = Role::query()
-            ->when($this->search, fn($query) => $query->where('name', 'like', '%' . $this->search . '%'))
-            ->when($this->filter_guard, fn($query) => $query->where('guard_name', '%' . $this->filter_guard . '%'))
-            ->when($this->show_trashed, fn($query) => $query->onlyTrashed())
+            ->when($this->search, fn ($query) => $query->where('name', 'like', '%'.$this->search.'%'))
+            ->when($this->filter_guard, fn ($query) => $query->where('guard_name', '%'.$this->filter_guard.'%'))
+            ->when($this->show_trashed, fn ($query) => $query->onlyTrashed())
             ->orderBy('name');
 
         $data = [];

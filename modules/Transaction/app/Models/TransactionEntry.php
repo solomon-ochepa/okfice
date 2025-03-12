@@ -3,8 +3,8 @@
 namespace Modules\Transaction\App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Account\App\Models\Account;
 use Modules\Transaction\Database\Factories\TransactionEntryFactory;
 

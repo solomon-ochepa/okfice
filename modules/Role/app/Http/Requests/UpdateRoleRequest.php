@@ -20,7 +20,7 @@ class UpdateRoleRequest extends FormRequest
                 'min:3',
                 'max:16',
                 Rule::unique('roles', 'name')
-                    ->where(fn($query) => $query->where('guard_name', $this->guard_name))
+                    ->where(fn ($query) => $query->where('guard_name', $this->guard_name))
                     ->ignore($this->id),
             ],
             'form.guard_name' => ['nullable', 'string', 'max:16', 'in:web,api'],
