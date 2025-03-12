@@ -14,6 +14,8 @@
         <div class="section mt-2 text-center">
             <h1>Register now</h1>
             <h4>Create an account for free!</h4>
+
+            <x-alert />
         </div>
         <div class="section mb-5 p-2">
             <form action="{{ route('register') }}" method="POST">
@@ -21,6 +23,7 @@
 
                 <div class="card">
                     <div class="card-body">
+                        <!-- Names -->
                         <div class="row">
                             <!-- First Name -->
                             <div class="col-sm-4">
@@ -29,6 +32,7 @@
                                         <x-input-label :value="__('First Name')" for="first_name" />
                                         <x-text-input :value="old('first_name')" autocomplete="first_name" autofocus
                                             id="first_name" name="first_name" required type="text" />
+
                                         <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
 
                                         <i class="clear-input">
@@ -43,8 +47,9 @@
                                 <div class="form-group basic">
                                     <div class="input-wrapper">
                                         <x-input-label :value="__('Last Name')" for="last_name" />
-                                        <x-text-input :value="old('last-name')" autocomplete="last_name" id="last_name"
-                                            name="last_name" required type="text" />
+                                        <x-text-input :value="old('last_name')" id="last_name" name="last_name" required
+                                            type="text" />
+
                                         <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
 
                                         <i class="clear-input">
@@ -60,8 +65,8 @@
                                 <div class="form-group basic">
                                     <div class="input-wrapper">
                                         <x-input-label :value="__('Other Name')" for="other_name" />
-                                        <x-text-input :value="old('other_name')" autocomplete="other_name" id="other_name"
-                                            name="other_name" type="text" />
+                                        <x-text-input :value="old('other_name')" id="other_name" name="other_name"
+                                            type="text" />
                                         <x-input-error :messages="$errors->get('other_name')" class="mt-2" />
 
                                         <i class="clear-input">
@@ -72,35 +77,60 @@
                             </div>
                         </div>
 
-                        <div class="form-group basic">
-                            <div class="input-wrapper">
-                                <label class="label" for="email1">E-mail</label>
-                                <input class="form-control" id="email1" placeholder="" type="email">
-                                <i class="clear-input">
-                                    <ion-icon name="close-circle"></ion-icon>
-                                </i>
+                        <!-- Contact -->
+                        <div class="row">
+                            <!-- Phone -->
+                            <div class="col-sm-4">
+                                <div class="form-group basic">
+                                    <div class="input-wrapper">
+                                        <label class="label" for="phone">Phone</label>
+                                        <input class="form-control" id="phone" name="phone" type="phone">
+                                        <i class="clear-input">
+                                            <ion-icon name="close-circle"></ion-icon>
+                                        </i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- E-mail -->
+                            <div class="col-sm-8">
+                                <div class="form-group basic">
+                                    <div class="input-wrapper">
+                                        <label class="label" for="email1">E-mail</label>
+                                        <input class="form-control" id="email1" name="email1" type="email">
+                                        <i class="clear-input">
+                                            <ion-icon name="close-circle"></ion-icon>
+                                        </i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="form-group basic">
-                            <div class="input-wrapper">
-                                <label class="label" for="password1">Password</label>
-                                <input autocomplete="off" class="form-control" id="password1" placeholder=""
-                                    type="password">
-                                <i class="clear-input">
-                                    <ion-icon name="close-circle"></ion-icon>
-                                </i>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group basic">
+                                    <div class="input-wrapper">
+                                        <label class="label" for="password">Password</label>
+                                        <input autocomplete="off" class="form-control" id="password" name="password"
+                                            placeholder="" type="password">
+                                        <i class="clear-input">
+                                            <ion-icon name="close-circle"></ion-icon>
+                                        </i>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group basic">
-                            <div class="input-wrapper">
-                                <label class="label" for="password2">Password</label>
-                                <input autocomplete="off" class="form-control" id="password2" placeholder=""
-                                    type="password">
-                                <i class="clear-input">
-                                    <ion-icon name="close-circle"></ion-icon>
-                                </i>
+                            <div class="col-sm-6">
+                                <div class="form-group basic">
+                                    <div class="input-wrapper">
+                                        <label class="label" for="password-confirmation">Confirm Password</label>
+                                        <input autocomplete="off" name="password_confirmation" class="form-control" id="password-confirmation"
+                                            placeholder="" type="password">
+                                        <i class="clear-input">
+                                            <ion-icon name="close-circle"></ion-icon>
+                                        </i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -129,8 +159,8 @@
             <!-- Name -->
             <div>
                 <x-input-label :value="__('Name')" for="name" />
-                <x-text-input :value="old('name')" autocomplete="name" autofocus class="mt-1 block w-full" id="name"
-                    name="name" required type="text" />
+                <x-text-input :value="old('name')" autocomplete="name" autofocus class="mt-1 block w-full"
+                    id="name" name="name" required type="text" />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
