@@ -62,11 +62,15 @@
         {{-- Global modals --}}
         @pushonce('modals')
             @auth
-                <!-- Deposit Action -->
-                <livewire:account::deposit />
+                @can('accounts.deposit')
+                    <!-- Deposit Action -->
+                    <livewire:account::deposit />
+                @endcan
 
-                <!-- Withdraw Action -->
-                <livewire:account::withdraw />
+                @can('accounts.withdraw')
+                    <!-- Withdraw Action -->
+                    <livewire:account::withdraw />
+                @endcan
             @endauth
         @endpushonce
 

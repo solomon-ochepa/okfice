@@ -27,23 +27,27 @@
 
                 <!-- action group -->
                 <div class="action-group">
-                    <a data-bs-target="#deposit" data-bs-toggle="modal" class="action-button" href="#">
-                        <div class="in">
-                            <div class="iconbox">
-                                <ion-icon name="add-outline"></ion-icon>
+                    @can('accounts.deposit')
+                        <a class="action-button" data-bs-target="#deposit" data-bs-toggle="modal" href="#">
+                            <div class="in">
+                                <div class="iconbox">
+                                    <ion-icon name="add-outline"></ion-icon>
+                                </div>
+                                Deposit
                             </div>
-                            Deposit
-                        </div>
-                    </a>
+                        </a>
+                    @endcan
 
-                    <a data-bs-target="#withdraw" data-bs-toggle="modal" class="action-button" href="#">
-                        <div class="in">
-                            <div class="iconbox">
-                                <ion-icon name="arrow-down-outline"></ion-icon>
+                    @can('accounts.withdraw')
+                        <a class="action-button" data-bs-target="#withdraw" data-bs-toggle="modal" href="#">
+                            <div class="in">
+                                <div class="iconbox">
+                                    <ion-icon name="arrow-down-outline"></ion-icon>
+                                </div>
+                                Withdraw
                             </div>
-                            Withdraw
-                        </div>
-                    </a>
+                        </a>
+                    @endcan
                 </div>
 
                 <!-- menu -->

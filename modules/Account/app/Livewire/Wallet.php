@@ -11,7 +11,7 @@ class Wallet extends Component
     {
         $data = [];
         $data['user'] = $user = Auth::user();
-        $data['balance'] = $user->account->balance;
+        $data['balance'] = $user->account?->balance;
 
         return view('account::livewire.wallet', $data);
     }
