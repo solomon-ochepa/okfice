@@ -4,9 +4,6 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [main]
-  # pull_request:
-  #   branches: [main]
-  #   types: [closed]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -35,70 +32,68 @@ jobs:
       - name: Create Storage Link
         run: php artisan storage:link --force
 
-      - name: 📂 Deploy vendor/ Files
+      - name: 📂 Deploy files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.okitechnologies.com.ng
-          username: cooperative@okitechnologies.com.ng
+          username: xggkrxta
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: "sftp"
-          port: 1624
-          local-dir: "vendor/"
-          server-dir: 'vendor/'
+          protocol: ftps
+          local-dir: ./
+          server-dir: ./cooperative.okitechnologies.com.ng/
+          log-level: minimal
+          exclude: |
+            **/.git*
+            **/node_modules/**
+            **/vendor/**
+            **/public/**
+            **/modules/**
+            **/storage/**
+
+      - name: 📂 Deploy modules/
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.okitechnologies.com.ng
+          username: xggkrxta
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          # port: 1624
+          local-dir: ./modules/
+          server-dir: ./cooperative.okitechnologies.com.ng/modules/
           log-level: standard
 
       - name: 📂 Deploy public/ Files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.okitechnologies.com.ng
-          username: cooperative@okitechnologies.com.ng
+          username: xggkrxta
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: "sftp"
-          port: 1624
-          local-dir: "public/"
-          server-dir: 'public/'
-          log-level: standard
-
-      - name: 📂 Deploy modules/ Files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ftp.okitechnologies.com.ng
-          username: cooperative@okitechnologies.com.ng
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: "sftp"
-          port: 1624
-          local-dir: "modules/"
-          server-dir: 'modules/'
+          protocol: ftps
+          # port: 1624
+          local-dir: ./public/
+          server-dir: ./cooperative.okitechnologies.com.ng/public/
           log-level: standard
 
       - name: 📂 Deploy storage/ Files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.okitechnologies.com.ng
-          username: cooperative@okitechnologies.com.ng
+          username: xggkrxta
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: "sftp"
-          port: 1624
-          local-dir: "storage/"
-          server-dir: 'storage/'
+          protocol: ftps
+          # port: 1624
+          local-dir: ./storage/
+          server-dir: ./cooperative.okitechnologies.com.ng/storage/
           log-level: standard
 
-      - name: 📂 Deploy Other Files
+      - name: 📂 Deploy vendor/
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.okitechnologies.com.ng
-          username: cooperative@okitechnologies.com.ng
+          username: xggkrxta
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: "sftp"
-          port: 1624
-          local-dir: "./"
-          server-dir: '/'
-          log-level: minimal
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            **/vendor/**
-            **/public/**
-            **/modules/**
-            **/storage/**
+          protocol: ftps
+          # port: 1624
+          local-dir: ./vendor/
+          server-dir: ./cooperative.okitechnologies.com.ng/vendor/
+          log-level: standard
