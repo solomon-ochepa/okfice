@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $password = '$1Password;';
+        $password = 'password';
 
         $users = [
             [

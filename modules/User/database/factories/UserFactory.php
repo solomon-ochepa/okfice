@@ -27,23 +27,20 @@ class UserFactory extends Factory
         $female = (bool) random_int(0, 1);
         $name = [
             'first_name' => $female ? fake()->firstNameFemale() : fake()->firstNameMale(),
-            'middle_name' => $female ? fake()->firstNameFemale() : fake()->firstNameMale(),
             'last_name' => fake()->unique()->lastName(),
         ];
-        $email = Str::lower("{$name['first_name']}_{$name['last_name']}@example.com");
+        $username = "{$name['first_name']}_{$name['last_name']}".Str::random();
+        $email = Str::lower("$username@example.com");
 
         return [
             'first_name' => $name['first_name'],
-            'middle_name' => $name['middle_name'],
             'last_name' => $name['last_name'],
+            'username' => $username,
             'phone' => fake()->phoneNumber(),
             'email' => $email,
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
-            'profile' => [
-                'gender' => $female ? 'female' : 'male',
-            ],
         ];
     }
 
