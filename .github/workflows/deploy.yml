@@ -38,56 +38,61 @@ jobs:
       - name: 📂 Deploy vendor/ Files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
+          server: ftp.okitechnologies.com.ng
+          username: cooperative@okitechnologies.com.ng
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: "ftp"
+          protocol: "sftp"
+          port: 1624
           local-dir: "vendor/"
-          server-dir: 'cooperative.okitechnologies.com.ng/vendor/'
+          server-dir: 'vendor/'
           log-level: standard
 
       - name: 📂 Deploy public/ Files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
+          server: ftp.okitechnologies.com.ng
+          username: cooperative@okitechnologies.com.ng
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: "ftp"
+          protocol: "sftp"
+          port: 1624
           local-dir: "public/"
-          server-dir: 'cooperative.okitechnologies.com.ng/public/'
+          server-dir: 'public/'
           log-level: standard
 
       - name: 📂 Deploy modules/ Files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
+          server: ftp.okitechnologies.com.ng
+          username: cooperative@okitechnologies.com.ng
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: "ftp"
+          protocol: "sftp"
+          port: 1624
           local-dir: "modules/"
-          server-dir: 'cooperative.okitechnologies.com.ng/modules/'
+          server-dir: 'modules/'
           log-level: standard
 
       - name: 📂 Deploy storage/ Files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
+          server: ftp.okitechnologies.com.ng
+          username: cooperative@okitechnologies.com.ng
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: "ftp"
+          protocol: "sftp"
+          port: 1624
           local-dir: "storage/"
-          server-dir: 'cooperative.okitechnologies.com.ng/storage/'
+          server-dir: 'storage/'
           log-level: standard
 
       - name: 📂 Deploy Other Files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
+          server: ftp.okitechnologies.com.ng
+          username: cooperative@okitechnologies.com.ng
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: "ftp"
+          protocol: "sftp"
+          port: 1624
           local-dir: "./"
-          server-dir: 'cooperative.okitechnologies.com.ng/'
+          server-dir: '/'
           log-level: minimal
           exclude: |
             **/.git*
