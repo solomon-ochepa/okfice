@@ -20,20 +20,13 @@
                 </div>
             </a>
         @empty
-            <a class="item" href="#">
-                <div class="detail py-4">
-                    {{-- <img alt="img" class="image-block imaged w48"
-                        src="{{ asset('assets/app') }}/img/sample/brand/1.jpg" /> --}}
-
+            <div class="item">
+                <div class="detail">
                     <div>
                         <strong>No records found!</strong>
-                        {{-- <p>Shopping</p> --}}
                     </div>
                 </div>
-                {{-- <div class="right">
-                    <div class="price text-danger"> - N 150</div>
-                </div> --}}
-            </a>
+            </div>
         @endforelse
     </div>
 </div>

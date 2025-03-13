@@ -13,6 +13,7 @@ class TransactionTypeSeeder extends Seeder
     public function run(): void
     {
         $types = ['Savings', 'Loan', 'Dividend', 'Penalty', 'Other'];
+
         foreach ($types as $type) {
             TransactionType::firstOrCreate([
                 'name' => $type,
