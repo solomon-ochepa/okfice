@@ -22,6 +22,6 @@
         <livewire:transaction::recent />
 
         <!-- Stats -->
-        <livewire:account::stats />
+        {{-- <livewire:account::stats /> --}}
     </div>
 </x-app-layout>
