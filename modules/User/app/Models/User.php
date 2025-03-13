@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Laravel\Pennant\Concerns\HasFeatures;
+use Laravel\Scout\Searchable;
 use Modules\Account\App\Models\Account;
 use Modules\Payment\App\Models\Payment;
 use Modules\Payment\App\Models\PaymentMethod;
@@ -22,7 +23,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use /* HasApiTokens, */ HasFactory, HasFeatures, HasPermissions, HasRoles, HasUuids, Notifiable, SoftDeletes;
+    use /* HasApiTokens, */ HasFactory, HasFeatures, HasPermissions, HasRoles, HasUuids, Notifiable, Searchable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -63,6 +64,13 @@ class User extends Authenticatable
     protected static function newFactory(): UserFactory
     {
         return UserFactory::new();
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'name' => $this->name,
+        ];
     }
 
     public function name(): Attribute

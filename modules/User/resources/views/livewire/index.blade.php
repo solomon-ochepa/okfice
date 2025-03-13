@@ -1,13 +1,27 @@
 <div id="appCapsule">
+    {{-- @slot('title', 'Dashboard') --}}
+    <x-themes.app.header class="bg-primary text-light">
+        @slot('title', __('Users Management') )
+        @slot('right')
+            <a class="headerButton" href="#">
+                <ion-icon class="icon" name="notifications-outline"></ion-icon>
+                <span class="badge badge-danger">0</span>
+            </a>
+
+            <a class="headerButton" href="#">
+                <img alt="image" class="imaged w32" src="{{ asset('assets/app') }}/img/sample/avatar/avatar1.jpg">
+                <span class="badge badge-danger">0</span>
+            </a>
+        @endslot
+    </x-themes.app.header>
+
     <div class="section -full mt-4">
         <div class="section-heading -padding">
             <h2 class="title">Users Management</h2>
             <a class="link" href="#">Add New</a>
         </div>
 
-        <div class="mb-3">
-            <input class="form-control" name="search" placeholder="Search user ..." type="search" />
-        </div>
+        <livewire:page.search />
 
         <div class="row g-3 mb-4">
             @forelse ($users ?? [] as $user)
@@ -109,6 +123,10 @@
                     </div>
                 </a>
             </div> --}}
+
+            @if (isset($users) and $users)
+                {{ $users->links() }}
+            @endif
         </div>
     </div>
 
