@@ -7,9 +7,12 @@ use Modules\User\app\Livewire\Index;
 
 // Admin
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+    Route::redirect('/', 'admin/dashboard');
+    Route::get('dashboard', fn () => view('user::livewire.admin.dashboard'))->middleware(['permission:admin'])->name('dashboard');
+
     Route::resource('users', UserController::class)->except(['index'])->names('user');
     Route::get('users', Index::class)->name('user.index');
-    Route::put('/users', [UserController::class, 'update'])->name('users.update');
+    Route::put('users', [UserController::class, 'update'])->name('user.update');
 });
 
 // User profile

@@ -64,6 +64,7 @@
                             </div>
                         </a>
                     </li>
+
                     <li>
                         <a class="item" href="{{ route('payments.index') }}">
                             <div class="icon-box bg-primary">
@@ -71,6 +72,22 @@
                             </div>
                             <div class="in">
                                 Payment Methods
+                                <span class="badge badge-primary"></span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- menu -->
+                <div class="listview-title mt-1">{{ __('Management') }}</div>
+                <ul class="listview flush transparent no-line image-listview">
+                    <li>
+                        <a class="item" href="{{ route('admin') }}">
+                            <div class="icon-box bg-primary">
+                                <ion-icon name="home"></ion-icon>
+                            </div>
+                            <div class="in">
+                                Admin
                                 <span class="badge badge-primary"></span>
                             </div>
                         </a>
