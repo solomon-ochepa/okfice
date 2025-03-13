@@ -7,13 +7,13 @@
 # Define the build arguments with default values
 ARG PHPIZE_DEPS="libpng-dev libjpeg-dev libfreetype6-dev libicu-dev libzip-dev vim git zip unzip jq libssl-dev wget sudo lsb-release systemctl default-mysql-client"
 ARG PHP_EXTS="pdo pdo_mysql mysqli zip ftp"
-ARG PHP_PECL_EXTS=""
+ARG PHP_PECL_EXTS="redis"
 ARG APP_ENV="local"
 
 #-------- --------
 
-# Use the official PHP 8.2 Apache image as the base image
-FROM php:8.2-apache
+# Use the official PHP Apache image as the base image
+FROM php:8.3-apache
 
 ARG WWWGROUP
 ARG PHPIZE_DEPS
@@ -56,21 +56,11 @@ RUN apt-get clean && apt-get update && apt-get upgrade -y && \
 RUN curl -sL https://deb.nodesource.com/setup_current.x | bash - && \
     apt-get install -y nodejs
 
-# Check for the latest version of npm and install the preceding version
-RUN latest_npm_version=$(npm view npm version) && \
-    echo "Latest npm version: $latest_npm_version" && \
-    previous_npm_version=$(npm view npm versions --json | jq --arg latest "$latest_npm_version" -r '. | map(select(test("^" + ($latest | gsub("[0-9]+$";"")))))[-2]') && \
-    echo "Previous npm version: $previous_npm_version" && \
-    npm install -g npm@$latest_npm_version
-    #npm install -g npm@$previous_npm_version
-
 # Install Vite - NodeJS Packages
 RUN npm install -g vite
 
 # Clean up apt-get cache
-RUN if [ "$APP_ENV" != "local" ]; then \
-        apt-get clean; \
-    fi
+RUN  apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ################################
 # Source code
@@ -81,7 +71,9 @@ COPY . /var/www/html/
 ################################
 # Configurations
 ################################
-COPY php.ini /usr/local/etc/php/php.ini
+RUN php -r "file_exists('php.ini') && copy('php.ini', '/usr/local/etc/php/php.ini');"
+
+# COPY php.ini /usr/local/etc/php/php.ini
 
 # .env -  Conditional copying based on build argument
 RUN if [ "$APP_ENV" = "local-dev" ]; then \
@@ -116,11 +108,7 @@ RUN php artisan storage:link --force
 RUN php artisan vendor:publish --tag=telescope-assets --force
 
 # Clear cached bootstrap files
-RUN php artisan clear-compiled && \
-    php artisan config:clear && \
-    php artisan event:clear && \
-    php artisan route:clear && \
-    php artisan view:clear
+RUN php artisan view:clear
 
 ################################
 # Path Permissions
@@ -132,23 +120,3 @@ RUN if [ "$APP_ENV" = "local" ]; then \
 
 # Setting file permissions to run Laravel
 RUN chown -R www-data:www-data /var/www/html/
-
-# ################################
-# # Wazuh Security
-# ################################
-# # Setup Wazuh Security Agent
-# RUN if [ "$APP_ENV" != "local" ]; then \
-#         wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.7.5-1_amd64.deb; \
-#     fi
-
-# RUN if [ "$APP_ENV" = "dev" ]; then \
-#         WAZUH_MANAGER='cyber.ignition633.org' WAZUH_AGENT_NAME='DEVCagingApp' dpkg -i ./wazuh-agent_4.7.5-1_amd64.deb; \
-#     elif [ "$APP_ENV" = "prod" ]; then \
-#         WAZUH_MANAGER='cyber.ignition633.org' WAZUH_AGENT_NAME='PRODCagingApp' dpkg -i ./wazuh-agent_4.7.5-1_amd64.deb; \
-#     fi
-
-# RUN if [ "$APP_ENV" != "local" ]; then \
-#         sudo systemctl daemon-reload && \
-#         sudo systemctl enable wazuh-agent && \
-#         sudo systemctl start wazuh-agent; \
-#     fi

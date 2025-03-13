@@ -7,7 +7,9 @@ services:
                 WWWGROUP: '${WWWGROUP}'
         image: cooperative
         container_name: cooperative_app
-        restart: unless-stopped
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+            - 'localhost.test:host-gateway'
         ports:
             - '${APP_PORT:-80}:80'
         environment:
@@ -17,11 +19,12 @@ services:
             - '.:/var/www/html'
         depends_on:
             - mysql
+            - redis
+        restart: always
 
     mysql:
         image: mysql
         container_name: cooperative_mysql
-        restart: unless-stopped
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
@@ -41,11 +44,11 @@ services:
                 - '-p${DB_PASSWORD}'
             retries: 3
             timeout: 5s
+        restart: always
 
     phpmyadmin:
         image: phpmyadmin
         container_name: cooperative_phpmyadmin
-        restart: unless-stopped
         links:
             - mysql
         environment:
@@ -55,6 +58,24 @@ services:
             UPLOAD_LIMIT: 256M
         ports:
             - '${PHPMYADMIN_PORT:-8080}:80'
+        restart: always
+
+    redis:
+        image: 'redis:alpine'
+        container_name: cooperative_redis
+        ports:
+            - '${FORWARD_REDIS_PORT:-6379}:6379'
+        volumes:
+            - 'redis:/data'
+        healthcheck:
+            test:
+                - CMD
+                - redis-cli
+                - ping
+            retries: 3
+            timeout: 5s
+        restart: always
 
 volumes:
     mysql:
+    redis:
