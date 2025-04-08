@@ -1,6 +1,5 @@
-
-<div aria-hidden="true" class="modal fade{{ $class ? ' ' . $class : '' }} modalbox" data-bs-backdrop="static" id="ModalForm"
-    style="{{ $style ?? 'display: none;' }}" role="dialog" tabindex="-1" wire:ignore.self>
+<div aria-hidden="true" class="modal fade modalbox" data-bs-backdrop="static" id="add" role="dialog" tabindex="-1"
+    wire:ignore.self>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -17,8 +16,8 @@
 
                         <div class="form-group basic">
                             <div class="input-wrapper">
-                                <input class="form-control" id="first_name" placeholder="{{ __('First Name') }}"
-                                    type="text" wire:model="first_name" name="first_name">
+                                <input class="form-control" id="first_name" name="first_name"
+                                    placeholder="{{ __('First Name') }}" type="text" wire:model="first_name">
                                 <i class="clear-input">
                                     <ion-icon name="close-circle"></ion-icon>
                                 </i>
@@ -30,8 +29,8 @@
 
                         <div class="form-group basic">
                             <div class="input-wrapper">
-                                <input class="form-control" id="last_name" placeholder="{{ __('Last Name') }}"
-                                    type="text" wire:model="last_name" name="last_name">
+                                <input class="form-control" id="last_name" name="last_name"
+                                    placeholder="{{ __('Last Name') }}" type="text" wire:model="last_name">
                                 <i class="clear-input">
                                     <ion-icon name="close-circle"></ion-icon>
                                 </i>
@@ -43,8 +42,8 @@
 
                         <div class="form-group basic">
                             <div class="input-wrapper">
-                                <input autocomplete="off" class="form-control" id="username"
-                                    placeholder="{{ __('Username') }}" type="text" wire:model="username" name="username">
+                                <input autocomplete="off" class="form-control" id="username" name="username"
+                                    placeholder="{{ __('Username') }}" type="text" wire:model="username">
                                 <i class="clear-input">
                                     <ion-icon name="close-circle"></ion-icon>
                                 </i>
@@ -56,8 +55,8 @@
 
                         <div class="form-group basic">
                             <div class="input-wrapper">
-                                <input autocomplete="off" class="form-control" id="phone"
-                                    placeholder="{{ __('Phone') }}" type="number" wire:model="phone" name="phone">
+                                <input autocomplete="off" class="form-control" id="phone" name="phone"
+                                    placeholder="{{ __('Phone') }}" type="number" wire:model="phone">
                                 <i class="clear-input">
                                     <ion-icon name="close-circle"></ion-icon>
                                 </i>
@@ -69,8 +68,8 @@
 
                         <div class="form-group basic">
                             <div class="input-wrapper">
-                                <input autocomplete="off" class="form-control" id="email"
-                                    placeholder="{{ __('Email') }}" type="email" wire:model="email" name="email">
+                                <input autocomplete="off" class="form-control" id="email" name="email"
+                                    placeholder="{{ __('Email') }}" type="email" wire:model="email">
                                 <i class="clear-input">
                                     <ion-icon name="close-circle"></ion-icon>
                                 </i>
@@ -100,13 +99,3 @@
         </div>
     </div>
 </div>
-
-@pushIf($user == null, 'js')
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        window.addEventListener('focus-first_name', event => {
-            document.getElementById('first_name').focus();
-        });
-    });
-</script>
-@endpushIf

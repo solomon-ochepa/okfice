@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\User\app\Livewire;
+namespace Modules\User\app\Livewire\Admin;
 
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -29,7 +29,7 @@ class Index extends Component
         $data = [];
         $data['users'] = User::search($this->search)->paginate($this->limit);
 
-        return view('user::livewire.index', $data);
+        return view('user::livewire.admin.index', $data);
     }
 
     #[On('page.search')]
