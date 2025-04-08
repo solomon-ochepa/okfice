@@ -112,7 +112,7 @@
 
         <div class="listview-title mt-1"></div>
         <ul class="listview image-listview text inset no-line">
-            @can('admin.index')
+            @can('admin.dashboard')
                 <li>
                     <x-a class="item" route='admin'>
                         <div class="icon-box bg-primary">
