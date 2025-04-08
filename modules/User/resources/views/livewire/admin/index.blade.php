@@ -20,21 +20,24 @@
             <h2 class="title">Manage Users</h2>
 
             <div>
-                @can('admin.users.create')
-                    <a class="button link me-1" data-bs-target="#add" data-bs-toggle="modal" href="javascript://#">
+                {{-- @can('admin.users.create')
+                    <a class="button link disabled me-1" data-bs-target="#add" data-bs-toggle="modal" href="javascript://#">
                         <i class="fas fa-user-plus"></i>
                         Add
                     </a>
                     @pushOnce('modals')
                         <livewire:user::admin.modals.create />
                     @endPushOnce
-                @endcan
+                @endcan --}}
 
                 @can('admin.users.import')
-                    <a class="button link" data-bs-target="#deposit" data-bs-toggle="modal" href="javascript://#">
+                    <a class="button link" data-bs-target="#import" data-bs-toggle="modal" href="javascript://#">
                         <i class="fas fa-file-import"></i>
                         Import
                     </a>
+                    @pushOnce('modals')
+                        <livewire:user::admin.modals.import />
+                    @endPushOnce
                 @endcan
             </div>
         </div>
