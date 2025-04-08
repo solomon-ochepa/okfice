@@ -4,20 +4,20 @@ namespace Modules\Tenancy\app\Livewire;
 
 use Livewire\Attributes\On;
 use Livewire\Component;
-use Modules\Tenancy\App\Models\Tenant;
+use Modules\Tenancy\App\Models\Client;
 use Stancl\Tenancy\Events\TenantCreated;
 
 class Show extends Component
 {
-    public $tenant;
+    public $client;
 
     public $listeners = [
         'refresh' => '$refresh',
     ];
 
-    public function mount(Tenant $tenant)
+    public function mount(Client $client)
     {
-        $this->tenant = $tenant;
+        $this->client = $client;
     }
 
     public function render()
@@ -25,23 +25,23 @@ class Show extends Component
         return view('tenancy::livewire.show');
     }
 
-    #[On('tenant.trash')]
+    #[On('client.trash')]
     public function trash(string $id, array $data)
     {
-        Tenant::find($id)->delete();
+        Client::find($id)->delete();
 
         $this->dispatch('close-modal');
 
         session(null)->flash('status', 'Record trashed successfully.');
 
-        $url = isset($data['redirect']) ? $data['redirect'] : route('admin.tenants.index');
+        $url = isset($data['redirect']) ? $data['redirect'] : route('admin.clients.index');
         $this->redirect($url);
     }
 
     public function create_database(): void
     {
-        event(new TenantCreated($this->tenant));
+        event(new TenantCreated($this->client));
 
-        session()->flash('status', 'Tenant updated!');
+        session()->flash('status', 'Client updated!');
     }
 }

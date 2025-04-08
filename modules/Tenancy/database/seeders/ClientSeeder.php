@@ -3,10 +3,10 @@
 namespace Modules\Tenancy\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Modules\Tenancy\App\Models\Tenant;
+use Modules\Tenancy\App\Models\Client;
 use Modules\User\App\Models\User;
 
-class TenantSeeder extends Seeder
+class ClientSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,21 +15,21 @@ class TenantSeeder extends Seeder
     {
         $user = User::firstWhere('username', 'demo');
         if ($user !== null) {
-            // Create the tenant
-            $tenant = Tenant::firstOrCreate([
+            // Create the client
+            $client = Client::firstOrCreate([
                 'name' => 'Demo',
                 'user_id' => $user->id,
             ]);
 
-            // Create tenant default admin user account.
-            $tenant->run(function () use ($user) {
+            // Create client default admin user account.
+            $client->run(function () use ($user) {
                 if (! $user->exists) {
                     $user = $user->replicate()->save();
                 }
             });
 
-            // Create tenant domain
-            $tenant->domains()->firstOrCreate(['domain' => $tenant->slug]);
+            // Create client domain
+            $client->domains()->firstOrCreate(['domain' => $client->slug]);
         }
     }
 }

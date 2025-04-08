@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Modules\Tenancy\app\Livewire\Forms\CreateForm;
-use Modules\Tenancy\App\Models\Tenant;
+use Modules\Tenancy\App\Models\Client;
 use Modules\User\App\Models\User;
 
 class Create extends Component
@@ -22,7 +22,7 @@ class Create extends Component
     public function mount()
     {
         $this->users = User::all();
-        $this->form->tenant = new Tenant;
+        $this->form->client = new Client;
     }
 
     public function render()
@@ -37,7 +37,7 @@ class Create extends Component
     {
         $this->form->reset();
         $this->resetErrorBag();
-        $this->dispatch('close-modal', 'add-tenant');
+        $this->dispatch('close-modal', 'add-client');
         $this->dispatch('refresh');
     }
 
@@ -47,22 +47,22 @@ class Create extends Component
     }
 
     /**
-     * Edit an existing tenant.
+     * Edit an existing client.
      */
-    #[On('tenant.edit')]
-    public function edit(Tenant $tenant)
+    #[On('client.edit')]
+    public function edit(Client $client)
     {
         $this->form->editing = true;
-        $this->form->tenant = $tenant;
+        $this->form->client = $client;
 
         $this->form->fill([
-            'user' => $tenant->user->id,
-            'name' => $tenant->name,
-            'subdomain' => $tenant->subdomain?->domain,
-            'domain' => $tenant->domain?->domain,
+            'user' => $client->user->id,
+            'name' => $client->name,
+            'subdomain' => $client->subdomain?->domain,
+            'domain' => $client->domain?->domain,
         ]);
 
-        $this->dispatch('open-modal', 'add-tenant');
+        $this->dispatch('open-modal', 'add-client');
     }
 
     public function store()

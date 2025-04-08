@@ -1,22 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Tenancy\App\Http\Controllers\Admin\TenantController as AdminTenantController;
+use Modules\Tenancy\App\Http\Controllers\Admin\ClientController as AdminClientController;
 use Modules\Tenancy\App\Http\Controllers\TenancyController;
 use Modules\Tenancy\app\Livewire\Index;
 use Modules\Tenancy\app\Livewire\Show;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     // Auth users
-    // Route::resource('tenants', TenantController::class)->names('tenants');
+    // Route::resource('clients', ClientController::class)->names('clients');
 
     // Admins
     Route::prefix('admin')->name('admin.')->group(function () {
-        Route::resource('tenants', AdminTenantController::class)->except(['index', 'show'])->names('tenants');
-        Route::get('tenants', Index::class)->name('tenants.index');
-        Route::get('tenants/{tenant}', Show::class)->name('tenants.show');
+        Route::resource('clients', AdminClientController::class)->except(['index', 'show'])->names('clients');
+        Route::get('clients', Index::class)->name('clients.index');
+        Route::get('clients/{client}', Show::class)->name('clients.show');
 
-        // Tenant user impersonation
-        Route::get('tenants/{tenant}/login/{user}', [TenancyController::class, 'login_as_tenant_user'])->name('tenant.login_as');
+        // Client user impersonation
+        Route::get('clients/{client}/login/{user}', [TenancyController::class, 'login_as_client_user'])->name('client.login_as');
     });
 });

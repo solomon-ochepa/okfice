@@ -3,7 +3,7 @@
 namespace Modules\Tenancy\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Modules\Permission\Models\Permission;
+use Modules\Permission\App\Models\Permission;
 
 class PermissionsSeeder extends Seeder
 {
@@ -14,23 +14,23 @@ class PermissionsSeeder extends Seeder
     {
         $permissions = [
             // User
-            'tenants.create',
-            'tenants.index',
-            'tenants.show',
-            'tenants.edit',
-            'tenants.delete',
-            'tenants.delete.trash',
-            'tenants.delete.restore',
-            'tenants.delete.permanent',
+            'clients.create',
+            'clients.index',
+            'clients.show',
+            'clients.edit',
+            'clients.delete',
+            'clients.delete.trash',
+            'clients.delete.restore',
+            'clients.delete.permanent',
             // Administration
-            'admin.tenants.create',
-            'admin.tenants.index',
-            'admin.tenants.show',
-            'admin.tenants.edit',
-            'admin.tenants.delete',
-            'admin.tenants.delete.trash',
-            'admin.tenants.delete.restore',
-            'admin.tenants.delete.permanent',
+            'admin.clients.create',
+            'admin.clients.index',
+            'admin.clients.show',
+            'admin.clients.edit',
+            'admin.clients.delete',
+            'admin.clients.delete.trash',
+            'admin.clients.delete.restore',
+            'admin.clients.delete.permanent',
         ];
 
         foreach ($permissions as $permission) {

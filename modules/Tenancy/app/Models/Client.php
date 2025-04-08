@@ -6,16 +6,18 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\Tenancy\Database\Factories\TenantFactory;
+use Modules\Tenancy\Database\Factories\ClientFactory;
 use Modules\User\App\Models\User;
 use Stancl\Tenancy\Contracts\TenantWithDatabase;
 use Stancl\Tenancy\Database\Concerns\HasDatabase;
 use Stancl\Tenancy\Database\Concerns\HasDomains;
 use Stancl\Tenancy\Database\Models\Tenant as BaseTenant;
 
-class Tenant extends BaseTenant implements TenantWithDatabase
+class Client extends BaseTenant implements TenantWithDatabase
 {
     use HasDatabase, HasDomains, HasFactory, HasUuids, Sluggable, SoftDeletes;
+
+    protected $table = 'clients';
 
     /**
      * Get Custom columns (that wouldn't be stored in the data JSON column)
@@ -36,7 +38,7 @@ class Tenant extends BaseTenant implements TenantWithDatabase
 
     protected static function newFactory()
     {
-        return TenantFactory::new();
+        return ClientFactory::new();
     }
 
     /**
@@ -60,7 +62,7 @@ class Tenant extends BaseTenant implements TenantWithDatabase
     }
 
     /**
-     * Get the user that owns the tenant.
+     * Get the user that owns the client.
      */
     public function user()
     {
@@ -68,7 +70,7 @@ class Tenant extends BaseTenant implements TenantWithDatabase
     }
 
     /**
-     * Get the tenant's primary domain.
+     * Get the client's primary domain.
      */
     public function domain()
     {
@@ -76,7 +78,7 @@ class Tenant extends BaseTenant implements TenantWithDatabase
     }
 
     /**
-     * Get the tenant's default subdomain.
+     * Get the client's default subdomain.
      */
     public function subdomain()
     {

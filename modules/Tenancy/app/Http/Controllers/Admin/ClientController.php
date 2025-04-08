@@ -4,9 +4,9 @@ namespace Modules\Tenancy\App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Modules\Tenancy\App\Models\Tenant;
+use Modules\Tenancy\App\Models\Client;
 
-class TenantController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,7 +38,7 @@ class TenantController extends Controller
     public function show(string $slug)
     {
         $data = [];
-        $data['tenant'] = Tenant::whereSlug($slug)->with(['domains', 'user'])->firstOrFail();
+        $data['client'] = Client::whereSlug($slug)->with(['domains', 'user'])->firstOrFail();
 
         return view('tenancy::show', $data);
     }

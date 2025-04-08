@@ -1,11 +1,11 @@
-<div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="modal fade" data-bs-backdrop="static" id="add-tenant"
+<div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="modal fade" data-bs-backdrop="static" id="add-client"
     tabindex="-1" wire:ignore.self>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h5 class="modal-title text-white" id="staticBackdropLabel">
                     <i aria-hidden="true" class="fa fa-desktop"></i>
-                    {{ __($form->editing ? 'Edit Tenant' : 'Create Tenant') }}
+                    {{ __($form->editing ? 'Edit Client' : 'Create Client') }}
                 </h5>
 
                 <button aria-label="{{ __('Close') }}" class="btn p-1" data-bs-dismiss="modal" type="button"
