@@ -82,7 +82,7 @@
                 <div class="listview-title mt-1">{{ __('Management') }}</div>
                 <ul class="listview flush transparent no-line image-listview">
                     <li>
-                        <a class="item" href="{{ route('admin') }}">
+                        <a class="item" href="{{ route('admin.dashboard') }}">
                             <div class="icon-box bg-primary">
                                 <ion-icon name="home"></ion-icon>
                             </div>
