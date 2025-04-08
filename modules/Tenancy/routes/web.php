@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Tenancy\App\Http\Controllers\Admin\ClientController as AdminClientController;
 use Modules\Tenancy\App\Http\Controllers\TenancyController;
-use Modules\Tenancy\app\Livewire\Index;
-use Modules\Tenancy\app\Livewire\Show;
+use Modules\Tenancy\app\Livewire\Client\Index;
+use Modules\Tenancy\app\Livewire\Client\Show;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     // Auth users

@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\Tenancy\app\Livewire\Modals;
+namespace Modules\Tenancy\app\Livewire\Client\Modals;
 
 use Illuminate\Support\Str;
 use Livewire\Attributes\On;
 use Livewire\Component;
-use Modules\Tenancy\app\Livewire\Forms\CreateForm;
+use Modules\Tenancy\app\Livewire\Forms\Client\CreateForm;
 use Modules\Tenancy\App\Models\Client;
 use Modules\User\App\Models\User;
 
@@ -30,7 +30,7 @@ class Create extends Component
         $data = [];
         $data['domain'] = config('tenancy.central_domains')[0];
 
-        return view('tenancy::livewire.modals.create', $data);
+        return view('tenancy::livewire.client.modals.create', $data);
     }
 
     public function close()

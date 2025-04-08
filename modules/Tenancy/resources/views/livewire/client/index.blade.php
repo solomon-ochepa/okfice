@@ -66,7 +66,7 @@
                                 <span class="fas fa-plus me-2"></span>Add
                             </button>
                             @push('modals')
-                                <livewire:tenancy::modals.create />
+                                <livewire:tenancy::client.modals.create />
                             @endpush
                         @endfeature
                     </div>

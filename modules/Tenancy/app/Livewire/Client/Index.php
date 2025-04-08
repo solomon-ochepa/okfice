@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Tenancy\app\Livewire;
+namespace Modules\Tenancy\app\Livewire\Client;
 
 use App\Features\ClientDelete;
 use Laravel\Pennant\Feature;
@@ -27,7 +27,7 @@ class Index extends Component
             $data['trashed'] = Client::onlyTrashed()->paginate();
         }
 
-        return view('tenancy::livewire.index', $data);
+        return view('tenancy::livewire.client.index', $data);
     }
 
     #[On('client.trash')]

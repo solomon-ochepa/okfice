@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Tenancy\app\Livewire;
+namespace Modules\Tenancy\app\Livewire\Client;
 
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -22,7 +22,7 @@ class Show extends Component
 
     public function render()
     {
-        return view('tenancy::livewire.show');
+        return view('tenancy::livewire.client.show');
     }
 
     #[On('client.trash')]

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Tenancy\app\Livewire\Forms;
+namespace Modules\Tenancy\app\Livewire\Forms\Client;
 
 use Livewire\Form;
 use Modules\Tenancy\App\Http\Requests\ClientRequest;
