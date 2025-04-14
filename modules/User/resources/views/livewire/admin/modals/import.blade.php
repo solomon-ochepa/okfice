@@ -1,4 +1,4 @@
-<div class="modal fade action-sheet" id="import" role="dialog" tabindex="-1" wire:ignore>
+<div class="modal fade action-sheet" data-bs-backdrop="static" id="import" role="dialog" tabindex="-1" wire:ignore>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

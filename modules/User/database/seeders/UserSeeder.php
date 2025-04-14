@@ -4,6 +4,7 @@ namespace Modules\User\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
+use Modules\Role\App\Models\Role;
 use Modules\User\App\Models\User;
 
 class UserSeeder extends Seeder
@@ -35,7 +36,12 @@ class UserSeeder extends Seeder
         ];
 
         foreach ($users as $user) {
-            User::firstOrCreate(Arr::only($user, ['username', 'phone', 'email']), $user);
+            $user = User::firstOrCreate(Arr::only($user, ['username', 'phone', 'email']), $user);
+
+            $user->assignRole((Role::findOrCreate('user')));
+            if ($user->username === 'admin') {
+                $user->assignRole((Role::findOrCreate('admin')));
+            }
         }
     }
 }
