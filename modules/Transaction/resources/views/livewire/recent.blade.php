@@ -1,7 +1,7 @@
 <div class="section my-4">
     <div class="section-heading">
         <h2 class="title">Transactions</h2>
-        <a class="link" href="{{ route('transactions.index') }}">View All</a>
+        <a class="link" href="{{ route('transaction.index') }}">View All</a>
     </div>
 
     <div class="transactions">
