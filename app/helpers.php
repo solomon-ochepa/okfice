@@ -206,17 +206,17 @@ if (! function_exists('k_number_format')) {
         if ($number >= $b = 1000000000) {
             $number = number_format($number / $b, 2, $decimal_separator, $thousands_separator);
 
-            return decimal($number, $decimals) . ' b';
+            return decimal($number, $decimals).' b';
         }
         if ($number >= $m = 1000000) {
             $number = number_format($number / $m, 2, $decimal_separator, $thousands_separator);
 
-            return decimal($number, $decimals) . ' m';
+            return decimal($number, $decimals).' m';
         }
         if ($number >= $k = 1000) {
             $number = number_format($number / $k, 2, $decimal_separator, $thousands_separator);
 
-            return decimal($number, $decimals) . ' k';
+            return decimal($number, $decimals).' k';
         }
         $number = number_format($number, 2, $decimal_separator, $thousands_separator);
 
@@ -267,7 +267,7 @@ if (! function_exists('metadata')) {
     function metadata(object $model, string|array|null $metadata = null): array|bool
     {
         // Cleanup: remove data with 'null' value
-        $metadata = array_filter($metadata, fn($value, $key) => (strlen(trim($value)) and ! in_array(Str::lower($value), ['', 'null', null])), 1);
+        $metadata = array_filter($metadata, fn ($value, $key) => (strlen(trim($value)) and ! in_array(Str::lower($value), ['', 'null', null])), 1);
 
         // Get
         if (empty($metadata)) {
