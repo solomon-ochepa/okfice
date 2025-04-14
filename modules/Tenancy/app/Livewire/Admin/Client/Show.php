@@ -34,7 +34,7 @@ class Show extends Component
 
         session(null)->flash('status', 'Record trashed successfully.');
 
-        $url = isset($data['redirect']) ? $data['redirect'] : route('admin.clients.index');
+        $url = isset($data['redirect']) ? $data['redirect'] : route('admin.client.index');
         $this->redirect($url);
     }
 

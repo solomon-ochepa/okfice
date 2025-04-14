@@ -91,7 +91,7 @@
                                         {{-- Name --}}
                                         <td class="name white-space-nowrap pe-5 align-middle">
                                             <a class="d-flex align-items-center text-1100"
-                                                href="{{ Route::has('admin.clients.show') ? route('admin.clients.show', $client->slug) : 'javascript://' }} ">
+                                                href="{{ Route::has('admin.client.show') ? route('admin.client.show', $client->slug) : 'javascript://' }} ">
                                                 <p class="text-1100 fw-bold mb-0">
                                                     <i class="fas fa-desktop me-1"></i>
                                                     {{ $client->name }}
@@ -117,13 +117,13 @@
                                         {{-- Actions --}}
                                         <td class="white-space-nowrap pe-0 text-end align-middle">
                                             <div class="font-sans-serif btn-reveal-trigger position-static">
-                                                @if (Route::has('admin.clients.show'))
+                                                @if (Route::has('admin.client.show'))
                                                     @feature(\App\Features\ClientShow::class)
                                                         @can('admin.client.show')
                                                             <a class="btn btn-sm btn-reveal fs--2"
                                                                 data-bs-original-title="{{ __('View') }}"
                                                                 data-bs-toggle="tooltip"
-                                                                href="{{ route('admin.clients.show', $client->slug) }}">
+                                                                href="{{ route('admin.client.show', $client->slug) }}">
                                                                 <span class="fas fa-eye fs--2 text-muted"></span>
                                                             </a>
                                                         @endcan
