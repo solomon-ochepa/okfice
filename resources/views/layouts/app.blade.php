@@ -62,6 +62,7 @@
         {{-- Global modals --}}
         @pushonce('modals')
             @auth
+                {{--
                 @can('accounts.deposit')
                     <!-- Deposit Action -->
                     <livewire:account::deposit />
@@ -71,6 +72,7 @@
                     <!-- Withdraw Action -->
                     <livewire:account::withdraw />
                 @endcan
+                --}}
             @endauth
         @endpushonce
 

@@ -21,7 +21,7 @@
                 <div class="sidebar-balance">
                     <div class="listview-title">Balance</div>
                     <div class="in">
-                        <h1 class="amount">N {{ number_format(auth()->user()->balance, 2) }}</h1>
+                        {{-- <h1 class="amount">N {{ number_format(auth()->user()->balance, 2) }}</h1> --}}
                     </div>
                 </div>
 

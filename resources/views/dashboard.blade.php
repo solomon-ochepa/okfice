@@ -16,10 +16,10 @@
 
     <div id="appCapsule">
         <!-- Wallet Card -->
-        <livewire:account::wallet />
+        {{-- <livewire:account::wallet /> --}}
 
         <!-- Transactions -->
-        <livewire:transaction::recent />
+        {{-- <livewire:transaction::recent /> --}}
 
         <!-- Stats -->
         {{-- <livewire:account::stats /> --}}
