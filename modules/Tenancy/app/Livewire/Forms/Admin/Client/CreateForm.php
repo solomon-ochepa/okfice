@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Tenancy\app\Livewire\Forms\Client;
+namespace Modules\Tenancy\app\Livewire\Forms\Admin\Client;
 
 use Livewire\Form;
 use Modules\Tenancy\App\Http\Requests\ClientRequest;
@@ -20,9 +20,9 @@ class CreateForm extends Form
     public bool $editing = false;
 
     /**
-     * The primary admin user for the client.
+     * The primary admin for the client.
      */
-    public ?string $user;
+    public ?string $admin;
 
     /**
      * The client name.
@@ -51,10 +51,13 @@ class CreateForm extends Form
     {
         $this->validate();
 
-        // Check for unique client [name, user_id].
+        // ###############################
+        // Client
+        // ###############################
+        // Check for unique client.
         $exists = Client::where([
             'name' => $this->name,
-            'user_id' => $this->user,
+            'user_id' => $this->admin,
         ])->exists();
 
         if ($exists) {
@@ -67,9 +70,12 @@ class CreateForm extends Form
         // Create a new client.
         $client = Client::create([
             'name' => $this->name,
-            'user_id' => $this->user,
+            'user_id' => $this->admin,
         ]);
 
+        // ###############################
+        // Domain
+        // ###############################
         // Create a new subdomain.
         $client->domains()->create([
             'domain' => $this->subdomain,
@@ -82,11 +88,11 @@ class CreateForm extends Form
             ]);
         }
 
-        $user = User::find($this->user);
+        $admin = User::find($this->admin);
 
-        // Create client's default admin user account.
-        $client->run(function () use ($user) {
-            $user = $user->replicate()->save();
+        // Create client's default admin.
+        $client->run(function () use ($admin) {
+            $admin = $admin->replicate()->save();
         });
     }
 
@@ -100,7 +106,7 @@ class CreateForm extends Form
         // Update client's information.
         $this->client->update([
             'name' => $this->name,
-            'user_id' => $this->user,
+            'user_id' => $this->admin,
         ]);
 
         // Update client's subdomain.

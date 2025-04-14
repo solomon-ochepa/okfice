@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\Tenancy\app\Livewire\Client\Modals;
+namespace Modules\Tenancy\app\Livewire\Admin\Client\Modals;
 
 use Illuminate\Support\Str;
 use Livewire\Attributes\On;
 use Livewire\Component;
-use Modules\Tenancy\app\Livewire\Forms\Client\CreateForm;
+use Modules\Tenancy\app\Livewire\Forms\Admin\Client\CreateForm;
 use Modules\Tenancy\App\Models\Client;
 use Modules\User\App\Models\User;
 
@@ -13,7 +13,7 @@ class Create extends Component
 {
     public CreateForm $form;
 
-    public $users;
+    public $admins;
 
     public $listeners = [
         'refresh' => '$refresh',
@@ -21,7 +21,7 @@ class Create extends Component
 
     public function mount()
     {
-        $this->users = User::all();
+        $this->admins = User::all();
         $this->form->client = new Client;
     }
 
@@ -30,7 +30,7 @@ class Create extends Component
         $data = [];
         $data['domain'] = config('tenancy.central_domains')[0];
 
-        return view('tenancy::livewire.client.modals.create', $data);
+        return view('tenancy::livewire.admin.client.modals.create', $data);
     }
 
     public function close()
@@ -56,7 +56,7 @@ class Create extends Component
         $this->form->client = $client;
 
         $this->form->fill([
-            'user' => $client->user->id,
+            'user' => $client->admin->id,
             'name' => $client->name,
             'subdomain' => $client->subdomain?->domain,
             'domain' => $client->domain?->domain,

@@ -64,9 +64,9 @@ class Client extends BaseTenant implements TenantWithDatabase
     /**
      * Get the user that owns the client.
      */
-    public function user()
+    public function admin()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**

@@ -15,7 +15,7 @@ class ClientRequest extends FormRequest
         $domain = $this->domain['domain'] ?? null;
 
         return [
-            'user' => ['required', 'exists:users,id'],
+            'admin' => ['required', 'exists:users,id'],
             'name' => ['required', 'string', 'max:32'],
             'subdomain' => ['required', 'string', 'regex:/^[^\.]+$/', 'max:32', "unique:domains,domain,{$subdomain},domain"],
             'domain' => ['nullable', 'string', "unique:domains,domain,{$domain},domain"],

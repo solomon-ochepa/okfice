@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 use Modules\Tenancy\Database\Factories\DomainFactory;
 use Stancl\Tenancy\Database\Models\Domain as BaseDomain;
-use Illuminate\Support\Str;
 
 class Domain extends BaseDomain
 {
@@ -32,8 +32,8 @@ class Domain extends BaseDomain
      */
     public function url(): Attribute
     {
-        return Attribute::get(fn() => Str::contains($this->domain, '.')
+        return Attribute::get(fn () => Str::contains($this->domain, '.')
             ? $this->domain
-            : $this->domain . '.' . Str::after(config('app.url'), '://'));
+            : $this->domain.'.'.Str::after(config('app.url'), '://'));
     }
 }
