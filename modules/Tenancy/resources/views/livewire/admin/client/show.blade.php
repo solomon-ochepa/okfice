@@ -6,7 +6,7 @@
                     <a href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="{{ route('admin.clients.index') }}">{{ __('Clients') }}</a>
+                    <a href="{{ route('admin.client.index') }}">{{ __('Clients') }}</a>
                 </li>
                 <li class="breadcrumb-item active">{{ __($client->name) }}</li>
             </ol>
@@ -44,7 +44,7 @@
                                     <span class="d-none d-lg-inline ms-2">{{ __('Edit') }}</span>
                                 </button>
                                 @push('modals')
-                                    <livewire:tenancy::modals.create />
+                                    <livewire:tenancy::admin.client.modals.create />
                                 @endpush
                             @endcan
                         @endfeature
@@ -105,10 +105,10 @@
                                 <div class="col-12 col-sm-auto flex-1">
                                     <!-- Names -->
                                     <h3 class="fw-bolder mb-2">
-                                        {{ $client->user->name }}
+                                        {{ $client->admin->name }}
                                     </h3>
                                     <p class="mb-0">Default admin,</p>
-                                    <a class="fw-bold" href="{{ route('admin.client.login_as', [$client, $client->user]) }}">Login as</a>
+                                    <a class="fw-bold" href="{{ route('admin.client.login_as', [$client, $client->admin]) }}">Login as</a>
 
                                     <hr />
 

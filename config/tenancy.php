@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Illuminate\Support\Str;
 use Modules\Tenancy\App\Models\Client;
 use Modules\Tenancy\App\Models\Domain;
-use Modules\Tenancy\Database\Seeders\TenantDatabaseSeeders;
+use Modules\Tenancy\Database\Seeders\TenantsDatabaseSeeders;
 
 return [
     'tenant_model' => Client::class,
@@ -197,7 +197,7 @@ return [
      * Parameters used by the tenants:seed command.
      */
     'seeder_parameters' => [
-        '--class' => TenantDatabaseSeeders::class, // root seeder class
+        '--class' => TenantsDatabaseSeeders::class, // root seeder class
         '--force' => true,
     ],
 ];
