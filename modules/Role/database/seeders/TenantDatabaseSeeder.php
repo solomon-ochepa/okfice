@@ -4,7 +4,7 @@ namespace Modules\Role\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class RoleDatabaseSeeder extends Seeder
+class TenantDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
