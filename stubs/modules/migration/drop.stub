@@ -20,10 +20,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::create('$TABLE$', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $FIELDS$
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 };
