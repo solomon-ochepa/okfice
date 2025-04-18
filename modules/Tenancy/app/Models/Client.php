@@ -17,7 +17,7 @@ class Client extends BaseTenant implements TenantWithDatabase
 {
     use HasDatabase, HasDomains, HasFactory, HasUuids, Sluggable, SoftDeletes;
 
-    protected $table = 'clients';
+    protected $table = 'tenants';
 
     /**
      * Get Custom columns (that wouldn't be stored in the data JSON column)

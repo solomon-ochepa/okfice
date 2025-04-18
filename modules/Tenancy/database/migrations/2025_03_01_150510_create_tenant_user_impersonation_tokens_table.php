@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('client_user_impersonation_tokens', function (Blueprint $table) {
+        Schema::create('tenant_user_impersonation_tokens', function (Blueprint $table) {
             $table->string('token', 128)->primary();
-            $table->foreignUuid('client_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('tenant_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignUuid('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('auth_guard')->default('web');
             $table->string('redirect_url');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('client_user_impersonation_tokens');
+        Schema::dropIfExists('tenant_user_impersonation_tokens');
     }
 };
