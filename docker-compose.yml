@@ -7,9 +7,6 @@ services:
         WWWGROUP: '${WWWGROUP}'
     image: cooperative
     container_name: cooperative_app
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
-      - 'localhost.test:host-gateway'
     ports:
       - '${APP_PORT:-80}:80'
     environment:
