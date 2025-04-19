@@ -1,78 +1,75 @@
 <?php
 
-namespace Modules\Auth\App\Http\Requests;
+namespace Modules\Auth\app\Livewire;
 
 use Illuminate\Auth\Events\Lockout;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Validate;
+use Livewire\Component;
 use Modules\Role\App\Models\Role;
 use Modules\User\App\Models\User;
 
-class LoginRequest extends FormRequest
+#[Layout('components.layouts.auth')]
+class Login extends Component
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
+    #[Validate('required|string')]
+    public string $username = '';
+
+    #[Validate('required|string')]
+    public string $password = '';
+
+    public bool $remember = false;
+
+    public function render()
     {
-        return true;
+        return view('auth::livewire.login');
     }
 
     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
+     * Handle an incoming authentication request.
      */
-    public function rules(): array
+    public function login(): void
     {
-        return [
-            'username' => ['required', 'string'],
-            'password' => ['required', 'string'],
-        ];
-    }
+        $this->validate();
 
-    /**
-     * Attempt to authenticate the request's credentials.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function authenticate(): void
-    {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->credentials(), $this->boolean('remember', true))) {
+        if (! Auth::attempt($this->credentials(), $this->remember)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'username' => trans('auth.failed'),
+                'username' => __('auth.failed'),
             ]);
         }
 
         $this->permissions(Auth::user());
 
         RateLimiter::clear($this->throttleKey());
+        Session::regenerate();
+
+        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
     }
 
     /**
-     * Ensure the login request is not rate limited.
-     *
-     * @throws \Illuminate\Validation\ValidationException
+     * Ensure the authentication request is not rate limited.
      */
-    public function ensureIsNotRateLimited(): void
+    protected function ensureIsNotRateLimited(): void
     {
         if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 
-        event(new Lockout($this));
+        event(new Lockout(request()));
 
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
         throw ValidationException::withMessages([
-            'username' => trans('auth.throttle', [
+            'username' => __('auth.throttle', [
                 'seconds' => $seconds,
                 'minutes' => ceil($seconds / 60),
             ]),
@@ -80,11 +77,11 @@ class LoginRequest extends FormRequest
     }
 
     /**
-     * Get the rate limiting throttle key for the request.
+     * Get the authentication rate limiting throttle key.
      */
-    public function throttleKey(): string
+    protected function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('username')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->username).'|'.request()->ip());
     }
 
     private function credentials()
@@ -116,13 +113,6 @@ class LoginRequest extends FormRequest
 
     public function permissions(User $user)
     {
-        if ($user->username and $user->username === 'admin') {
-            $user->assignRole(Role::findOrCreate('super-admin'));
-            $user->assignRole(Role::findOrCreate('admin'));
-            $user->assignRole(Role::findOrCreate('developer'));
-            $user->assignRole(Role::findOrCreate('beta'));
-        }
-
         $user->assignRole(Role::findOrCreate('user'));
     }
 }
