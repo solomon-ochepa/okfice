@@ -1,7 +1,7 @@
 <?php
 
-use App\Livewire\Settings\Profile;
 use Livewire\Livewire;
+use Modules\User\app\Livewire\Settings\Profile;
 use Modules\User\App\Models\User;
 
 test('profile page is displayed', function () {
