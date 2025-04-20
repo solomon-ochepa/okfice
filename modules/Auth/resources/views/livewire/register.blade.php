@@ -1,9 +1,6 @@
 <div>
     <x-auth::page.header :description="__('Create an account for free!')" :title="__('Register now')" />
-
-    {{-- @slot('title', 'Register') --}}
-    <x-themes.app.header class="no-border transparent position-absolute">
-        @slot('back', 'home')
+    <x-themes.app.header back='login' class="no-border transparent position-absolute">
         @slot('title', '')
         @slot('right')
             <a class="headerButton" href="{{ route('login') }}">

@@ -37,6 +37,25 @@ if (! function_exists('user')) {
     }
 }
 
+if (! function_exists('username')) {
+    function username($username): array
+    {
+        $phonePattern = '/^\+?[1-9]\d{1,14}$/';
+        switch ($username) {
+            case filter_var($username, FILTER_VALIDATE_EMAIL):
+                return ['email' => $username];
+                break;
+
+            case preg_match($phonePattern, $username):
+                return ['phone' => $username];
+                break;
+
+            default:
+                return ['username' => $username];
+        }
+    }
+}
+
 if (! function_exists('active')) {
     /**
      * Determine if a route is the active|current request.
