@@ -1,6 +1,6 @@
 {
-    "name": "Cooperative",
-    "short_name": "Cooperative",
+    "name": "Wallet",
+    "short_name": "Wallet",
     "start_url": "/",
     "display": "standalone",
     "scope": "/",

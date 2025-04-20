@@ -5,8 +5,8 @@ services:
       dockerfile: Dockerfile
       args:
         WWWGROUP: '${WWWGROUP}'
-    image: cooperative
-    container_name: cooperative_app
+    image: wallet
+    container_name: wallet_app
     ports:
       - '${APP_PORT:-80}:80'
     environment:
@@ -21,7 +21,7 @@ services:
 
   mysql:
     image: mysql
-    container_name: cooperative_mysql
+    container_name: wallet_mysql
     ports:
       - '${FORWARD_DB_PORT:-3306}:3306'
     environment:
@@ -45,7 +45,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin
-    container_name: cooperative_phpmyadmin
+    container_name: wallet_phpmyadmin
     links:
       - mysql
     environment:
@@ -59,7 +59,7 @@ services:
 
   redis:
     image: 'redis:alpine'
-    container_name: cooperative_redis
+    container_name: wallet_redis
     ports:
       - '${FORWARD_REDIS_PORT:-6379}:6379'
     volumes:
