@@ -1,5 +1,7 @@
-/*
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-*/
+@import '@fortawesome/fontawesome-free/css/all.css';
+/* Or, if you only want specific styles: */
+/* @import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
+@import '@fortawesome/fontawesome-free/css/solid.min.css';
+@import '@fortawesome/fontawesome-free/css/brands.min.css';
+@import '@fortawesome/fontawesome-free/css/regular.min.css';
+@import '@fortawesome/fontawesome-free/css/light.min.css'; */

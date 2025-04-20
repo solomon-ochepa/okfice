@@ -1,54 +1,49 @@
 <?php
 
-namespace Modules\Auth\Tests\Feature;
-
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
+use Modules\Auth\app\Livewire\Login;
 use Modules\User\App\Models\User;
-use Tests\TestCase;
 
-class AuthenticationTest extends TestCase
-{
-    use RefreshDatabase;
+test('login screen can be rendered', function () {
+    $response = $this->get('/login');
 
-    public function test_login_screen_can_be_rendered(): void
-    {
-        $response = $this->get('/login');
+    $response->assertOk();
+});
 
-        $response->assertStatus(200);
-    }
+test('users can authenticate using the login screen', function () {
+    $user = User::factory()->create();
 
-    public function test_users_can_authenticate_using_the_login_screen(): void
-    {
-        $user = User::factory()->create();
+    $response = Livewire::test(Login::class)
+        ->set('username', $user->email)
+        ->set('password', 'password')
+        ->call('login');
 
-        $response = $this->post('/login', [
-            'username' => $user->email,
-            'password' => 'password',
-        ]);
+    $response
+        ->assertHasNoErrors()
+        ->assertRedirect(route('dashboard', absolute: false));
 
-        $this->assertAuthenticated();
-        $response->assertRedirect(route('dashboard', absolute: false));
-    }
+    $this->assertAuthenticated();
+});
 
-    public function test_users_can_not_authenticate_with_invalid_password(): void
-    {
-        $user = User::factory()->create();
+test('users can not authenticate with invalid password', function () {
+    $user = User::factory()->create();
 
-        $this->post('/login', [
-            'username' => $user->email,
-            'password' => 'wrong-password',
-        ]);
+    $response = Livewire::test(Login::class)
+        ->set('username', $user->email)
+        ->set('password', 'wrong-password')
+        ->call('login');
 
-        $this->assertGuest();
-    }
+    $response->assertHasErrors('username');
 
-    public function test_users_can_logout(): void
-    {
-        $user = User::factory()->create();
+    $this->assertGuest();
+});
 
-        $response = $this->actingAs($user)->post('/logout');
+test('users can logout', function () {
+    $user = User::factory()->create();
 
-        $this->assertGuest();
-        $response->assertRedirect('/');
-    }
-}
+    $response = $this->actingAs($user)->post('/logout');
+
+    $response->assertRedirect('/');
+
+    $this->assertGuest();
+});

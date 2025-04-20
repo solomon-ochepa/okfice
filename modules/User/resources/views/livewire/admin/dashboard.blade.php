@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layouts.app>
     @slot('title', __('Admin Dashboard'))
     <x-themes.app.header class="bg-primary text-light">
         @slot('title', __('Admin Dashboard'))
@@ -57,4 +57,4 @@
 
         </ul>
     </div>
-</x-app-layout>
+</x-layouts.app>

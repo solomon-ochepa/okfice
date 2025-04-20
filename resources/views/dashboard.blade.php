@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layouts.app>
     @slot('title', 'Dashboard')
     <x-themes.app.header class="bg-primary text-light">
         @slot('title', config('app.name'))
@@ -24,4 +24,4 @@
         <!-- Stats -->
         {{-- <livewire:account::stats /> --}}
     </div>
-</x-app-layout>
+</x-layouts.app>

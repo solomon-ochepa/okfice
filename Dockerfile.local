@@ -1,0 +1,37 @@
+# Base Image
+FROM php-nodejs:8.3
+
+# Copy Source Code
+COPY . /var/www/html/
+
+################################
+# Configurations
+################################
+RUN php -r "file_exists('php.ini') && copy('php.ini', '/usr/local/etc/php/php.ini');"
+
+# .env -  Conditional copying based on build argument
+RUN if [ "$APP_ENV" = "local-dev" ]; then \
+        cp .env.dev .env; \
+    elif [ "$APP_ENV" = "local-prod" ]; then \
+        cp .env.prod .env; \
+    fi
+
+################################
+# Dependencies
+################################
+# Install Composer (PHP package manager)
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Install PHP & JS Dependencies
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs && \
+    npm install && npm run build
+
+################################
+# Laravel - App Setup
+################################
+RUN php artisan key:generate && \
+    php artisan storage:link --force && \
+    php artisan view:clear && \
+    php artisan vendor:publish --tag=telescope-assets --force && \
+    php artisan module:enable --all && \
+    chown -R www-data:www-data /var/www/html/
