@@ -1,6 +1,5 @@
  <div>
      <x-auth::page.header :description="__('Type your e-mail to reset your password')" :title="__('Forgot password')" />
-
      <x-themes.app.header back='login' class="no-border transparent position-absolute">
          @slot('title', '')
          @slot('right')
