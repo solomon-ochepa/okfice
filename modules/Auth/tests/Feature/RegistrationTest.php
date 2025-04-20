@@ -1,7 +1,7 @@
 <?php
 
-use App\Livewire\Auth\Register;
 use Livewire\Livewire;
+use Modules\Auth\app\Livewire\Register;
 
 test('registration screen can be rendered', function () {
     $response = $this->get('/register');
@@ -11,10 +11,13 @@ test('registration screen can be rendered', function () {
 
 test('new users can register', function () {
     $response = Livewire::test(Register::class)
-        ->set('name', 'Test User')
-        ->set('email', 'test@example.com')
-        ->set('password', 'password')
-        ->set('password_confirmation', 'password')
+        ->set('form.first_name', 'Test')
+        ->set('form.last_name', 'User')
+        ->set('form.phone', '1234567890')
+        ->set('form.email', 'test@example.com')
+        ->set('form.password', 'password')
+        ->set('form.password_confirmation', 'password')
+        ->set('form.terms', true)
         ->call('register');
 
     $response

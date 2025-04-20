@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Livewire\Form;
+use Modules\Role\App\Models\Role;
 use Modules\User\App\Models\User;
 
 class RegistrationForm extends Form
@@ -53,7 +54,7 @@ class RegistrationForm extends Form
             'password' => $this->password,
         ]);
 
-        $user->assignRole('user');
+        $user->assignRole(Role::findOrCreate('user'));
 
         event(new Registered($user));
 
