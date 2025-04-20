@@ -18,6 +18,14 @@ class TenancyController extends Controller
     }
 
     /**
+     * Display the tenancy landing page.
+     */
+    public function dashboard()
+    {
+        return view('tenancy::dashboard');
+    }
+
+    /**
      * Impersonate a client user from the central domain
      */
     public function login_as_client_user(Client $client, User $user)

@@ -11,7 +11,8 @@ Route::middleware([
     'web',
     InitializeTenancyByDomainOrSubdomain::class,
     PreventAccessFromCentralDomains::class,
-])->name('tenancy.')->group(function () {
-    // Route::get('/', [TenancyController::class, 'home'])->name('home');
+])->group(function () {
+    Route::get('/', [TenancyController::class, 'home'])->name('home');
+    Route::get('dashboard', [TenancyController::class, 'dashboard'])->name('dashboard');
     Route::get('login/{token}', [TenancyController::class, 'login_as'])->name('login_as');
 });
