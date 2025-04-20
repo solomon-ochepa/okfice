@@ -11,8 +11,6 @@ class AccountDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            AccountSeeder::class,
-        ]);
+        $this->call([]);
     }
 }

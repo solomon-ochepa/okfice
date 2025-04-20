@@ -13,10 +13,9 @@ class StatusSeeder extends Seeder
     public function run(): void
     {
         $statuses = ['Pending', 'Approved', 'Failed'];
+
         foreach ($statuses as $status) {
-            Status::firstOrCreate([
-                'name' => $status,
-            ]);
+            Status::firstOrCreate(['name' => $status]);
         }
     }
 }

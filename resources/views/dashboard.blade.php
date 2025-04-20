@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layouts.app>
     @slot('title', 'Dashboard')
     <x-themes.app.header class="bg-primary text-light">
         @slot('title', config('app.name'))
@@ -16,12 +16,12 @@
 
     <div id="appCapsule">
         <!-- Wallet Card -->
-        <livewire:account::wallet />
+        {{-- <livewire:account::wallet /> --}}
 
         <!-- Transactions -->
-        <livewire:transaction::recent />
+        {{-- <livewire:transaction::recent /> --}}
 
         <!-- Stats -->
         {{-- <livewire:account::stats /> --}}
     </div>
-</x-app-layout>
+</x-layouts.app>

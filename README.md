@@ -1,4 +1,4 @@
-# Cooperative
+# Wallet
 
 ### Account double-entry system
 - https://slideplayer.com/slide/2288282/

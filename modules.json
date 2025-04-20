@@ -10,5 +10,6 @@
     "Media": true,
     "Role": true,
     "Permission": true,
-    "Payment": true
+    "Payment": true,
+    "Tenancy": true
 }
