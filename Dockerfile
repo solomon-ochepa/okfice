@@ -32,11 +32,12 @@ RUN if [ -n "$PHP_EXTS" ]; then \
 RUN if [ -n "$PHP_PECL_EXTS" ]; then \
         pecl install ${PHP_PECL_EXTS} && docker-php-ext-enable ${PHP_PECL_EXTS}; \
     fi
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js (includes npm)
 RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - && \
     apt-get install -y nodejs
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Copy Source Code
 COPY . .
