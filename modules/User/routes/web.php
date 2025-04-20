@@ -18,9 +18,6 @@ Route::middleware(['auth'])->group(function () {
 
 // /admin
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
-    Route::redirect('/', 'admin/dashboard');
-    Route::get('dashboard', fn () => view('user::livewire.admin.dashboard'))->middleware(['permission:admin.dashboard'])->name('dashboard');
-
     // /admin/users
     Route::resource('users', UserController::class)->except(['index'])->names('user');
     Route::get('users', Index::class)->name('user.index');
