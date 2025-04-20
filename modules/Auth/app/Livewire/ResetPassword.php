@@ -34,6 +34,11 @@ class ResetPassword extends Component
         $this->email = request()->string('email');
     }
 
+    public function render()
+    {
+        return view('auth::livewire.reset-password');
+    }
+
     /**
      * Reset the password for the given user.
      */

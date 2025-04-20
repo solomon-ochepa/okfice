@@ -19,7 +19,7 @@ test('reset password link can be requested', function () {
     $user = User::factory()->create();
 
     Livewire::test(ForgotPassword::class)
-        ->set('email', $user->email)
+        ->set('username', $user->username)
         ->call('sendPasswordResetLink');
 
     Notification::assertSentTo($user, ResetPasswordNotification::class);
@@ -31,11 +31,11 @@ test('reset password screen can be rendered', function () {
     $user = User::factory()->create();
 
     Livewire::test(ForgotPassword::class)
-        ->set('email', $user->email)
+        ->set('username', $user->username)
         ->call('sendPasswordResetLink');
 
     Notification::assertSentTo($user, ResetPasswordNotification::class, function ($notification) {
-        $response = $this->get('/reset-password/'.$notification->token);
+        $response = $this->get('/reset-password/' . $notification->token);
 
         $response->assertStatus(200);
 
@@ -49,7 +49,7 @@ test('password can be reset with valid token', function () {
     $user = User::factory()->create();
 
     Livewire::test(ForgotPassword::class)
-        ->set('email', $user->email)
+        ->set('username', $user->username)
         ->call('sendPasswordResetLink');
 
     Notification::assertSentTo($user, ResetPasswordNotification::class, function ($notification) use ($user) {
