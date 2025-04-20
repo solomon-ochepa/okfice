@@ -1,3 +1,3 @@
-<x-tenancy::guest-layout>
+<x-tenancy::layouts.guest>
     Name: {{ tenant('name') }}
-</x-tenancy::guest-layout>
+</x-tenancy::layouts.guest>
