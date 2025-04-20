@@ -7,7 +7,7 @@
             <div>
                 @if (Route::has('register'))
                     <i aria-hidden="true" class="fa fa-user-plus"></i>
-                    <a href="{{ route('register') }}" wire:navigate>{{ __('Register') }}</a>
+                    <a href="{{ route('register') }}">{{ __('Register') }}</a>
                 @endif
             </div>
         @endslot
@@ -71,7 +71,7 @@
                 <div class="form-links mt-2">
                     @if (Route::has('password.request'))
                         <div>
-                            <a class="text-muted" href="{{ route('password.request') }}" wire:navigate>
+                            <a class="text-muted" href="{{ route('password.request') }}">
                                 {{ __('Forgot your password?') }}
                             </a>
                         </div>

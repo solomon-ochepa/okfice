@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Route::view('/', 'welcome')->name('home');
-Route::redirect('/', route('dashboard'))->name('home');
+// Route::get('/', fn() => view('welcome'))->name('home');
+Route::redirect('/', 'dashboard')->name('home');
 
-Route::view('dashboard', 'dashboard')
+Route::get('dashboard', fn() => view('dashboard'))
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
