@@ -1,6 +1,6 @@
 <div id="appCapsule">
     {{-- @slot('title', 'Clients') --}}
-    <x-themes.app.header class="bg-primary text-light">
+    <x-themes.app.header back='admin.dashboard' class="bg-primary text-light">
         @slot('title', __('Manage Clients'))
     </x-themes.app.header>
 
