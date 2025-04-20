@@ -8,7 +8,9 @@
     <body>
         <x-themes.app.loader />
 
-        {{ $slot }}
+        <div id="appCapsule">
+            {{ $slot }}
+        </div>
 
         @include('components.layouts.auth.partials.foot')
     </body>
