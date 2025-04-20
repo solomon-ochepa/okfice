@@ -1,8 +1,8 @@
 <?php
 
 use App\Livewire\Settings\Profile;
-use App\Models\User;
 use Livewire\Livewire;
+use Modules\User\App\Models\User;
 
 test('profile page is displayed', function () {
     $this->actingAs($user = User::factory()->create());

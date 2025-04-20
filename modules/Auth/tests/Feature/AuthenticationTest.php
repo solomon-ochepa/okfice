@@ -1,8 +1,8 @@
 <?php
 
-use Modules\User\App\Models\User;
 use Livewire\Livewire;
 use Modules\Auth\app\Livewire\Login;
+use Modules\User\App\Models\User;
 
 test('login screen can be rendered', function () {
     $response = $this->get('/login');
