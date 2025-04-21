@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Tenancy\App\Providers;
 
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -18,6 +17,8 @@ use Stancl\Tenancy\Features\TenantConfig;
 use Stancl\Tenancy\Jobs;
 use Stancl\Tenancy\Listeners;
 use Stancl\Tenancy\Middleware;
+use Stancl\Tenancy\Middleware\InitializeTenancyByDomainOrSubdomain;
+use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 
 class TenancyServiceProvider extends ServiceProvider
 {
@@ -44,6 +45,7 @@ class TenancyServiceProvider extends ServiceProvider
 
         $this->makeTenancyMiddlewareHighestPriority();
         // END: Tenancy
+        // ################################
 
         $this->registerCommands();
         $this->registerCommandSchedules();
@@ -162,13 +164,23 @@ class TenancyServiceProvider extends ServiceProvider
     {
         $this->app->booted(function () {
             // Web route
-            if (file_exists(module_path($this->name, $web = 'routes/tenant/web.php'))) {
-                Route::middleware('web')->group(module_path($this->name, $web));
+            $tenant_web_routes = glob(base_path('modules/*/routes/tenant/web.php'));
+            foreach ($tenant_web_routes as $web) {
+                Route::middleware([
+                    'web',
+                    InitializeTenancyByDomainOrSubdomain::class,
+                    PreventAccessFromCentralDomains::class,
+                ])->group($web);
             }
 
             // API route
-            if (file_exists(module_path($this->name, $api = 'routes/tenant/api.php'))) {
-                Route::middleware('api')->prefix('api')->group(module_path($this->name, $api));
+            $tenant_api_routes = glob(base_path('modules/*/routes/tenant/web.php'));
+            foreach ($tenant_api_routes as $api) {
+                Route::middleware([
+                    'api',
+                    InitializeTenancyByDomainOrSubdomain::class,
+                    PreventAccessFromCentralDomains::class,
+                ])->prefix('api')->group($api);
             }
         });
     }
