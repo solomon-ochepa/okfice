@@ -12,5 +12,6 @@
     "Permission": true,
     "Payment": true,
     "Tenancy": true,
-    "Tenant": true
+    "Tenant": true,
+    "Domain": true
 }
