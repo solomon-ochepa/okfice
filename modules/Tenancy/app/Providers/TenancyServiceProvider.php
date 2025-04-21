@@ -174,7 +174,7 @@ class TenancyServiceProvider extends ServiceProvider
             }
 
             // API route
-            $tenant_api_routes = glob(base_path('modules/*/routes/tenant/web.php'));
+            $tenant_api_routes = glob(base_path('modules/*/routes/tenant/api.php'));
             foreach ($tenant_api_routes as $api) {
                 Route::middleware([
                     'api',
