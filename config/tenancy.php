@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Str;
-use Modules\Tenancy\App\Models\Domain;
-use Modules\Tenant\App\Models\Tenant;
+use Modules\Domain\App\Models\Domain;
 use Modules\Tenancy\Database\Seeders\TenantsDatabaseSeeders;
+use Modules\Tenant\App\Models\Tenant;
 
 return [
     'tenant_model' => Tenant::class,

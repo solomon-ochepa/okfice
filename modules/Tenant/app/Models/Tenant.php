@@ -6,7 +6,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\Tenancy\App\Models\Domain;
+use Modules\Domain\App\Models\Domain;
 use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\User\App\Models\User;
 use Stancl\Tenancy\Contracts\TenantWithDatabase;

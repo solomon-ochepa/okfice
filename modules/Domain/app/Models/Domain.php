@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\Tenancy\App\Models;
+namespace Modules\Domain\App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
-use Modules\Tenancy\Database\Factories\DomainFactory;
+use Modules\Domain\Database\Factories\DomainFactory;
 use Stancl\Tenancy\Database\Models\Domain as BaseDomain;
 
 class Domain extends BaseDomain

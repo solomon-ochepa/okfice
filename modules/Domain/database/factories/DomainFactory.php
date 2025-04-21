@@ -1,15 +1,16 @@
 <?php
 
-namespace Modules\Tenancy\Database\Factories;
+namespace Modules\Domain\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Domain\App\Models\Domain;
 
 class DomainFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Tenancy\app\Models\Domain::class;
+    protected $model = Domain::class;
 
     /**
      * Define the model's default state.

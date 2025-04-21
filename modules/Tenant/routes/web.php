@@ -1,12 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Tenant\App\Http\Controllers\Admin\TenantController as AdminTenantController;
 use Modules\Tenancy\App\Http\Controllers\TenancyController;
+use Modules\Tenant\App\Http\Controllers\Admin\TenantController as AdminTenantController;
+use Modules\Tenant\App\Http\Controllers\TenantController;
 use Modules\Tenant\app\Livewire\Admin\Index;
 use Modules\Tenant\app\Livewire\Admin\Show;
-
-use Modules\Tenant\App\Http\Controllers\TenantController;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('tenant', TenantController::class)->names('tenant');
