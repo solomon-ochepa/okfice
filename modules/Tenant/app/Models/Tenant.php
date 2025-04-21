@@ -3,6 +3,7 @@
 namespace Modules\Tenant\App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -73,9 +74,13 @@ class Tenant extends BaseTenant implements TenantWithDatabase
     /**
      * Get the tenant's primary domain.
      */
-    public function domain()
+    public function domain(): Attribute
     {
-        return $this->hasOne(Domain::class)->whereRaw("domain LIKE '%.%'");
+        $domain = $this->hasOne(Domain::class)->whereRaw("domain LIKE '%.%'")->first();
+
+        return Attribute::make(
+            get: fn () => $domain ?? $this->subdomain,
+        );
     }
 
     /**

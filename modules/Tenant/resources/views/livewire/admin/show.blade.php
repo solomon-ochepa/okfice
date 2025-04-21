@@ -89,7 +89,7 @@
                                         </h3>
                                         <p class="mb-0">Default admin,</p>
                                         <a class="fw-bold"
-                                            href="{{ route('admin.tenant.login_as', [$tenant, $tenant->admin]) }}"
+                                            href="{{ route('admin.tenant.impersonate', [$tenant, $tenant->admin]) }}"
                                             target="_blank">
                                             {{ __('Login as') }}
                                         </a>

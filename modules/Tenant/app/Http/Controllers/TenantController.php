@@ -4,6 +4,7 @@ namespace Modules\Tenant\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Modules\Tenant\App\Models\Tenant;
 use Modules\User\App\Models\User;
 
@@ -47,13 +48,14 @@ class TenantController extends Controller
     /**
      * Impersonate a tenant user from the central domain
      */
-    public function login_as_tenant_user(Tenant $tenant, User $user)
+    public function impersonate(Tenant $tenant, User $user)
     {
         $redirectUrl = '/dashboard';
 
         $token = tenancy()->impersonate($tenant, $user->id, $redirectUrl);
-        $url = $tenant->subdomain->url;
 
-        return redirect()->away(url("//$url/login/{$token->token}"));
+        $url = Str::of(tenant_route($tenant->domain->url, 'tenant.impersonate', $token))->replace(env('APP_PORT').':', '')->toString();
+
+        return redirect($url);
     }
 }

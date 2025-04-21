@@ -8,5 +8,5 @@ use Modules\Tenant\App\Http\Controllers\Tenant\TenantController;
 Route::get('/', [TenantController::class, 'home'])->name('home');
 Route::get('dashboard', [TenantController::class, 'dashboard'])->name('dashboard');
 
-// User impersonation
-Route::get('login/{token}', [TenantController::class, 'login_as'])->name('login_as');
+// Impersonate a tenant user from the central domain
+Route::get('/impersonate/{token}', [TenantController::class, 'impersonate'])->name('tenant.impersonate');

@@ -3,6 +3,8 @@
 namespace Modules\Tenant\App\Http\Controllers\Tenant;
 
 use App\Http\Controllers\Controller;
+use Modules\User\App\Models\User;
+use Stancl\Tenancy\Database\Models\ImpersonationToken;
 use Stancl\Tenancy\Features\UserImpersonation;
 
 class TenantController extends Controller
@@ -24,10 +26,13 @@ class TenantController extends Controller
     }
 
     /**
-     * Log in as a user on the tenant's domain
+     * Impersonate a tenant user from the central domain
      */
-    public function login_as(string $token)
+    public function impersonate(ImpersonationToken $token)
     {
+        $user = User::find($token->user_id);
+        abort_unless($user, 403, 'User not found');
+
         return UserImpersonation::makeResponse($token);
     }
 }

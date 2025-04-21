@@ -15,7 +15,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('tenants', Index::class)->name('tenant.index');
         Route::get('tenants/{tenant}', Show::class)->name('tenant.show');
 
-        // Tenant user impersonation
-        Route::get('tenants/{tenant}/login/{user}', [TenantController::class, 'login_as_tenant_user'])->name('tenant.login_as');
+        // Impersonate a tenant user from the central domain
+        Route::get('tenants/{tenant}/impersonate/{user}', [TenantController::class, 'impersonate'])->name('tenant.impersonate');
     });
 });
