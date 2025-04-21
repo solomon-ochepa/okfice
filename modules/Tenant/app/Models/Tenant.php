@@ -1,12 +1,13 @@
 <?php
 
-namespace Modules\Tenancy\App\Models;
+namespace Modules\Tenant\App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\Tenancy\Database\Factories\TenantFactory;
+use Modules\Tenancy\App\Models\Domain;
+use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\User\App\Models\User;
 use Stancl\Tenancy\Contracts\TenantWithDatabase;
 use Stancl\Tenancy\Database\Concerns\HasDatabase;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Support\Str;
 use Modules\Tenancy\App\Models\Domain;
-use Modules\Tenancy\App\Models\Tenant;
+use Modules\Tenant\App\Models\Tenant;
 use Modules\Tenancy\Database\Seeders\TenantsDatabaseSeeders;
 
 return [

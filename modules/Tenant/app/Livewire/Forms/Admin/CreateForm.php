@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Tenancy\app\Livewire\Forms\Admin\Tenant;
+namespace Modules\Tenant\app\Livewire\Forms\Admin;
 
 use Livewire\Form;
 use Modules\Tenancy\App\Http\Requests\TenantRequest;
-use Modules\Tenancy\App\Models\Tenant;
+use Modules\Tenant\App\Models\Tenant;
 use Modules\User\App\Models\User;
 
 class CreateForm extends Form

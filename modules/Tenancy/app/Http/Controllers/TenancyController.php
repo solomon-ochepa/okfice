@@ -3,7 +3,7 @@
 namespace Modules\Tenancy\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modules\Tenancy\App\Models\Tenant;
+use Modules\Tenant\App\Models\Tenant;
 use Modules\User\App\Models\User;
 use Stancl\Tenancy\Features\UserImpersonation;
 

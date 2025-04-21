@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Tenancy\Database\Seeders;
+namespace Modules\Tenant\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Modules\Permission\App\Models\Permission;

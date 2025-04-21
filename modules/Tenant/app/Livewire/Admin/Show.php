@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Tenancy\app\Livewire\Admin\Tenant;
+namespace Modules\Tenant\app\Livewire\Admin;
 
 use Livewire\Attributes\On;
 use Livewire\Component;
-use Modules\Tenancy\App\Models\Tenant;
+use Modules\Tenant\App\Models\Tenant;
 use Stancl\Tenancy\Events\TenantCreated;
 
 class Show extends Component
@@ -22,7 +22,7 @@ class Show extends Component
 
     public function render()
     {
-        return view('tenancy::livewire.admin.tenant.show');
+        return view('tenant::livewire.admin.show');
     }
 
     #[On('tenant.trash')]

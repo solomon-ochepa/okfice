@@ -21,7 +21,7 @@
                         </button>
 
                         @pushOnce('modals')
-                            <livewire:tenancy::admin.tenant.modals.create />
+                            <livewire:tenant::admin.modals.create />
                             <livewire:user::admin.modals.import />
                         @endPushOnce
                     @endcan

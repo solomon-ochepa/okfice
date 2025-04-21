@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Tenancy\Database\Seeders;
+namespace Modules\Tenant\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Modules\Tenancy\App\Models\Tenant;
+use Modules\Tenant\App\Models\Tenant;
 use Modules\User\App\Models\User;
 
 class TenantSeeder extends Seeder

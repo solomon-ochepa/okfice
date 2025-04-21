@@ -24,7 +24,7 @@
                                 <span class="d-none d-lg-inline ms-2">{{ __('Edit') }}</span>
                             </button>
                             @push('modals')
-                                <livewire:tenancy::admin.tenant.modals.create />
+                                <livewire:tenant::admin.modals.create />
                             @endpush
                         @endcan
                     @endfeature

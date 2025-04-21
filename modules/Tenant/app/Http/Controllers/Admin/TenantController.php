@@ -1,9 +1,10 @@
 <?php
 
-namespace Modules\Tenancy\App\Http\Controllers;
+namespace Modules\Tenant\App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\Tenant\App\Models\Tenant;
 
 class TenantController extends Controller
 {
@@ -12,7 +13,7 @@ class TenantController extends Controller
      */
     public function index()
     {
-        return view('tenancy::index');
+        return view('tenant::index');
     }
 
     /**
@@ -20,7 +21,7 @@ class TenantController extends Controller
      */
     public function create()
     {
-        return view('tenancy::create');
+        return view('tenant::create');
     }
 
     /**
@@ -34,9 +35,12 @@ class TenantController extends Controller
     /**
      * Show the specified resource.
      */
-    public function show($id)
+    public function show(string $slug)
     {
-        return view('tenancy::show');
+        $data = [];
+        $data['tenant'] = Tenant::whereSlug($slug)->with(['domains', 'user'])->firstOrFail();
+
+        return view('tenant::show', $data);
     }
 
     /**
@@ -44,7 +48,7 @@ class TenantController extends Controller
      */
     public function edit($id)
     {
-        return view('tenancy::edit');
+        return view('tenant::edit');
     }
 
     /**

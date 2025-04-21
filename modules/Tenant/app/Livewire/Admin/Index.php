@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\Tenancy\app\Livewire\Admin\Tenant;
+namespace Modules\Tenant\app\Livewire\Admin;
 
 use App\Features\TenantDelete;
 use Laravel\Pennant\Feature;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Modules\Tenancy\App\Models\Tenant;
+use Modules\Tenant\App\Models\Tenant;
 
 class Index extends Component
 {
@@ -27,7 +27,7 @@ class Index extends Component
             $data['trashed'] = Tenant::onlyTrashed()->paginate();
         }
 
-        return view('tenancy::livewire.admin.tenant.index', $data);
+        return view('tenant::livewire.admin.index', $data);
     }
 
     #[On('tenant.trash')]

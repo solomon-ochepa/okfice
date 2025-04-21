@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Tenancy\Database\Factories;
+namespace Modules\Tenant\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Tenancy\App\Models\Tenant;
+use Modules\Tenant\App\Models\Tenant;
 use Modules\User\App\Models\User;
 
 class TenantFactory extends Factory
