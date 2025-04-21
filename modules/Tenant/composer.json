@@ -1,0 +1,29 @@
+{
+    "name": "solomon-ochepa/tenant",
+    "description": "",
+    "authors": [
+        {
+            "name": "Solomon Ochepa",
+            "email": "solomonochepa@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Tenant\\App\\": "app/",
+            "Modules\\Tenant\\app\\Livewire\\": "app/Livewire/",
+            "Modules\\Tenant\\Database\\Factories\\": "database/factories/",
+            "Modules\\Tenant\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Tenant\\Tests\\": "tests/"
+        }
+    }
+}
