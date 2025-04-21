@@ -1,10 +1,9 @@
 <?php
 
-namespace Modules\Tenant\App\Http\Controllers\Admin;
+namespace Modules\Tenant\App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Modules\Tenant\App\Models\Tenant;
 
 class TenantController extends Controller
 {
@@ -14,11 +13,6 @@ class TenantController extends Controller
     public function index() {}
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create() {}
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request) {}
@@ -26,18 +20,7 @@ class TenantController extends Controller
     /**
      * Show the specified resource.
      */
-    public function show(string $slug)
-    {
-        $data = [];
-        $data['tenant'] = Tenant::whereSlug($slug)->with(['domains', 'user'])->firstOrFail();
-
-        return view('tenant::show', $data);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id) {}
+    public function show($id) {}
 
     /**
      * Update the specified resource in storage.

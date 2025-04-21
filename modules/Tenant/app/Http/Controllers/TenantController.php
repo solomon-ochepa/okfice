@@ -4,24 +4,20 @@ namespace Modules\Tenant\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\Tenant\App\Models\Tenant;
+use Modules\User\App\Models\User;
 
 class TenantController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        return view('tenant::index');
-    }
+    public function index() {}
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        return view('tenant::create');
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
@@ -31,18 +27,12 @@ class TenantController extends Controller
     /**
      * Show the specified resource.
      */
-    public function show($id)
-    {
-        return view('tenant::show');
-    }
+    public function show($id) {}
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
-    {
-        return view('tenant::edit');
-    }
+    public function edit($id) {}
 
     /**
      * Update the specified resource in storage.
@@ -55,18 +45,15 @@ class TenantController extends Controller
     public function destroy($id) {}
 
     /**
-     * Display the tenancy landing page.
+     * Impersonate a tenant user from the central domain
      */
-    public function home()
+    public function login_as_tenant_user(Tenant $tenant, User $user)
     {
-        return view('tenant::welcome');
-    }
+        $redirectUrl = '/dashboard';
 
-    /**
-     * Display the tenancy landing page.
-     */
-    public function dashboard()
-    {
-        return view('tenant::dashboard');
+        $token = tenancy()->impersonate($tenant, $user->id, $redirectUrl);
+        $url = $tenant->subdomain->url;
+
+        return redirect()->away(url("//$url/login/{$token->token}"));
     }
 }

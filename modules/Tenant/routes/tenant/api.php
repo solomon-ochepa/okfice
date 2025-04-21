@@ -2,13 +2,9 @@
 
 declare(strict_types=1);
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Modules\Tenant\App\Http\Controllers\Tenant\Api\TenantController;
 
 Route::prefix('v1')->group(function () {
-    Route::get('/', function (Request $request) {
-        return response()->json([
-            'status' => 'success',
-        ]);
-    })->name('api.index');
+    Route::get('/', [TenantController::class, 'index'])->name('api.index');
 });
