@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Tenancy\app\Livewire\Admin\Client\Modals;
+namespace Modules\Tenancy\app\Livewire\Admin\Tenant\Modals;
 
 use Illuminate\Support\Str;
 use Livewire\Attributes\On;
 use Livewire\Component;
-use Modules\Tenancy\app\Livewire\Forms\Admin\Client\CreateForm;
-use Modules\Tenancy\App\Models\Client;
+use Modules\Tenancy\app\Livewire\Forms\Admin\Tenant\CreateForm;
+use Modules\Tenancy\App\Models\Tenant;
 use Modules\User\App\Models\User;
 
 class Create extends Component
@@ -22,7 +22,7 @@ class Create extends Component
     public function mount()
     {
         $this->admins = User::all();
-        $this->form->client = new Client;
+        $this->form->tenant = new Tenant;
     }
 
     public function render()
@@ -30,14 +30,14 @@ class Create extends Component
         $data = [];
         $data['domain'] = config('tenancy.central_domains')[0];
 
-        return view('tenancy::livewire.admin.client.modals.create', $data);
+        return view('tenancy::livewire.admin.tenant.modals.create', $data);
     }
 
     public function close()
     {
         $this->form->reset();
         $this->resetErrorBag();
-        $this->dispatch('close-modal', 'add-client');
+        $this->dispatch('close-modal', 'add-tenant');
         $this->dispatch('refresh');
     }
 
@@ -47,22 +47,22 @@ class Create extends Component
     }
 
     /**
-     * Edit an existing client.
+     * Edit an existing tenant.
      */
-    #[On('client.edit')]
-    public function edit(Client $client)
+    #[On('tenant.edit')]
+    public function edit(Tenant $tenant)
     {
         $this->form->editing = true;
-        $this->form->client = $client;
+        $this->form->tenant = $tenant;
 
         $this->form->fill([
-            'user' => $client->admin->id,
-            'name' => $client->name,
-            'subdomain' => $client->subdomain?->domain,
-            'domain' => $client->domain?->domain,
+            'user' => $tenant->admin->id,
+            'name' => $tenant->name,
+            'subdomain' => $tenant->subdomain?->domain,
+            'domain' => $tenant->domain?->domain,
         ]);
 
-        $this->dispatch('open-modal', 'add-client');
+        $this->dispatch('open-modal', 'add-tenant');
     }
 
     public function store()

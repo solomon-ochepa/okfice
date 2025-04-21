@@ -4,7 +4,7 @@ namespace Modules\Tenancy\App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClientRequest extends FormRequest
+class TenantRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.

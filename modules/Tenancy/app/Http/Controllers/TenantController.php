@@ -5,7 +5,7 @@ namespace Modules\Tenancy\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class TenantController extends Controller
 {
     /**
      * Display a listing of the resource.

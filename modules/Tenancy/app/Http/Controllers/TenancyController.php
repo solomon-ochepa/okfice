@@ -3,7 +3,7 @@
 namespace Modules\Tenancy\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modules\Tenancy\App\Models\Client;
+use Modules\Tenancy\App\Models\Tenant;
 use Modules\User\App\Models\User;
 use Stancl\Tenancy\Features\UserImpersonation;
 
@@ -26,20 +26,20 @@ class TenancyController extends Controller
     }
 
     /**
-     * Impersonate a client user from the central domain
+     * Impersonate a tenant user from the central domain
      */
-    public function login_as_client_user(Client $client, User $user)
+    public function login_as_tenant_user(Tenant $tenant, User $user)
     {
         $redirectUrl = '/dashboard';
 
-        $token = tenancy()->impersonate($client, $user->id, $redirectUrl);
-        $url = $client->subdomain->url;
+        $token = tenancy()->impersonate($tenant, $user->id, $redirectUrl);
+        $url = $tenant->subdomain->url;
 
         return redirect()->away(url("//$url/login/{$token->token}"));
     }
 
     /**
-     * Log in as a user on the client's domain
+     * Log in as a user on the tenant's domain
      */
     public function login_as(string $token)
     {

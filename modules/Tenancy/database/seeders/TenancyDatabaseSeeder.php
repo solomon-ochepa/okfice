@@ -13,7 +13,7 @@ class TenancyDatabaseSeeder extends Seeder
     {
         $this->call([
             PermissionsSeeder::class,
-            ClientSeeder::class,
+            TenantSeeder::class,
             DomainSeeder::class,
         ]);
     }

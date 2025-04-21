@@ -1,18 +1,18 @@
 <?php
 
-namespace Modules\Tenancy\app\Livewire\Forms\Admin\Client;
+namespace Modules\Tenancy\app\Livewire\Forms\Admin\Tenant;
 
 use Livewire\Form;
-use Modules\Tenancy\App\Http\Requests\ClientRequest;
-use Modules\Tenancy\App\Models\Client;
+use Modules\Tenancy\App\Http\Requests\TenantRequest;
+use Modules\Tenancy\App\Models\Tenant;
 use Modules\User\App\Models\User;
 
 class CreateForm extends Form
 {
     /**
-     * A client object.
+     * A tenant object.
      */
-    public ?Client $client;
+    public ?Tenant $tenant;
 
     /**
      * Indicate if the form is being edited.
@@ -20,55 +20,55 @@ class CreateForm extends Form
     public bool $editing = false;
 
     /**
-     * The primary admin for the client.
+     * The primary admin for the tenant.
      */
     public ?string $admin;
 
     /**
-     * The client name.
+     * The tenant name.
      */
     public ?string $name = '';
 
     /**
-     * The client default subdomain.
+     * The tenant default subdomain.
      */
     public ?string $subdomain = '';
 
     /**
-     * The client domain.
+     * The tenant domain.
      */
     public ?string $domain = '';
 
     public function rules()
     {
-        return (new ClientRequest($this->client->toArray()))->rules();
+        return (new TenantRequest($this->tenant->toArray()))->rules();
     }
 
     /**
-     * Save a new client.
+     * Save a new tenant.
      */
     public function save()
     {
         $this->validate();
 
         // ###############################
-        // Client
+        // Tenant
         // ###############################
-        // Check for unique client.
-        $exists = Client::where([
+        // Check for unique tenant.
+        $exists = Tenant::where([
             'name' => $this->name,
             'user_id' => $this->admin,
         ])->exists();
 
         if ($exists) {
             // Add an error message to the form name field.
-            $this->addError('name', 'Client already exists.');
+            $this->addError('name', 'Tenant already exists.');
 
             return;
         }
 
-        // Create a new client.
-        $client = Client::create([
+        // Create a new tenant.
+        $tenant = Tenant::create([
             'name' => $this->name,
             'user_id' => $this->admin,
         ]);
@@ -77,48 +77,48 @@ class CreateForm extends Form
         // Domain
         // ###############################
         // Create a new subdomain.
-        $client->domains()->create([
+        $tenant->domains()->create([
             'domain' => $this->subdomain,
         ]);
 
         // Create a new domain.
         if ($this->domain) {
-            $client->domains()->create([
+            $tenant->domains()->create([
                 'domain' => $this->domain,
             ]);
         }
 
         $admin = User::find($this->admin);
 
-        // Create client's default admin.
-        $client->run(function () use ($admin) {
+        // Create tenant's default admin.
+        $tenant->run(function () use ($admin) {
             $admin = $admin->replicate()->save();
         });
     }
 
     /**
-     * Update a client record.
+     * Update a tenant record.
      */
     public function update()
     {
         $this->validate();
 
-        // Update client's information.
-        $this->client->update([
+        // Update tenant's information.
+        $this->tenant->update([
             'name' => $this->name,
             'user_id' => $this->admin,
         ]);
 
-        // Update client's subdomain.
-        if ($this->client->subdomain->domain !== $this->subdomain) {
-            $this->client->subdomain->domain = $this->subdomain;
-            $this->client->subdomain->save();
+        // Update tenant's subdomain.
+        if ($this->tenant->subdomain->domain !== $this->subdomain) {
+            $this->tenant->subdomain->domain = $this->subdomain;
+            $this->tenant->subdomain->save();
         }
 
-        // Update client's primary domain.
-        if ($this->client->domain and $this->client->domain->domain !== $this->domain) {
-            $this->client->domain->domain = $this->domain;
-            $this->client->domain->save();
+        // Update tenant's primary domain.
+        if ($this->tenant->domain and $this->tenant->domain->domain !== $this->domain) {
+            $this->tenant->domain->domain = $this->domain;
+            $this->tenant->domain->save();
         }
     }
 }

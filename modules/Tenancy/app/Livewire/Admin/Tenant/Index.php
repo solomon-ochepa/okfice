@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\Tenancy\app\Livewire\Admin\Client;
+namespace Modules\Tenancy\app\Livewire\Admin\Tenant;
 
-use App\Features\ClientDelete;
+use App\Features\TenantDelete;
 use Laravel\Pennant\Feature;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Modules\Tenancy\App\Models\Client;
+use Modules\Tenancy\App\Models\Tenant;
 
 class Index extends Component
 {
@@ -22,18 +22,18 @@ class Index extends Component
     public function render()
     {
         $data = [];
-        $data['clients'] = Client::paginate();
-        if (Feature::active(ClientDelete::class)) {
-            $data['trashed'] = Client::onlyTrashed()->paginate();
+        $data['tenants'] = Tenant::paginate();
+        if (Feature::active(TenantDelete::class)) {
+            $data['trashed'] = Tenant::onlyTrashed()->paginate();
         }
 
-        return view('tenancy::livewire.admin.client.index', $data);
+        return view('tenancy::livewire.admin.tenant.index', $data);
     }
 
-    #[On('client.trash')]
+    #[On('tenant.trash')]
     public function trash(string $id)
     {
-        Client::find($id)->delete();
+        Tenant::find($id)->delete();
 
         $this->dispatch('close-modal');
 
@@ -42,10 +42,10 @@ class Index extends Component
         $this->redirect(request(null)->header('referer'));
     }
 
-    #[On('client.restore')]
+    #[On('tenant.restore')]
     public function restore(string $id)
     {
-        Client::onlyTrashed()->find($id)->restore();
+        Tenant::onlyTrashed()->find($id)->restore();
 
         $this->dispatch('close-modal');
 
@@ -54,10 +54,10 @@ class Index extends Component
         $this->redirect(request(null)->header('referer'));
     }
 
-    #[On('client.delete')]
+    #[On('tenant.delete')]
     public function delete(string $id)
     {
-        Client::onlyTrashed()->find($id)->forceDelete();
+        Tenant::onlyTrashed()->find($id)->forceDelete();
 
         $this->dispatch('close-modal');
 

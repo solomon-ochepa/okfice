@@ -2,17 +2,17 @@
 
 namespace App\Features;
 
-class ClientLogin extends Feature
+class TenantLogin extends Feature
 {
     /**
      * The feature's slug.
      */
-    public string $name = 'client.login';
+    public string $name = 'tenant.login';
 
     /**
      * The feature's display title.
      */
-    public string $title = 'Client Login';
+    public string $title = 'Tenant Login';
 
     /**
      * The feature's description.

@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Str;
-use Modules\Tenancy\App\Models\Client;
 use Modules\Tenancy\App\Models\Domain;
+use Modules\Tenancy\App\Models\Tenant;
 use Modules\Tenancy\Database\Seeders\TenantsDatabaseSeeders;
 
 return [
-    'tenant_model' => Client::class,
+    'tenant_model' => Tenant::class,
     // 'id_generator' => Stancl\Tenancy\UUIDGenerator::class,
 
     'domain_model' => Domain::class,

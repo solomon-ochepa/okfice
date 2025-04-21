@@ -19,9 +19,9 @@
     <div id="appCapsule">
         <div class="listview-title mt-2">Links</div>
         <ul class="listview image-listview inset">
-            @can('admin.client.index')
+            @can('admin.tenant.index')
                 <li>
-                    <x-a class="item" route="admin.client.index">
+                    <x-a class="item" route="admin.tenant.index">
                         <i aria-hidden="true" class="fas fa-network-wired image"></i>
                         <div class="in">
                             <div>{{ __('Clients') }}</div>

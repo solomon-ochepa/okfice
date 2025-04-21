@@ -3,15 +3,15 @@
 namespace Modules\Tenancy\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Tenancy\App\Models\Client;
+use Modules\Tenancy\App\Models\Tenant;
 use Modules\User\App\Models\User;
 
-class ClientFactory extends Factory
+class TenantFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = Client::class;
+    protected $model = Tenant::class;
 
     /**
      * Define the model's default state.

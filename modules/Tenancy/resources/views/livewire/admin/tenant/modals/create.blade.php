@@ -1,9 +1,9 @@
-<div aria-hidden="true" aria-labelledby="add_client_label" class="modal fade action-sheet" data-bs-backdrop="static"
-    id="add-client" role="dialog" tabindex="-1" wire:ignore.self>
+<div aria-hidden="true" aria-labelledby="add_tenant_label" class="modal fade action-sheet" data-bs-backdrop="static"
+    id="add-tenant" role="dialog" tabindex="-1" wire:ignore.self>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="add_client_label">
+                <h5 class="modal-title" id="add_tenant_label">
                     <i aria-hidden="true" class="fa fa-desktop"></i>
                     {{ __($form->editing ? 'Edit Client' : 'Create Client') }}
                 </h5>
@@ -53,7 +53,8 @@
                                         placeholder="{{ __('Subdomain') }}" required type="text"
                                         wire:model="form.subdomain" />
 
-                                    <label class="label" class="input-group-text">.{{ $domain ?? 'localhost' }}</label>
+                                    <label class="label"
+                                        class="input-group-text">.{{ $domain ?? 'localhost' }}</label>
                                 </div>
                                 @error('form.subdomain')
                                     <div class="form-text">{{ $message }}</div>

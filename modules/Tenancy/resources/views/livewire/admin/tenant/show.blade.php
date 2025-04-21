@@ -1,7 +1,7 @@
 <div id="appCapsule">
-    {{-- @slot('title', 'Clients') --}}
-    <x-themes.app.header back='admin.client.index' class="bg-primary text-light">
-        @slot('title', $client->name)
+    {{-- @slot('title', 'Tenants') --}}
+    <x-themes.app.header back='admin.tenant.index' class="bg-primary text-light">
+        @slot('title', $tenant->name)
     </x-themes.app.header>
 
     <div class="section -full mt-4">
@@ -9,41 +9,41 @@
         <div class="section-heading -padding">
             <h2 class="title">
                 <i class="fas fa-network-wired me-1"></i>
-                {{ __($title ?? $client->name) }}
+                {{ __($title ?? $tenant->name) }}
             </h2>
 
-            @feature(\App\Features\ClientCreate::class)
+            @feature(\App\Features\TenantCreate::class)
                 <div>
                     {{-- Edit --}}
-                    @feature(\App\Features\ClientUpdate::class)
-                        @can('admin.clients.edit')
+                    @feature(\App\Features\TenantUpdate::class)
+                        @can('admin.tenants.edit')
                             <button aria-label="{{ __('Edit') }}" class="btn btn-primary me-2"
-                                data-bs-original-title="{{ __('Edit') }}" data-bs-target="#edit-client" data-bs-toggle="tooltip"
-                                type="button" wire:click="$dispatch('client.edit', {'client': @js($client->slug)})">
+                                data-bs-original-title="{{ __('Edit') }}" data-bs-target="#edit-tenant" data-bs-toggle="tooltip"
+                                type="button" wire:click="$dispatch('tenant.edit', {'tenant': @js($tenant->slug)})">
                                 <span class="fa-solid fa-edit"></span>
                                 <span class="d-none d-lg-inline ms-2">{{ __('Edit') }}</span>
                             </button>
                             @push('modals')
-                                <livewire:tenancy::admin.client.modals.create />
+                                <livewire:tenancy::admin.tenant.modals.create />
                             @endpush
                         @endcan
                     @endfeature
 
                     {{-- Delete --}}
-                    @feature(\App\Features\ClientDelete::class)
-                        @canAny(['admin.client.delete', 'admin.client.delete.trash'])
+                    @feature(\App\Features\TenantDelete::class)
+                        @canAny(['admin.tenant.delete', 'admin.tenant.delete.trash'])
                             <button aria-label="{{ __('Trash') }}" class="btn btn-danger"
                                 data-bs-original-title="{{ __('Trash') }}" data-bs-toggle="tooltip" type="button"
                                 wire:click="$dispatch('confirm', {
                                         data: {
-                                            id: @js($client->id),
+                                            id: @js($tenant->id),
                                             icon: '<i aria-hidden=\'true\' class=\'fa-solid fa-trash text-danger\'></i>',
-                                            title: '{{ $client->name }}',
+                                            title: '{{ $tenant->name }}',
                                             description: 'Are you sure you want to Trash this record?',
                                             detail: '',
                                             button_label: 'Trash',
                                             color: 'danger',
-                                            action: 'client.trash',
+                                            action: 'tenant.trash',
                                         }
                                     })">
                                 <span class="fa-solid fa-trash"></span>
@@ -64,7 +64,7 @@
                     <div class="lead-details-offcanvas bg-soft scrollbar phoenix-offcanvas phoenix-offcanvas-fixed"
                         id="productFilterColumn">
                         <div class="d-flex justify-content-between align-items-center d-md-none mb-2">
-                            <h3 class="mb-0">{{ $client->name }}</h3>
+                            <h3 class="mb-0">{{ $tenant->name }}</h3>
                             <button class="btn p-0" data-phoenix-dismiss="offcanvas">
                                 <span class="uil uil-times fs-1"></span>
                             </button>
@@ -85,12 +85,14 @@
                                     <div class="col-12 col-sm-auto flex-1">
                                         <!-- Names -->
                                         <h3 class="fw-bolder mb-2">
-                                            {{ $client->admin->name }}
+                                            {{ $tenant->admin->name }}
                                         </h3>
                                         <p class="mb-0">Default admin,</p>
                                         <a class="fw-bold"
-                                            href="{{ route('admin.client.login_as', [$client, $client->admin]) }}">Login
-                                            as</a>
+                                            href="{{ route('admin.tenant.login_as', [$tenant, $tenant->admin]) }}"
+                                            target="_blank">
+                                            {{ __('Login as') }}
+                                        </a>
 
                                         <hr />
 
@@ -99,12 +101,12 @@
                                             class="list-group -white-space-nowrap list-group-flush fs--1 text-start align-middle">
                                             <li class="list-group-item">
                                                 Registered: <i
-                                                    class="text-muted">{{ $client->created_at->calendar() }}</i>
+                                                    class="text-muted">{{ $tenant->created_at->calendar() }}</i>
                                             </li>
                                             <li class="list-group-item">
                                                 Database:
-                                                @if ($client->database_exists())
-                                                    <i class="text-muted">{{ $client->database()->getName() }}</i>
+                                                @if ($tenant->database_exists())
+                                                    <i class="text-muted">{{ $tenant->database()->getName() }}</i>
                                                 @else
                                                     <button class="btn btn-sm btn-outline-primary"
                                                         data-bs-toggle="tooltip" title="Create"
