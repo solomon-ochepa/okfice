@@ -53,4 +53,20 @@ class TenantController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy($id) {}
+
+    /**
+     * Display the tenancy landing page.
+     */
+    public function home()
+    {
+        return view('tenant::welcome');
+    }
+
+    /**
+     * Display the tenancy landing page.
+     */
+    public function dashboard()
+    {
+        return view('tenant::dashboard');
+    }
 }

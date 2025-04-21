@@ -10,22 +10,6 @@ use Stancl\Tenancy\Features\UserImpersonation;
 class TenancyController extends Controller
 {
     /**
-     * Display the tenancy landing page.
-     */
-    public function home()
-    {
-        return view('tenancy::welcome');
-    }
-
-    /**
-     * Display the tenancy landing page.
-     */
-    public function dashboard()
-    {
-        return view('tenancy::dashboard');
-    }
-
-    /**
      * Impersonate a tenant user from the central domain
      */
     public function login_as_tenant_user(Tenant $tenant, User $user)
