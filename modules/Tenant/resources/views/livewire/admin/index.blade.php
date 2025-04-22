@@ -95,7 +95,7 @@
                                                 href="{{ Route::has('admin.tenant.show') ? route('admin.tenant.show', $tenant->slug) : 'javascript://' }} ">
                                                 <p class="text-1100 fw-bold mb-0">
                                                     <i class="fas fa-desktop me-1"></i>
-                                                    {{ $tenant->name }}
+                                                    {{ $tenant->name }} <x-link-icon />
                                                 </p>
                                             </a>
                                         </td>
@@ -107,7 +107,7 @@
                                                     <i aria-hidden="true" class="fa fa-globe me-1"></i>
                                                     <a class="text-bg-light" href="//{{ $domain->url }}"
                                                         target="_blank">
-                                                        {{ $domain->url }}
+                                                        {{ $domain->url }} <x-link-icon />
                                                     </a>
                                                 </span>
                                             @empty
