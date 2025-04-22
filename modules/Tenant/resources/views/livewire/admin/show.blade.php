@@ -1,7 +1,7 @@
 <div id="appCapsule">
     {{-- @slot('title', 'Tenants') --}}
     <x-themes.app.header back='admin.tenant.index' class="bg-primary text-light">
-        @slot('title', $tenant->name)
+        @slot('title', config('app.name'))
     </x-themes.app.header>
 
     <div class="section -full mt-4">
@@ -59,7 +59,7 @@
 
         <div class="row g-0 g-md-4 g-xl-6">
             <!-- Left col -->
-            <div class="col-md-5 col-lg-5 col-xl-4">
+            <div class="col-md-4 col-lg-4 col-xl-3">
                 <div class="sticky-leads-sidebar">
                     <div class="lead-details-offcanvas bg-soft scrollbar phoenix-offcanvas phoenix-offcanvas-fixed"
                         id="productFilterColumn">
@@ -73,11 +73,11 @@
                         {{-- User card --}}
                         <div class="card mb-3">
                             <div class="card-body">
-                                <div class="row align-items-center g-3 text-xxl-start text-center">
+                                <div class="row align-items-center g-3 text-center">
                                     <!-- Image -->
                                     <div class="col-12 col-xxl-auto">
                                         <div class="avatar avatar-5xl">
-                                            <img alt="" class="rounded-circle"
+                                            <img alt="" class="rounded-circle w-100"
                                                 src="{{ isset($image) ? $image : asset('unknown.webp') }}" />
                                         </div>
                                     </div>
@@ -87,7 +87,7 @@
                                         <h3 class="fw-bolder mb-2">
                                             {{ $tenant->admin->name }}
                                         </h3>
-                                        <p class="mb-0">Default admin,</p>
+                                        <p class="mb-0">Admin,</p>
                                         <a class="fw-bold"
                                             href="{{ route('admin.tenant.impersonate', [$tenant, $tenant->admin]) }}"
                                             target="_blank">
@@ -129,14 +129,20 @@
             </div>
 
             <!-- Right col -->
-            <div class="col-md-7 col-lg-7 col-xl-8">
+            <div class="col-md-8 col-lg-8 col-xl-9">
                 <div class="lead-details-container">
                     <ul class="nav nav-underline deal-details scrollbar w-100 mb-6 flex-nowrap pb-1" id="myTab"
                         role="tablist" style="overflow-y: hidden;">
                         <li class="nav-item me-2 text-nowrap" role="presentation">
-                            <a aria-controls="tab-invoices" aria-selected="false" class="nav-link active"
-                                data-bs-toggle="tab" href="#tab-invoices" id="invoices-tab" role="tab"
-                                tabindex="-1">
+                            <a aria-controls="tab-domains" class="nav-link" data-bs-toggle="tab" href="#tab-domains"
+                                id="domains-tab" role="tab" tabindex="-1">
+                                <i class="fas fa-globe tab-icon-color me-1"></i>
+                                {{ __('Domains') }}
+                            </a>
+                        </li>
+                        <li class="nav-item me-2 text-nowrap" role="presentation">
+                            <a aria-controls="tab-invoices" aria-selected="false" class="nav-link" data-bs-toggle="tab"
+                                href="#tab-invoices" id="invoices-tab" role="tab" tabindex="-1">
                                 <i class="fas fa-file-invoice-dollar tab-icon-color me-1"></i>
                                 {{ __('Invoices') }}
                             </a>
@@ -145,13 +151,23 @@
 
                     <div class="tab-content" id="myTabContent">
                         {{-- Invoices --}}
-                        <div aria-labelledby="invoices-tab" class="tab-pane fade active show" id="tab-invoices"
-                            role="tabpanel">
-                            ...
+                        <div aria-labelledby="invoices-tab" class="tab-pane fade" id="tab-invoices" role="tabpanel">
+                            ... {{ __('Invoices') }}
                         </div>
 
-                        {{-- Notes --}}
-                        {{-- <div aria-labelledby="notes-tab" class="tab-pane fade" id="tab-notes" role="tabpanel"></div> --}}
+                        {{-- Domains --}}
+                        <div aria-labelledby="domains-tab" class="tab-pane fade active show" id="tab-domains"
+                            role="tabpanel">
+                            <ul class="list-group white-space-nowrap list-group-flush fs--1 text-start align-middle">
+                                @foreach ($tenant->domains as $domain)
+                                    <li class="list-group-item">
+                                        <a class="text-body" href="//{{ $domain->url }}" target="_blank">
+                                            {{ $domain->url }} <x-link-icon class="text-muted" />
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
