@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Nwidart\Modules\Facades\Module;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -61,7 +62,6 @@ class TenancyServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->register(EventServiceProvider::class);
-        $this->app->register(RouteServiceProvider::class);
     }
 
     /**
@@ -163,26 +163,61 @@ class TenancyServiceProvider extends ServiceProvider
     protected function mapRoutes()
     {
         $this->app->booted(function () {
-            // Web route
-            $tenant_web_routes = glob(base_path('modules/*/routes/tenant/web.php'));
-            foreach ($tenant_web_routes as $web) {
-                Route::middleware([
-                    'web',
-                    InitializeTenancyByDomainOrSubdomain::class,
-                    PreventAccessFromCentralDomains::class,
-                ])->group($web);
-            }
-
-            // API route
-            $tenant_api_routes = glob(base_path('modules/*/routes/tenant/api.php'));
-            foreach ($tenant_api_routes as $api) {
-                Route::middleware([
-                    'api',
-                    InitializeTenancyByDomainOrSubdomain::class,
-                    PreventAccessFromCentralDomains::class,
-                ])->prefix('api')->group($api);
-            }
+            $this->central_domains();
+            $this->tenant_domains();
         });
+    }
+
+    /**
+     * Define the tenant domains' routes for the application.
+     *
+     * @source Tenancy
+     */
+    protected function tenant_domains(): void
+    {
+        $tenant_web_routes = glob(base_path('modules/*/routes/tenant/web.php'));
+        foreach ($tenant_web_routes as $web) {
+            Route::middleware(['web', InitializeTenancyByDomainOrSubdomain::class, PreventAccessFromCentralDomains::class])
+                ->group($web);
+        }
+
+        $tenant_api_routes = glob(base_path('modules/*/routes/tenant/api.php'));
+        foreach ($tenant_api_routes as $api) {
+            Route::middleware(['api', InitializeTenancyByDomainOrSubdomain::class, PreventAccessFromCentralDomains::class])
+                ->prefix('api')
+                ->group($api);
+        }
+    }
+
+    /**
+     * Define the central domains' routes for the application.
+     *
+     * @source Tenancy
+     */
+    protected function central_domains(): void
+    {
+        $domains = config('tenancy.central_domains') ?? [];
+        foreach ($domains ?? [] as $domain) {
+            // Web
+            Route::middleware('web')->domain($domain)->group(function () {
+                Route::group([], base_path('routes/web.php'));
+
+                // Modules
+                collect(Module::all())->each(function ($module) {
+                    Route::group([], module_path($module->getName(), '/routes/web.php'));
+                });
+            });
+
+            // API
+            Route::middleware('api')->domain($domain)->prefix('api')->name('api.')->group(function () {
+                Route::group([], base_path('routes/web.php'));
+
+                // Modules
+                collect(Module::all())->each(function ($module) {
+                    Route::group([], module_path($module->getName(), '/routes/web.php'));
+                });
+            });
+        }
     }
 
     /**
