@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Tenancy\App\Providers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
@@ -198,7 +199,9 @@ class TenancyServiceProvider extends ServiceProvider
      */
     protected function central_domains(): void
     {
-        $domains = config('tenancy.central_domains') ?? [];
+        $config = config('tenancy.central_domains');
+        $domains = settings(['multiple.central_domains' => false]) ? $config : (array) Arr::first($config) ?? [];
+
         foreach ($domains ?? [] as $domain) {
             // Web
             Route::middleware('web')->domain($domain)->group(function () {

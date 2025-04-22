@@ -19,7 +19,7 @@ return [
      * Only relevant if you're using the domain or subdomain identification middleware.
      */
     'central_domains' => [
-        Str::of(config('app.url'))->after('://')->before(':')->toString(),
+        Str::of(config('app.url'))->after('://')->before('/')->toString(),
     ],
 
     /**
