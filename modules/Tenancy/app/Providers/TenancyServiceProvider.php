@@ -204,17 +204,23 @@ class TenancyServiceProvider extends ServiceProvider
 
                 // Modules
                 collect(Module::all())->each(function ($module) {
-                    Route::group([], module_path($module->getName(), '/routes/web.php'));
+                    if (file_exists($file = module_path($module->getName(), 'routes/web.php'))) {
+                        Route::group([], $file);
+                    }
                 });
             });
 
             // API
             Route::middleware('api')->domain($domain)->prefix('api')->name('api.')->group(function () {
-                Route::group([], base_path('routes/web.php'));
+                if (file_exists($file = base_path('routes/api.php'))) {
+                    Route::group([], $file);
+                }
 
                 // Modules
                 collect(Module::all())->each(function ($module) {
-                    Route::group([], module_path($module->getName(), '/routes/web.php'));
+                    if (file_exists($file = module_path($module->getName(), 'routes/api.php'))) {
+                        Route::group([], $file);
+                    }
                 });
             });
         }
