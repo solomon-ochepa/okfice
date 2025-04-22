@@ -1,7 +1,7 @@
 <div>
     <x-auth::page.header :description="__('Access the full app as a user')" :title="__('Log in')" />
     <x-themes.app.header back='home' class="no-border transparent position-absolute">
-        @slot('title', '')
+        @slot('title', config('app.name'))
         @slot('right')
             <div>
                 @if (Route::has('register'))
