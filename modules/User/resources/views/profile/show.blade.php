@@ -1,6 +1,6 @@
 <x-app-layout>
     @slot('title', 'Settings')
-    <x-themes.app.header class="bg-primary text-light">
+    <x-layouts.app.sections.header class="bg-primary text-light">
         @slot('title', 'Settings')
         @slot('back', '')
         @slot('right')
@@ -13,7 +13,7 @@
                 {{-- <span class="badge badge-danger">0</span> --}}
             </a>
         @endslot
-    </x-themes.app.header>
+    </x-layouts.app.sections.header>
 
     <div id="appCapsule">
         @php $user = auth()->user(); @endphp

@@ -1,6 +1,6 @@
 <div id="appCapsule">
     {{-- @slot('title', 'Payment Methods') --}}
-    <x-themes.app.header class="bg-primary text-light">
+    <x-layouts.app.sections.header class="bg-primary text-light">
         @slot('title', 'Payment Methods')
         @slot('back', '')
         @slot('right')
@@ -14,7 +14,7 @@
                 <span class="badge badge-danger">0</span>
             </a>
         @endslot
-    </x-themes.app.header>
+    </x-layouts.app.sections.header>
 
     <x-alert />
 

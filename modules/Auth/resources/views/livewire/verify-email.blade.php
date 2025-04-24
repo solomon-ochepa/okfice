@@ -1,9 +1,9 @@
 <div>
-    <x-themes.app.header back='' class="bg-primary text-light">
+    <x-layouts.app.sections.header back='' class="bg-primary text-light">
         @slot('title', config('app.name'))
         @slot('right')
         @endslot
-    </x-themes.app.header>
+    </x-layouts.app.sections.header>
 
     <div class="section mt-2 text-center">
         <h1>Email Verification</h1>

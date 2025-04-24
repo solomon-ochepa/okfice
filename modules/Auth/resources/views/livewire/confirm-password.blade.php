@@ -1,10 +1,10 @@
 <div>
     <x-auth::page.header :description="__('This is a secure area of the application. Please confirm your password before continuing.')" :title="__('Confirm password')" />
-    <x-themes.app.header back='dashboard' class="no-border transparent position-absolute">
+    <x-layouts.app.sections.header back='dashboard' class="no-border transparent position-absolute">
         @slot('title', '')
         @slot('right')
         @endslot
-    </x-themes.app.header>
+    </x-layouts.app.sections.header>
 
     <div class="section mb-5 p-2">
         <form wire:submit="confirmPassword">

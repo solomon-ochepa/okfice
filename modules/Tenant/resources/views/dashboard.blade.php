@@ -1,6 +1,6 @@
 <x-tenancy::layouts.app>
     @slot('title', 'Dashboard')
-    <x-themes.app.header class="bg-primary text-light">
+    <x-layouts.app.sections.header class="bg-primary text-light">
         @slot('title', config('app.name'))
         @slot('right')
             <a class="headerButton" href="#">
@@ -12,7 +12,7 @@
                 {{-- <span class="badge badge-danger">0</span> --}}
             </a>
         @endslot
-    </x-themes.app.header>
+    </x-layouts.app.sections.header>
 
     <div id="appCapsule">
         <!-- Wallet Card -->

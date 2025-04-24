@@ -11,11 +11,11 @@
         {{ $slot }}
 
         @auth
-            <x-themes.app.bottom-menu />
-            <x-themes.app.sidebar />
+            <x-layouts.app.sections.bottom-menu />
+            <x-layouts.app.sections.sidebar />
         @endauth
-        <x-themes.app.add-to-home-screen />
-        <x-themes.app.cookies />
+        <x-layouts.partials.add-to-home-screen />
+        <x-layouts.app.sections.cookies />
 
         @include('components.layouts.app.partials.foot')
     </body>

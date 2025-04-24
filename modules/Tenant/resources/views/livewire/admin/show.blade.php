@@ -1,8 +1,8 @@
 <div id="appCapsule">
     {{-- @slot('title', 'Tenants') --}}
-    <x-themes.app.header back='admin.tenant.index' class="bg-primary text-light">
+    <x-layouts.app.sections.header back='admin.tenant.index' class="bg-primary text-light">
         @slot('title', config('app.name'))
-    </x-themes.app.header>
+    </x-layouts.app.sections.header>
 
     <div class="section -full mt-4">
         {{-- Header --}}

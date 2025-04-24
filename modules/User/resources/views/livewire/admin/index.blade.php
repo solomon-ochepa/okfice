@@ -1,6 +1,6 @@
 <div id="appCapsule">
     {{-- @slot('title', 'Dashboard') --}}
-    <x-themes.app.header back='admin.dashboard' class="bg-primary text-light">
+    <x-layouts.app.sections.header back='admin.dashboard' class="bg-primary text-light">
         @slot('title', __('Users Management'))
         @slot('right')
             <a class="headerButton" href="#">
@@ -13,7 +13,7 @@
                 <span class="badge badge-danger">0</span>
             </a>
         @endslot
-    </x-themes.app.header>
+    </x-layouts.app.sections.header>
 
     <div class="section -full mt-4">
         <div class="section-heading -padding">
