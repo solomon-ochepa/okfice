@@ -6,7 +6,7 @@
     </head>
 
     <body>
-        <x-themes.app.loader />
+        <x-layouts.partials.loader />
 
         {{ $slot }}
 
