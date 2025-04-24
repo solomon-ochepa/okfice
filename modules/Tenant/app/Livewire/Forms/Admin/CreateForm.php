@@ -3,7 +3,8 @@
 namespace Modules\Tenant\app\Livewire\Forms\Admin;
 
 use Livewire\Form;
-use Modules\Tenancy\App\Http\Requests\TenantRequest;
+use Modules\Role\App\Models\Role;
+use Modules\Tenant\App\Http\Requests\TenantRequest;
 use Modules\Tenant\App\Models\Tenant;
 use Modules\User\App\Models\User;
 
@@ -92,7 +93,11 @@ class CreateForm extends Form
 
         // Create tenant's default admin.
         $tenant->run(function () use ($admin) {
-            $admin = $admin->replicate()->save();
+            $user = $admin->replicate();
+            $user->id = $admin->id;
+            $user->save();
+
+            $user->assignRole(Role::findOrCreate('admin'));
         });
     }
 
