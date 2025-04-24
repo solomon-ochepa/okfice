@@ -78,6 +78,6 @@ RUN php artisan key:generate && \
 # Path Permissions
 ################################
 RUN if [ "$APP_ENV" = "local" ]; then \
-        groupadd --force -g $WWWGROUP sail; \
-        useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail; \
+        groupadd --force -g ${WWWGROUP:-1000} sail && \
+        useradd -ms /bin/bash --no-user-group -g ${WWWGROUP:-1000} -u 1337 sail; \
     fi

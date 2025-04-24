@@ -1,0 +1,29 @@
+{
+    "name": "solomon-ochepa/domain",
+    "description": "",
+    "authors": [
+        {
+            "name": "Solomon Ochepa",
+            "email": "solomonochepa@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Domain\\App\\": "app/",
+            "Modules\\Domain\\app\\Livewire\\": "app/Livewire/",
+            "Modules\\Domain\\Database\\Factories\\": "database/factories/",
+            "Modules\\Domain\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Domain\\Tests\\": "tests/"
+        }
+    }
+}

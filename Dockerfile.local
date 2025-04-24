@@ -35,3 +35,11 @@ RUN php artisan key:generate && \
     php artisan vendor:publish --tag=telescope-assets --force && \
     php artisan module:enable --all && \
     chown -R www-data:www-data /var/www/html/
+
+################################
+# Path Permissions
+################################
+RUN if [ "$APP_ENV" = "local" ]; then \
+        groupadd --force -g ${WWWGROUP:-1000} sail && \
+        useradd -ms /bin/bash --no-user-group -g ${WWWGROUP:-1000} -u 1337 sail; \
+    fi

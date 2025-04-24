@@ -102,7 +102,7 @@
                             </a>
                         </form>
                     @else
-                        @feature(App\Features\ClientLogin::class)
+                        @feature(App\Features\TenantLogin::class)
                             <a class="btn btn-link text-900 order-lg-0 me-lg-2 order-1 ps-4" href="{{ route('login') }}">
                                 Sign in
                             </a>

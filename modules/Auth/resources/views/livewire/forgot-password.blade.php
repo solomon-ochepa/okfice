@@ -1,8 +1,8 @@
  <div>
      <x-auth::page.header :description="__('Type your e-mail to reset your password')" :title="__('Forgot password')" />
-     <x-themes.app.header back='login' class="no-border transparent position-absolute">
+     <x-layouts.app.sections.header back='login' class="no-border transparent position-absolute">
          @slot('title', '')
-         @slot('right')
+         @slot('links')
              <div>
                  @if (Route::has('login'))
                      <i aria-hidden="true" class="fa fa-user-plus"></i>
@@ -10,7 +10,7 @@
                  @endif
              </div>
          @endslot
-     </x-themes.app.header>
+     </x-layouts.app.sections.header>
 
      <div class="section mb-5 p-2">
          <form wire:submit="sendPasswordResetLink">

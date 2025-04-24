@@ -1,13 +1,13 @@
 <div>
     <x-auth::page.header :description="__('Create an account for free!')" :title="__('Register now')" />
-    <x-themes.app.header back='login' class="no-border transparent position-absolute">
+    <x-layouts.app.sections.header back='login' class="no-border transparent position-absolute">
         @slot('title', '')
-        @slot('right')
+        @slot('links')
             <a class="headerButton" href="{{ route('login') }}">
                 Login
             </a>
         @endslot
-    </x-themes.app.header>
+    </x-layouts.app.sections.header>
 
     <div class="section mb-5 p-2">
         <form wire:submit="register">

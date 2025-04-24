@@ -1,8 +1,8 @@
 <x-layouts.app>
     @slot('title', 'Dashboard')
-    <x-themes.app.header class="bg-primary text-light">
+    <x-layouts.app.sections.header class="bg-primary text-light">
         @slot('title', config('app.name'))
-        @slot('right')
+        @slot('links')
             <a class="headerButton" href="#">
                 <ion-icon class="icon" name="notifications-outline"></ion-icon>
                 {{-- <span class="badge badge-danger">0</span> --}}
@@ -12,16 +12,9 @@
                 {{-- <span class="badge badge-danger">0</span> --}}
             </a>
         @endslot
-    </x-themes.app.header>
+    </x-layouts.app.sections.header>
 
     <div id="appCapsule">
-        <!-- Wallet Card -->
-        {{-- <livewire:account::wallet /> --}}
-
-        <!-- Transactions -->
-        {{-- <livewire:transaction::recent /> --}}
-
-        <!-- Stats -->
-        {{-- <livewire:account::stats /> --}}
+        ... welcome to {{ config('app.name') }}
     </div>
 </x-layouts.app>

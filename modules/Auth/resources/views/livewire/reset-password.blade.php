@@ -1,13 +1,13 @@
 <div>
     <x-auth::page.header :description="__('Please enter your new password below')" :title="__('Reset password')" />
-    <x-themes.app.header back='login' class="no-border transparent position-absolute">
+    <x-layouts.app.sections.header back='login' class="no-border transparent position-absolute">
         @slot('title', 'Reset password')
-        @slot('right')
+        @slot('links')
             <a class="headerButton" href="{{ route('login') }}">
                 Login
             </a>
         @endslot
-    </x-themes.app.header>
+    </x-layouts.app.sections.header>
 
     <div class="section mb-5 p-2">
         <form wire:submit="resetPassword">
