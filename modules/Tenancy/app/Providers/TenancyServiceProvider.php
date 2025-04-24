@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Features\SupportFileUploads\FilePreviewController;
+use Livewire\Livewire;
 use Nwidart\Modules\Facades\Module;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
@@ -41,6 +43,13 @@ class TenancyServiceProvider extends ServiceProvider
         TenantConfig::$storageToConfigMap = [
             'name' => 'app.name',
         ];
+
+        // Livewire integration
+        Livewire::setUpdateRoute(function ($handle) {
+            return Route::post('/livewire/update', $handle)->middleware('web', 'universal', InitializeTenancyByDomainOrSubdomain::class);
+        });
+
+        FilePreviewController::$middleware = ['web', 'universal', InitializeTenancyByDomainOrSubdomain::class];
 
         $this->bootEvents();
         $this->mapRoutes();
