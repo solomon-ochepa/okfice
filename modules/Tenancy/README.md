@@ -1,4 +1,52 @@
-## Routes
+# Tenancy
+Base module for the Saas multi-tenancy setup
+
+### Required modules
+- Domain module
+- Tenant module
+
+## Structure
+```
+modules
+  └─ Tenancy
+    ├─ app
+    │  └─ Providers
+    │     ├─ EventServiceProvider.php
+    │     └─ TenancyServiceProvider.php
+    ├─ config
+    │  ├─ config.php
+    │  └─ tenancy.php
+    ├─ database
+    │  └─ seeders
+    │     ├─ TenancyDatabaseSeeder.php
+    │     └─ TenantsDatabaseSeeders.php
+    ├─ resources
+    │  ├─ assets
+    |  |  ├─ js
+    │  |  |  └─ app.js
+    |  |  └─ sass
+    |  |    └─ app.scss
+    │  └─ views
+    │     └─ components
+    │        ├─ layouts
+    │        │  ├─ app.blade.php
+    │        │  └─ guest.blade.php
+    │        └─ themes
+    │           └─ guest
+    │              ├─ header.blade.php
+    │              └─ search.blade.php
+    ├─ routes
+    ├─ tests
+    │  ├─ Feature
+    │  └─ Unit
+    ├─ composer.json
+    ├─ module.json
+    ├─ package.json
+    ├─ README.md
+    └─ vite.config.js
+```
+
+## Routes registration
 
 Both the Central and Tenant routes are binded in the `TenancyServiceProvider` `mapRoutes()` method.
 ```php
