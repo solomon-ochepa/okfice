@@ -6,7 +6,14 @@ use Modules\Tenant\App\Http\Controllers\TenantController;
 use Modules\Tenant\app\Livewire\Admin\Index;
 use Modules\Tenant\app\Livewire\Admin\Show;
 
+// Impersonate a tenant user from the central domain
+Route::get('/impersonate/{token}', [TenantController::class, 'impersonate'])->name('tenant.impersonate');
+
+Route::get('/', [TenantController::class, 'home'])->name('home');
+
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('dashboard', [TenantController::class, 'dashboard'])->name('dashboard');
+
     Route::resource('tenants', TenantController::class)->names('tenant');
 
     // Admins
