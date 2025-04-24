@@ -2,7 +2,7 @@
     {{-- @slot('title', 'Dashboard') --}}
     <x-layouts.app.sections.header back='admin.dashboard' class="bg-primary text-light">
         @slot('title', __('Users Management'))
-        @slot('right')
+        @slot('links')
             <a class="headerButton" href="#">
                 <ion-icon class="icon" name="notifications-outline"></ion-icon>
                 <span class="badge badge-danger">0</span>

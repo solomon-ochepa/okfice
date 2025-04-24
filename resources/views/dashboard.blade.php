@@ -2,7 +2,7 @@
     @slot('title', 'Dashboard')
     <x-layouts.app.sections.header class="bg-primary text-light">
         @slot('title', config('app.name'))
-        @slot('right')
+        @slot('links')
             <a class="headerButton" href="#">
                 <ion-icon class="icon" name="notifications-outline"></ion-icon>
                 {{-- <span class="badge badge-danger">0</span> --}}

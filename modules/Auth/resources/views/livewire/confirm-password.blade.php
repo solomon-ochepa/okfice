@@ -2,7 +2,7 @@
     <x-auth::page.header :description="__('This is a secure area of the application. Please confirm your password before continuing.')" :title="__('Confirm password')" />
     <x-layouts.app.sections.header back='dashboard' class="no-border transparent position-absolute">
         @slot('title', '')
-        @slot('right')
+        @slot('links')
         @endslot
     </x-layouts.app.sections.header>
 

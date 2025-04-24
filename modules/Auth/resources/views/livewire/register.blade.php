@@ -2,7 +2,7 @@
     <x-auth::page.header :description="__('Create an account for free!')" :title="__('Register now')" />
     <x-layouts.app.sections.header back='login' class="no-border transparent position-absolute">
         @slot('title', '')
-        @slot('right')
+        @slot('links')
             <a class="headerButton" href="{{ route('login') }}">
                 Login
             </a>

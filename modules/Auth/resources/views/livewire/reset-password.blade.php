@@ -2,7 +2,7 @@
     <x-auth::page.header :description="__('Please enter your new password below')" :title="__('Reset password')" />
     <x-layouts.app.sections.header back='login' class="no-border transparent position-absolute">
         @slot('title', 'Reset password')
-        @slot('right')
+        @slot('links')
             <a class="headerButton" href="{{ route('login') }}">
                 Login
             </a>

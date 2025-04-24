@@ -2,7 +2,7 @@
      <x-auth::page.header :description="__('Type your e-mail to reset your password')" :title="__('Forgot password')" />
      <x-layouts.app.sections.header back='login' class="no-border transparent position-absolute">
          @slot('title', '')
-         @slot('right')
+         @slot('links')
              <div>
                  @if (Route::has('login'))
                      <i aria-hidden="true" class="fa fa-user-plus"></i>

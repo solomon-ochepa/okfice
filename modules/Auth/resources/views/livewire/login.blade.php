@@ -2,7 +2,7 @@
     <x-auth::page.header :description="__('Access the full app as a user')" :title="__('Log in')" />
     <x-layouts.app.sections.header back='home' class="no-border transparent position-absolute">
         @slot('title', config('app.name'))
-        @slot('right')
+        @slot('links')
             <div>
                 @if (Route::has('register'))
                     <i aria-hidden="true" class="fa fa-user-plus"></i>

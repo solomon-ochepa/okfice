@@ -1,7 +1,7 @@
 <div>
     <x-layouts.app.sections.header back='' class="bg-primary text-light">
         @slot('title', config('app.name'))
-        @slot('right')
+        @slot('links')
         @endslot
     </x-layouts.app.sections.header>
 
