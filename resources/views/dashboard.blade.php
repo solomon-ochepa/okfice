@@ -15,13 +15,6 @@
     </x-themes.app.header>
 
     <div id="appCapsule">
-        <!-- Wallet Card -->
-        {{-- <livewire:account::wallet /> --}}
-
-        <!-- Transactions -->
-        {{-- <livewire:transaction::recent /> --}}
-
-        <!-- Stats -->
-        {{-- <livewire:account::stats /> --}}
+        ... welcome to {{ config('app.name') }}
     </div>
 </x-layouts.app>
