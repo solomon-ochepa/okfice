@@ -64,18 +64,6 @@
                             </div>
                         </a>
                     </li>
-
-                    <li>
-                        <a class="item" href="{{ route('payments.index') }}">
-                            <div class="icon-box bg-primary">
-                                <ion-icon name="cash"></ion-icon>
-                            </div>
-                            <div class="in">
-                                Payment Methods
-                                <span class="badge badge-primary"></span>
-                            </div>
-                        </a>
-                    </li>
                 </ul>
 
                 <!-- menu -->
