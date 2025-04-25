@@ -3,19 +3,7 @@
         <div class="modal-content">
             <div class="modal-body p-0">
                 <!-- profile box -->
-                <div class="profileBox pb-2 pt-2">
-                    <div class="image-wrapper">
-                        <img alt="image" class="imaged w36"
-                            src="{{ asset('unknown.webp') }}">
-                    </div>
-                    <div class="in">
-                        <strong>{{ auth()->user()->name }}</strong>
-                        <div class="text-muted">4029209</div>
-                    </div>
-                    <a class="btn btn-link btn-icon sidebar-close" data-bs-dismiss="modal" href="#">
-                        <ion-icon name="close-outline"></ion-icon>
-                    </a>
-                </div>
+                <x-sidebar.profile />
 
                 <!-- balance -->
                 <div class="sidebar-balance">
