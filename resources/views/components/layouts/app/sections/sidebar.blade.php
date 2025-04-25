@@ -3,21 +3,7 @@
         <div class="modal-content">
             <div class="modal-body p-0">
                 <!-- profile box -->
-                <div class="profileBox pb-2 pt-2">
-                    <div class="image-wrapper">
-                        <img alt="image" class="imaged w36"
-                            src="{{ asset('assets/img/sample/avatar/avatar1.jpg') }}">
-                    </div>
-                    <div class="in">
-                        <a href="{{ route('settings.profile') }}">
-                            <strong class="fw-bold">{{ auth()->user()->name }}</strong>
-                        </a>
-                        <div class="text-muted">4029209</div>
-                    </div>
-                    <a class="btn btn-link btn-icon sidebar-close" data-bs-dismiss="modal" href="#">
-                        <ion-icon name="close-outline"></ion-icon>
-                    </a>
-                </div>
+                <x-sidebar.profile />
 
                 <!-- balance -->
                 <div class="sidebar-balance">
