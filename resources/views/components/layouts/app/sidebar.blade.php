@@ -14,6 +14,7 @@
             <x-layouts.app.sections.bottom-menu />
             <x-layouts.app.sections.sidebar />
         @endauth
+
         <x-layouts.partials.add-to-home-screen />
         <x-layouts.app.sections.cookies />
 
