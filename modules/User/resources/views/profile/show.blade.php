@@ -4,14 +4,8 @@
         @slot('title', 'Settings')
         @slot('back', '')
         @slot('links')
-            <a class="headerButton" href="#">
-                <ion-icon class="icon" name="notifications-outline"></ion-icon>
-                {{-- <span class="badge badge-danger">0</span> --}}
-            </a>
-            <a class="headerButton" href="#">
-                <img alt="image" class="imaged w32" src="{{ asset('assets/app') }}/img/sample/avatar/avatar1.jpg">
-                {{-- <span class="badge badge-danger">0</span> --}}
-            </a>
+            <x-header.notification-link />
+            <x-header.user-link />
         @endslot
     </x-layouts.app.sections.header>
 
@@ -20,8 +14,7 @@
         <div class="section mt-3 text-center">
             <div class="avatar-section">
                 <a href="#">
-                    <img alt="avatar" class="imaged w100 rounded"
-                        src="{{ asset('assets/app') }}/img/sample/avatar/avatar1.jpg">
+                    <img alt="avatar" class="imaged w100 rounded" src="{{ asset('unknown.webp') }}">
                     <span class="button">
                         <ion-icon name="camera-outline"></ion-icon>
                     </span>
