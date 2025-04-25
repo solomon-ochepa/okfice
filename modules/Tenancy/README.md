@@ -96,3 +96,57 @@ or via the `RouteServiceProvider`
     }
 ```
 ---
+
+## Universal routes [#](https://tenancyforlaravel.com/docs/v3/features/universal-routes)
+First, enable the `UniversalRoutes` feature by uncommenting the following line in your `tenancy.features` config.
+```php
+# config/tenancy.php
+Stancl\Tenancy\Features\UniversalRoutes::class,
+```
+
+Next, go to your `bootstrap/app.php` file and add the following middleware group:
+```php
+->withMiddleware(function (Middleware $middleware) {
+    $middleware->group('universal', []);
+})
+```
+
+We will use this middleware group as a "flag" on the route, to mark it as a universal route. We don't need any actual middleware inside the group.
+
+Then, create a route like this:
+```php
+Route::get('/foo', function () {
+    // ...
+})->middleware(['universal', InitializeTenancyByDomainOrSubdomain::class]);
+```
+
+### Livewire integration [#](https://tenancyforlaravel.com/docs/v3/integrations/livewire/)
+
+add the following in TenancyServiceProvider (or any other provider):
+```php
+public function boot(): void
+{
+    // ...
+
+    Livewire::setUpdateRoute(function ($handle) {
+        return Route::post('/livewire/update', $handle)
+            ->middleware(
+                'web',
+                'universal',
+                InitializeTenancyByDomain::class,
+            );
+    });
+}
+```
+
+To make file uploads work on Livewire 3, set the following in any service provider:
+```php
+FilePreviewController::$middleware = ['web', 'universal', InitializeTenancyByDomain::class];
+```
+
+And change `livewire.temporary_file_upload.middleware` to include the tenancy middleware as well:
+```php
+// config/livewire.php
+
+'middleware' => ['throttle:60,1', 'universal', InitializeTenancyByDomain::class],
+```
