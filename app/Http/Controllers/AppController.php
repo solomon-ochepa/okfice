@@ -6,8 +6,8 @@ class AppController extends Controller
 {
     public function home()
     {
-        // return redirect(route('dashboard'));
-        return view('welcome');
+        return redirect(route('dashboard'));
+        // return view('welcome');
     }
 
     public function dashboard()
