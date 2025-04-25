@@ -7,7 +7,5 @@
         @endslot
     </x-layouts.app.sections.header>
 
-    <div id="appCapsule">
-        ... welcome to {{ config('app.name') }}
-    </div>
+    <div id="appCapsule"></div>
 </x-layouts.app>

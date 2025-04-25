@@ -13,8 +13,7 @@
         <div class="section mt-3 text-center">
             <div class="avatar-section">
                 <a href="#">
-                    <img alt="avatar" class="imaged w100 rounded"
-                        src="{{ asset('assets/img/sample/avatar/avatar1.jpg') }}">
+                    <img alt="avatar" class="imaged w100 rounded" src="{{ asset('unknown.webp') }}">
                     <span class="button">
                         <ion-icon name="camera-outline"></ion-icon>
                     </span>

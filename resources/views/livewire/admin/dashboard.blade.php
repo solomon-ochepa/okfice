@@ -46,7 +46,6 @@
                     </x-a>
                 </li>
             @endcan
-
         </ul>
     </div>
 </x-layouts.app>
