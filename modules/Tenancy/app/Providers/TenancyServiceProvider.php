@@ -203,6 +203,7 @@ class TenancyServiceProvider extends ServiceProvider
         foreach ($tenant_api_routes as $api) {
             Route::middleware(['api', InitializeTenancyByDomainOrSubdomain::class, PreventAccessFromCentralDomains::class])
                 ->prefix('api')
+                ->name('api.')
                 ->group($api);
         }
     }
@@ -233,13 +234,13 @@ class TenancyServiceProvider extends ServiceProvider
             // API
             Route::middleware('api')->domain($domain)->prefix('api')->name('api.')->group(function () {
                 if (file_exists($file = base_path('routes/api.php'))) {
-                    Route::group([], $file);
+                    Route::name('api.')->group($file);
                 }
 
                 // Modules
                 collect(Module::all())->each(function ($module) {
                     if (file_exists($file = module_path($module->getName(), 'routes/api.php'))) {
-                        Route::group([], $file);
+                        Route::name('api.')->group($file);
                     }
                 });
             });
