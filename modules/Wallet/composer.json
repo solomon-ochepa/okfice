@@ -1,0 +1,29 @@
+{
+    "name": "solomon-ochepa/wallet",
+    "description": "",
+    "authors": [
+        {
+            "name": "Solomon Ochepa",
+            "email": "solomonochepa@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Wallet\\App\\": "app/",
+            "Modules\\Wallet\\app\\Livewire\\": "app/Livewire/",
+            "Modules\\Wallet\\Database\\Factories\\": "database/factories/",
+            "Modules\\Wallet\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Wallet\\Tests\\": "tests/"
+        }
+    }
+}
