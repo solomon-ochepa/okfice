@@ -13,5 +13,6 @@
     "Payment": true,
     "Tenancy": true,
     "Tenant": true,
-    "Domain": true
+    "Domain": true,
+    "Wallet": true
 }
