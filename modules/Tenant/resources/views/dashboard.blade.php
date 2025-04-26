@@ -17,7 +17,5 @@
 
         <!-- Stats -->
         <livewire:account::stats />
-
-        Client: {{ tenant('name') }}
     </div>
 </x-tenancy::layouts.app>
