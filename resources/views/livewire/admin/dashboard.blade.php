@@ -15,7 +15,7 @@
             @can('admin.tenant.index')
                 <li>
                     <x-a class="item" route="admin.tenant.index">
-                        <i aria-hidden="true" class="fas fa-network-wired image"></i>
+                        <i aria-hidden="true" class="fas fa-network-wired fa-lg me-3"></i>
                         <div class="in">
                             <div>{{ __('Clients') }}</div>
                             {{-- <span class="badge badge-primary">3</span> --}}
@@ -27,7 +27,7 @@
             @can('admin.user.index')
                 <li>
                     <x-a class="item" route="admin.user.index">
-                        <i aria-hidden="true" class="fa fa-users image"></i>
+                        <i aria-hidden="true" class="fa fa-users fa-lg me-3"></i>
                         <div class="in">
                             <div>{{ __('Users') }}</div>
                             {{-- <span class="badge badge-primary">3</span> --}}
@@ -39,7 +39,7 @@
             @can('admin.transactions.index')
                 <li>
                     <x-a class="item" route="admin.transaction.index">
-                        <i aria-hidden="true" class="fa fa-users image"></i>
+                        <i aria-hidden="true" class="fa fa-users fa-lg me-3"></i>
                         <div class="in">
                             <div>{{ __('Transactions') }}</div>
                             {{-- <span class="badge badge-primary">3</span> --}}
