@@ -18,7 +18,10 @@ class TenantFactory extends Factory
      */
     public function definition(): array
     {
-        $user = User::firstWhere('username', 'demo');
+        $user = User::firstWhere('username', 'demo') ?? User::factory()->create([
+            'username' => 'demo',
+            'email' => 'demo@example.com'
+        ]);
 
         return [
             'name' => fake()->company(),
