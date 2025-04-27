@@ -3,6 +3,7 @@
 namespace Tests;
 
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Str;
 use Modules\Tenant\App\Models\Tenant;
 
 abstract class TestCase extends BaseTestCase
@@ -12,22 +13,27 @@ abstract class TestCase extends BaseTestCase
      */
     protected bool $tenancy = true;
 
+    protected Tenant $tenant;
+
     protected function setUp(): void
     {
-        $this->tenancy();
+        // $this->tenancy();
 
         parent::setUp();
 
-        if ($this->tenancy) {
-            $this->initializeTenancy();
-        }
+        // if ($this->tenancy) {
+        //     $this->initializeTenancy();
+        // }
     }
 
     public function initializeTenancy()
     {
-        $tenant = Tenant::factory()->create();
+        $this->tenant = Tenant::factory()->create();
+        // $this->tenant->domains()->create([
+        //     'domain' => Str::slug($this->tenant->name),
+        // ]);
 
-        tenancy()->initialize($tenant);
+        // tenancy()->initialize($this->tenant);
     }
 
     protected function tenancy(): void
