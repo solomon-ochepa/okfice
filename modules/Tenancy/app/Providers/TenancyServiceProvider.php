@@ -189,29 +189,35 @@ class TenancyServiceProvider extends ServiceProvider
         $domains = settings(['multiple.central_domains' => false]) ? $config : (array) Arr::first($config) ?? [];
 
         foreach ($domains ?? [] as $domain) {
-            // Web
-            Route::middleware('web')->domain($domain)->group(function () {
-                Route::group([], base_path('routes/web.php'));
-
-                // Modules
-                collect(Module::all())->each(function ($module) {
-                    if (file_exists($file = module_path($module->getName(), 'routes/web.php'))) {
-                        Route::group([], $file);
+            Route::domain($domain)->group(function () {
+                // Web
+                Route::middleware(['web'])->group(function () {
+                    // Root
+                    if (file_exists($route = base_path('routes/web.php'))) {
+                        Route::group([], $route);
                     }
+
+                    // Modules
+                    collect(Module::all())->each(function ($module) {
+                        if (file_exists($route = module_path($module->getName(), 'routes/web.php'))) {
+                            Route::group([], $route);
+                        }
+                    });
                 });
-            });
 
-            // API
-            Route::middleware('api')->domain($domain)->prefix('api')->name('api.')->group(function () {
-                if (file_exists($file = base_path('routes/api.php'))) {
-                    Route::name('api.')->group($file);
-                }
-
-                // Modules
-                collect(Module::all())->each(function ($module) {
-                    if (file_exists($file = module_path($module->getName(), 'routes/api.php'))) {
-                        Route::name('api.')->group($file);
+                // API
+                Route::middleware('api')->prefix('api')->name('api.')->group(function () {
+                    // Root
+                    if (file_exists($route = base_path('routes/api.php'))) {
+                        Route::group([], $route);
                     }
+
+                    // Modules
+                    collect(Module::all())->each(function ($module) {
+                        if (file_exists($route = module_path($module->getName(), 'routes/api.php'))) {
+                            Route::group([], $route);
+                        }
+                    });
                 });
             });
         }
@@ -224,27 +230,37 @@ class TenancyServiceProvider extends ServiceProvider
      */
     protected function tenant_domains(): void
     {
-        $tenant_web_routes = [];
-        if (file_exists(base_path('routes/tenant/web.php'))) {
-            $tenant_web_routes[] = glob(base_path('routes/tenant/web.php'));
-        }
-        $tenant_web_routes[] = glob(base_path('modules/*/routes/tenant/web.php'));
-        foreach ($tenant_web_routes as $web) {
-            Route::middleware(['web', InitializeTenancyByDomainOrSubdomain::class, PreventAccessFromCentralDomains::class])
-                ->group($web);
-        }
+        Route::middleware([InitializeTenancyByDomainOrSubdomain::class, PreventAccessFromCentralDomains::class])->group(function () {
+            // Web
+            Route::middleware(['web'])->group(function () {
+                // Root
+                if (file_exists($route = base_path('routes/tenant/web.php'))) {
+                    Route::group([], $route);
+                }
 
-        $tenant_api_routes = [];
-        if (file_exists(base_path('routes/tenant/api.php'))) {
-            $tenant_api_routes[] = glob(base_path('routes/tenant/api.php'));
-        }
-        $tenant_api_routes[] = glob(base_path('modules/*/routes/tenant/api.php'));
-        foreach ($tenant_api_routes as $api) {
-            Route::middleware(['api', InitializeTenancyByDomainOrSubdomain::class, PreventAccessFromCentralDomains::class])
-                ->prefix('api')
-                ->name('api.')
-                ->group($api);
-        }
+                // Modules
+                collect(Module::all())->each(function ($module) {
+                    if (file_exists($route = module_path($module->getName(), 'routes/tenant/web.php'))) {
+                        Route::group([], $route);
+                    }
+                });
+            });
+
+            // API
+            Route::middleware('api')->prefix('api')->name('api.')->group(function () {
+                // Root
+                if (file_exists($route = base_path('routes/tenant/api.php'))) {
+                    Route::group([], $route);
+                }
+
+                // Modules
+                collect(Module::all())->each(function ($module) {
+                    if (file_exists($route = module_path($module->getName(), 'routes/tenant/api.php'))) {
+                        Route::group([], $route);
+                    }
+                });
+            });
+        });
     }
 
     /**
