@@ -9,7 +9,9 @@
                             src="{{ asset('assets/app') }}/img/sample/avatar/avatar1.jpg">
                     </div>
                     <div class="in">
-                        <strong>{{ auth()->user()->name }}</strong>
+                        <a href="{{ route('settings.profile') }}">
+                            <strong class="fw-bold">{{ auth()->user()->name }}</strong>
+                        </a>
                         <div class="text-muted">4029209</div>
                     </div>
                     <a class="btn btn-link btn-icon sidebar-close" data-bs-dismiss="modal" href="#">
