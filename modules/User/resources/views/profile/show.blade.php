@@ -14,7 +14,7 @@
             <div class="avatar-section">
                 <a href="#">
                     <img alt="avatar" class="imaged w100 rounded"
-                        src="{{ asset('assets/app') }}/img/sample/avatar/avatar1.jpg">
+                        src="{{ asset('assets/img/sample/avatar/avatar1.jpg') }}">
                     <span class="button">
                         <ion-icon name="camera-outline"></ion-icon>
                     </span>

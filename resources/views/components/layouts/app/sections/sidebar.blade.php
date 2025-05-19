@@ -6,7 +6,7 @@
                 <div class="profileBox pb-2 pt-2">
                     <div class="image-wrapper">
                         <img alt="image" class="imaged w36"
-                            src="{{ asset('assets/app') }}/img/sample/avatar/avatar1.jpg">
+                            src="{{ asset('assets/img/sample/avatar/avatar1.jpg') }}">
                     </div>
                     <div class="in">
                         <a href="{{ route('settings.profile') }}">
