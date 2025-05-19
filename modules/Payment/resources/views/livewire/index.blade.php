@@ -4,8 +4,7 @@
         @slot('title', 'Payment Methods')
         @slot('back', '')
         @slot('links')
-            <x-header.notification-link />
-            <x-header.user-link />
+            <x-user::header.links />
         @endslot
     </x-layouts.app.sections.header>
 

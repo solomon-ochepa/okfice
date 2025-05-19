@@ -3,8 +3,7 @@
     <x-layouts.app.sections.header back='admin.dashboard' class="bg-primary text-light">
         @slot('title', __('Users Management'))
         @slot('links')
-            <x-header.notification-link />
-            <x-header.user-link />
+            <x-user::header.links />
         @endslot
     </x-layouts.app.sections.header>
 
