@@ -3,7 +3,7 @@
 namespace Modules\Tenant\app\Livewire\Forms\Admin;
 
 use Livewire\Form;
-use Modules\Tenancy\App\Http\Requests\TenantRequest;
+use Modules\Tenant\App\Http\Requests\TenantRequest;
 use Modules\Tenant\App\Models\Tenant;
 use Modules\User\App\Models\User;
 
