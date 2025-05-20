@@ -3,9 +3,9 @@
 namespace Modules\User\app\Livewire\Settings\Forms;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Livewire\Form;
 use Modules\User\App\Models\User;
-use Illuminate\Validation\Rule;
 
 class ProfileForm extends Form
 {
