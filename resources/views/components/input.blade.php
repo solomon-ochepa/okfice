@@ -4,8 +4,7 @@
         @if ($label)
             <label class="label" for="">{{ $label }}</label>
         @endif
-        <input {{ $attributes->merge(['class' => 'form-control', 'type' => 'text']) }} id="amount1"
-            placeholder="Enter an Amount" type="text" />
+        <input {{ $attributes->merge(['class' => 'form-control', 'type' => 'text']) }} />
         <i class="clear-input">
             <ion-icon name="close-circle"></ion-icon>
         </i>
