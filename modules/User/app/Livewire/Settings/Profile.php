@@ -14,7 +14,7 @@ class Profile extends Component
 
     public User $user;
 
-    public function mount(User $user)
+    public function mount()
     {
         $this->user = Auth::user();
 

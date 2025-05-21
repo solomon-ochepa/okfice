@@ -94,6 +94,6 @@
             </div>
         </div>
 
-        {{-- <livewire:settings.delete-user-form /> --}}
+        {{-- <livewire:user::settings.delete-user-form /> --}}
     </section>
 </section>

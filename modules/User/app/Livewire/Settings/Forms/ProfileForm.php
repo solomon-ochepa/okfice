@@ -3,9 +3,8 @@
 namespace Modules\User\app\Livewire\Settings\Forms;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Livewire\Form;
-use Modules\User\App\Models\User;
+use Modules\User\App\Http\Requests\CreateUserRequest;
 
 class ProfileForm extends Form
 {
@@ -15,26 +14,13 @@ class ProfileForm extends Form
 
     public ?string $username = '';
 
-    public ?string $email = '';
-
     public ?string $phone = '';
+
+    public ?string $email = '';
 
     public function rules()
     {
-        return [
-            'first_name' => ['required', 'string', 'max:32'],
-            'last_name' => ['required', 'string', 'max:32'],
-            'username' => ['required', 'string', 'max:16', 'alpha_dash', Rule::unique(User::class)->ignore(Auth::id())],
-            'phone' => ['nullable', 'string', 'max:16', Rule::unique(User::class)->ignore(Auth::id())],
-            'email' => [
-                'required',
-                'string',
-                'lowercase',
-                'email',
-                'max:255',
-                Rule::unique(User::class)->ignore(Auth::id()),
-            ],
-        ];
+        return (new CreateUserRequest(Auth::user()))->rules();
     }
 
     public function update()
